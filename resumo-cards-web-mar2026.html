@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Cards — Web Team · Mar 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0f1117;
+    --bg2:      #181c27;
+    --bg3:      #1e2235;
+    --bg4:      #252a40;
+    --border:   #2d3348;
+    --border2:  #3d4460;
+    --text:     #e8eaf2;
+    --text2:    #8b90a8;
+    --text3:    #555b78;
+    --ro:       #7c6af7;
+    --ro-bg:    #1a1640;
+    --ro-bd:    #3d3580;
+    --br:       #f0a855;
+    --br-bg:    #2a1e08;
+    --br-bd:    #7a5020;
+    --th:       #3ecf8e;
+    --th-bg:    #082418;
+    --th-bd:    #1a6845;
+    --feat:     #60adf5;
+    --feat-bg:  #0c1e35;
+    --fix:      #f97070;
+    --fix-bg:   #2a0f0f;
+    --ref:      #f0c040;
+    --ref-bg:   #261e04;
+    --test:     #52d98a;
+    --test-bg:  #082418;
+    --radius:   6px;
+    --radius-lg:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 56px 48px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-names .dot {
+    color: var(--text3);
+    font-weight: 400;
+    font-size: 24px;
+  }
+
+  .hero-names .accent-ro { color: var(--ro); }
+  .hero-names .accent-br { color: var(--br); }
+  .hero-names .accent-th { color: var(--th); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 32px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .stat-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    pointer-events: none;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 8px 12px 8px 32px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { border-color: var(--border2); }
+  .search-wrap input::placeholder { color: var(--text3); }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fbtn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .fbtn:hover { background: var(--bg4); color: var(--text); }
+
+  .fbtn.on-feat  { background: var(--feat-bg); color: var(--feat);  border-color: var(--feat); }
+  .fbtn.on-fix   { background: var(--fix-bg);  color: var(--fix);   border-color: var(--fix); }
+  .fbtn.on-ref   { background: var(--ref-bg);  color: var(--ref);   border-color: var(--ref); }
+  .fbtn.on-test  { background: var(--test-bg); color: var(--test);  border-color: var(--test); }
+  .fbtn.on-all   { background: var(--bg4); color: var(--text); border-color: var(--border2); }
+  .fbtn.on-ro    { background: var(--ro-bg);  color: var(--ro);  border-color: var(--ro-bd); }
+  .fbtn.on-br    { background: var(--br-bg);  color: var(--br);  border-color: var(--br-bd); }
+  .fbtn.on-th    { background: var(--th-bg);  color: var(--th);  border-color: var(--th-bd); }
+
+  .sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+
+  .result-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    padding: 32px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* ── MEMBER SECTION ── */
+  .member-section { display: flex; flex-direction: column; gap: 0; }
+
+  .member-section.hidden { display: none; }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-ro { background: var(--ro-bg); color: var(--ro); border: 1px solid var(--ro-bd); }
+  .av-br { background: var(--br-bg); color: var(--br); border: 1px solid var(--br-bd); }
+  .av-th { background: var(--th-bg); color: var(--th); border: 1px solid var(--th-bd); }
+
+  .member-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .member-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    margin-left: 4px;
+  }
+
+  .member-bar {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── CARDS TABLE ── */
+  .cards-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .cards-table thead th {
+    background: var(--bg3);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cards-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+    animation: rowIn 0.3s ease both;
+  }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .cards-table tbody tr:last-child { border-bottom: none; }
+  .cards-table tbody tr:hover { background: var(--bg3); }
+  .cards-table tbody tr.hidden { display: none; }
+
+  .cards-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+  }
+
+  .col-id {
+    width: 90px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .col-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  .col-type { width: 90px; }
+
+  .badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-feat { background: var(--feat-bg); color: var(--feat); border: 1px solid #1a3d60; }
+  .badge-fix  { background: var(--fix-bg);  color: var(--fix);  border: 1px solid #5a1818; }
+  .badge-ref  { background: var(--ref-bg);  color: var(--ref);  border: 1px solid #5a4010; }
+  .badge-test { background: var(--test-bg); color: var(--test); border: 1px solid #0f5030; }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    display: none;
+  }
+
+  .empty-state.visible { display: block; }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">// web-team · agrotrace-v3 · sprint review</div>
+  <h1 class="hero-title">Resumo de Cards</h1>
+  <div class="hero-names">
+    <span class="accent-ro">Ronaldo</span>
+    <span class="dot">·</span>
+    <span class="accent-br">Bruno</span>
+    <span class="dot">·</span>
+    <span class="accent-th">Thielson</span>
+  </div>
+  <div class="hero-sub">13/03/2026 – 31/03/2026 &nbsp;·&nbsp; Tech Spotlight #03</div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="stat-val" id="s-total">42</div>
+      <div class="stat-lbl">total</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">22</div>
+      <div class="stat-lbl">features</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">14</div>
+      <div class="stat-lbl">fixes</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">4</div>
+      <div class="stat-lbl">refactors</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--test)" id="s-test">4</div>
+      <div class="stat-lbl">testes</div>
+    </div>
+    <div class="stat-chip" style="margin-left:auto">
+      <div class="stat-val" style="color:var(--ro)" id="s-ro">18</div>
+      <div class="stat-lbl">ronaldo</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--br)" id="s-br">18</div>
+      <div class="stat-lbl">bruno</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-val" style="color:var(--th)" id="s-th">27</div>
+      <div class="stat-lbl">thielson</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Buscar por título ou #card..." oninput="applyFilters()">
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="typeFilters">
+    <button class="fbtn on-all" data-filter="type" data-val="all" onclick="setFilter('type','all',this)">Todos</button>
+    <button class="fbtn" data-filter="type" data-val="feat" onclick="setFilter('type','feat',this)">feature</button>
+    <button class="fbtn" data-filter="type" data-val="fix"  onclick="setFilter('type','fix',this)">fix</button>
+    <button class="fbtn" data-filter="type" data-val="ref"  onclick="setFilter('type','ref',this)">refactor</button>
+    <button class="fbtn" data-filter="type" data-val="test" onclick="setFilter('type','test',this)">teste</button>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="filter-group" id="memberFilters">
+    <button class="fbtn on-all" data-filter="member" data-val="all" onclick="setFilter('member','all',this)">Todos</button>
+    <button class="fbtn" data-filter="member" data-val="ro" onclick="setFilter('member','ro',this)">Ronaldo</button>
+    <button class="fbtn" data-filter="member" data-val="br" onclick="setFilter('member','br',this)">Bruno</button>
+    <button class="fbtn" data-filter="member" data-val="th" onclick="setFilter('member','th',this)">Thielson</button>
+  </div>
+
+  <div class="result-count" id="resultCount">42 cards</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content"></div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Web Team · Agrotrace v3 · gerado em 31/03/2026</div>
+  <div class="footer-right">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--feat)"></div>feature</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--fix)"></div>fix</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--ref)"></div>refactor</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--test)"></div>teste</div>
+  </div>
+</div>
+
+<script>
+const DATA = {
+  ro: {
+    name: 'Ronaldo',
+    avClass: 'av-ro',
+    avInit: 'RO',
+    nameColor: 'var(--ro)',
+    cards: [
+      { id:'#11765', type:'feat', title:'Endpoint de integração externa — Aprosoja', desc:'Módulo completo com controller, service, guard JWT dedicado, DTOs, documentação HTML integrada e validação de token no front.' },
+      { id:'#11742', type:'feat', title:'Relatório Expocacer em orientação horizontal', desc:'Geração via Jasper + alteração de orientação de páginas no Word antes do download. Aplica-se a todos os relatórios Word.' },
+      { id:'#11807', type:'fix',  title:'Remover URL e QR Code de anexos em relatórios Jasper', desc:'Limpeza de campos desnecessários que poluíam os relatórios gerados.' },
+      { id:'#11647', type:'feat', title:'Adicionar área de APP e Reserva Legal no relatório 3S', desc:'Inclusão de campos de APP e RL conforme solicitação dos consultores.' },
+      { id:'#11872', type:'feat', title:'Gráfico da home — tooltip customizado e suporte a propriedades', desc:'Tooltip personalizado e suporte a propriedades adicionais ao passar o mouse no gráfico.' },
+      { id:'#11885', type:'fix',  title:'CAR duplicando em novo cadastro de propriedade', desc:'Ajuste na largura da coluna car e correção da lógica de duplicação ao adicionar nova propriedade.' },
+      { id:'#11910', type:'feat', title:'Gráfico de erros — linha do tempo contínua de 24h', desc:'Logs de erro ordenados por hora, ancorados no horário atual, para visualização contínua no dashboard do CMS.' },
+      { id:'#11825', type:'feat', title:'Dashboard de métricas com tabs na Home do CMS', desc:'Painel centralizado de saúde do sistema com tabs por categoria de log (sucesso, erro, insights).' },
+      { id:'#11864', type:'feat', title:'Modal de detalhes da requisição nos Logs do CMS', desc:'Modal com body JSON completo e query params de cada log, com filtragem e insights. Scrollbar customizada no visualizador.' },
+      { id:'#11840', type:'fix',  title:'Consolidação em lote ignorar atendimentos sem diagnóstico na safra de destino', desc:'Correção de regra de negócio na consolidação em lote.' },
+      { id:'#11947', type:'fix',  title:'Title Case no Jasper para nomes com múltiplos espaços — AgroPlus', desc:'Fix no split usando \\s+ ao invés de espaço simples para nomes como "PHB   AGROPECUARIA LTDA".' },
+      { id:'#11950', type:'feat', title:'Template HTML estático para Relatório de Atendimento Técnico', desc:'Exportação do relatório em HTML standalone incluído no ZIP, com toggle para exportar ou não.' },
+      { id:'#11967', type:'fix',  title:'Correções no Relatório de Diagnóstico — Grupos MT e MT (COFCO)', desc:'Ajustes nos grupos específicos do relatório de diagnóstico.' },
+      { id:'#11787', type:'test', title:'Verificar scroll na gestão reprodutiva', desc:'Card de teste — aprovado.' },
+      { id:'#11707', type:'feat', title:'Home — Detalhes do Ranking de uma propriedade', desc:'Implementação da tela de detalhes do ranking de propriedade na home.' },
+      { id:'#11819', type:'test', title:'Verificar scroll na tela de exportação no CMS', desc:'Card de teste — aprovado após feedback.' },
+      { id:'#11875', type:'test', title:'Verificar modal de edição dos charts no dashboard formulário', desc:'Card de teste — aprovado.' },
+      { id:'#11815', type:'test', title:'Reprodução animal — verificar listagem de animais', desc:'Card de teste — aprovado.' },
+    ]
+  },
+  br: {
+    name: 'Bruno',
+    avClass: 'av-br',
+    avInit: 'BR',
+    nameColor: 'var(--br)',
+    cards: [
+      { id:'#11748', type:'feat', title:'Painel de Gestão — endpoint para o Mobile', desc:'Endpoint com serialização correta das entidades, otimização de query, lat/long e endereço de propriedade.' },
+      { id:'#11494', type:'feat', title:'Landing Pages dinâmicas por projeto + Blog (Astro)', desc:'Monorepo com Astro: seções configuráveis via API, cache Redis com invalidação, newsletter completa, SEO, rate limit, XSS, CSP/HSTS, Docker multi-stage.' },
+      { id:'#11763', type:'feat', title:'Home — suporte a tema dark', desc:'Dark mode nos componentes indicadores-comparativo-tabela, language-theme-selector, home-padrao e mapa-coropletico.' },
+      { id:'#11786', type:'feat', title:'Melhorias no endpoint de dashboard do gestor', desc:'Filtro apenasEtapasVigentes no DTO e serviço de métricas.' },
+      { id:'#11781', type:'fix',  title:'Forçar reload da página após deploy', desc:'Headers Nginx sem cache no index.html + listener vite:preloadError para reload automático em erros de importação dinâmica.' },
+      { id:'#11794', type:'fix',  title:'Redirecionar usuário para URL original após autenticação', desc:'Suporte a returnUrl nos fluxos de auth, MFA (web, CMS, libs compartilhadas) e PrivateRouteGuard.' },
+      { id:'#11882', type:'fix',  title:'Link SAS de anexos — UUID com hífens causando token inválido', desc:'Removidos hífens dos UUIDs no path do Azure Blob. Corrigido double-encoding de filenames. Fix crítico que afetava todos os anexos no mobile.' },
+      { id:'#11809', type:'feat', title:'Melhoria na rota de dados gerais do projeto', desc:'Adicionado certificadoraNome ao resumo e filtros dataInicial/dataFinal no endpoint de detalhes.' },
+      { id:'#11927', type:'feat', title:'Melhorias no fluxo de cadastro e sincronização de Exportações', desc:'Sincronização automática com overlay de feedback, validação de campos e cor padrão corrigida para branco.' },
+      { id:'#11933', type:'ref',  title:'Migrar upload de memoryStorage para diskStorage', desc:'Controllers de importação e relatórios migrados para diskStorage. Stream-based upload no AzureBlobService com limpeza automática de arquivos temporários.' },
+      { id:'#11932', type:'fix',  title:'Perfil do produtor — responsividade', desc:'Substituído carrossel por layout de pilares scrollável para melhor responsividade em telas menores.' },
+      { id:'#11796', type:'feat', title:'Novo tipo de pergunta: Anexo (upload de documentos)', desc:'Suporte a múltiplos formatos, validação de tamanho (tamanho_maximo_mb), migration, triggers de auditoria e ProgressBar de upload em 3 etapas.' },
+      { id:'#11734', type:'feat', title:'Opção "Possui Validação" no cadastro de perguntas', desc:'Expressões de validação customizadas com UI interativa visual para não-devs. Feedback de erro na tela do formulário.' },
+      { id:'#11746', type:'feat', title:'Criar opção "Imprimir" nas perguntas', desc:'Coluna imprimir na entidade form_pergunta, tabela de auditoria e triggers atualizados. Checkbox no formulário de edição.' },
+      { id:'#11904', type:'fix',  title:'Permitir exclusão de imagem única no formulário dinâmico', desc:'Removida trava de quantidade que impedia remover a última imagem de uma pergunta do tipo Imagem.' },
+      { id:'#11906', type:'fix',  title:'Botão de fechar no modal de visualização de imagem', desc:'Botão adicionado em todos os componentes de visualização de imagem (CMS e web), garantindo consistência visual.' },
+      { id:'#11909', type:'fix',  title:'Gráficos de conformidade — migrar para carrossel navegável', desc:'Overflow horizontal em resoluções menores resolvido com carrossel responsivo (p-carousel).' },
+      { id:'#11887', type:'ref',  title:'Isolar localStorage e tokens entre Agrotrace e CMS', desc:'Prefixos explícitos SYSTEM, CMS e SHARED. Limpeza de dados compartilhados ao finalizar sessão. Interceptadores ajustados para origens dinâmicas.' },
+    ]
+  },
+  th: {
+    name: 'Thielson',
+    avClass: 'av-th',
+    avInit: 'TH',
+    nameColor: 'var(--th)',
+    cards: [
+      { id:'#11753', type:'feat', title:'Gerar Token de Programas — adicionar prazo de validade', desc:'Date picker para data de validade do token, alteração de front e backend.' },
+      { id:'#11741', type:'feat', title:'Desativar Volume por Origem — Volume Global', desc:'Filtro avançado e opção de desativar/reativar volumes globais por país e por filial.' },
+      { id:'#11645', type:'feat', title:'Adicionar unidade no volume por produtor', desc:'Nova coluna via migration, entity, model e form de cadastro.' },
+      { id:'#11542', type:'fix',  title:'Gráfico de % mapeado por unidade', desc:'Corrigido erro na procedure getFormRespostasCharts. Novo gráfico de volume mapeado por filial na home Minerva.' },
+      { id:'#11764', type:'feat', title:'Gestão Reprodutiva — reestruturação de tabelas', desc:'Removida tabela bov_iatf_diagnostico; regras de negócio e triggers migrados para bov_diagnostico. Melhoria de scroll na listagem.' },
+      { id:'#11773', type:'feat', title:'Permitir anexo público', desc:'Campo is_public ativado; lógica para salvar em container público quando o anexo for marcado como público.' },
+      { id:'#11772', type:'feat', title:'Alterar procedure getUrlAnexo', desc:'Nova tabela azure_blob_sas_param para SAS params; cron diário para atualização; suporte a anexos públicos e privados.' },
+      { id:'#11769', type:'fix',  title:'Relatório de Atendimento Técnico — renovar token do anexo', desc:'Backend gera URL SAS curta (30 min). Procedure retorna id, uuid e nome em vez de URL direta.' },
+      { id:'#11795', type:'feat', title:'Filtro de busca em tempo real na listagem de relatórios', desc:'Filtragem por nome de relatório adicionada ao frontend.' },
+      { id:'#11792', type:'feat', title:'Novo campo no cadastro de volume por filial e por país', desc:'Alteração de front e backend para novo campo.' },
+      { id:'#11798', type:'fix',  title:'Correção de layout do modal Dados da Exportação (CMS)', desc:'Scroll interno nas abas do modal de cadastro/edição de exportação para UX melhorada.' },
+      { id:'#11793', type:'fix',  title:'Melhorar listagem de animais na gestão reprodutiva', desc:'UX da listagem de animais no cadastro de gestão reprodutiva.' },
+      { id:'#11780', type:'feat', title:'Exportações — lista de exceções por certificadora', desc:'Tabela de exceções: define quais certificadoras não exibem determinado relatório.' },
+      { id:'#11839', type:'fix',  title:'Botão "Salvar" nunca habilitado no modal de edição — perguntas Tabela', desc:'Corrigido botão de salvar no dashboard formulário para perguntas do tipo Tabela.' },
+      { id:'#11836', type:'feat', title:'Labels configuráveis nos botões — aba Comparativos', desc:'Customização dos nomes dos botões na aba Comparativo da home do Agrotrace.' },
+      { id:'#11835', type:'feat', title:'Aba CADASTRO na planilha de exportação de Protocolos', desc:'Nova aba adicionada à planilha de exportação de protocolos.' },
+      { id:'#11837', type:'fix',  title:'Dashboard Formulário — persistência de layout no Carbono IDH 2026', desc:'Corrigidos problemas em procedures, tabela e código. Botão de reset adicionado como rede de segurança em produção.' },
+      { id:'#11791', type:'fix',  title:'Permissões ACL — impedir associação de filiais sem acesso', desc:'Usuário não pode mais associar filiais que não tem acesso, sem remover filiais já associadas por outros usuários.' },
+      { id:'#11900', type:'feat', title:'Importar apelidos de itens de lista via planilha de protocolo', desc:'Labels alternativas para itens de lista agora importáveis direto pela planilha de protocolo.' },
+      { id:'#11856', type:'fix',  title:'Normalização e deduplicação na importação de protocolo', desc:'Verificação por nome aprimorada para temas, subtemas e perguntas; soft-delete para perguntas removidas; correção na procedure de ranking.' },
+      { id:'#11857', type:'feat', title:'Diferenciar visualmente aba Certificadoras conforme modo de exibição', desc:'UX aprimorada do picklist de certificadoras no cadastro de exportação.' },
+      { id:'#11841', type:'feat', title:'Exportação de planilha na tela de Importar Protocolo', desc:'Export direto da planilha de protocolo/questionário disponível na tela de importação.' },
+      { id:'#11838', type:'fix',  title:'Remover modal aninhada no fluxo de Editar Gráfico', desc:'Corrigido problema visual de modais aninhados no editor de gráficos.' },
+      { id:'#11879', type:'fix',  title:'Pergunta pai não aparecer no dashboard formulário', desc:'Procedures getFormRespostasCharts e formRespostasReferenciadas trazem gráficos de perguntas referenciadas mesmo com pai configurado para não exibir.' },
+      { id:'#11870', type:'feat', title:'Título configurável no dashboard formulário', desc:'Nova coluna titulo_dashboard na entidade form_formulario, com cadastro via CMS e exibição no dashboard.' },
+      { id:'#11928', type:'feat', title:'Botões limpar busca e refresh de dados — tela de Relatórios', desc:'Botões para limpar busca, refresh de dados e expandir/recolher accordions.' },
+      { id:'#11951', type:'feat', title:'Incluir index.html no ZIP do Relatório de Atendimento Técnico', desc:'Mini dashboard HTML embutido no ZIP com toggle para o usuário escolher se exporta ou não.' },
+    ]
+  }
+};
+
+const members = ['ro','br','th'];
+let activeType   = 'all';
+let activeMember = 'all';
+
+function badgeClass(type) {
+  return { feat:'badge-feat', fix:'badge-fix', ref:'badge-ref', test:'badge-test' }[type];
+}
+
+function badgeLabel(type) {
+  return { feat:'feature', fix:'fix', ref:'refactor', test:'teste' }[type];
+}
+
+function render() {
+  const root = document.getElementById('content');
+  root.innerHTML = '';
+
+  members.forEach(m => {
+    const d = DATA[m];
+    const section = document.createElement('div');
+    section.className = 'member-section';
+    section.id = 'sec-' + m;
+
+    section.innerHTML = `
+      <div class="member-header">
+        <div class="member-avatar ${d.avClass}">${d.avInit}</div>
+        <span class="member-name" style="color:${d.nameColor}">${d.name}</span>
+        <span class="member-meta" id="meta-${m}">${d.cards.length} cards</span>
+        <div class="member-bar"></div>
+      </div>
+      <table class="cards-table" id="tbl-${m}">
+        <thead>
+          <tr>
+            <th style="width:90px">#Card</th>
+            <th>Título &amp; Descrição</th>
+            <th style="width:90px">Tipo</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-${m}"></tbody>
+      </table>
+      <div class="empty-state" id="empty-${m}">Nenhum card encontrado.</div>
+    `;
+
+    root.appendChild(section);
+
+    const tbody = document.getElementById('tbody-' + m);
+    d.cards.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.dataset.type   = c.type;
+      tr.dataset.member = m;
+      tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
+      tr.innerHTML = `
+        <td class="col-id">${c.id}</td>
+        <td>
+          <div class="col-title">${c.title}</div>
+          <div class="col-desc">${c.desc}</div>
+        </td>
+        <td class="col-type"><span class="badge ${badgeClass(c.type)}">${badgeLabel(c.type)}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  });
+
+  applyFilters();
+}
+
+function setFilter(group, val, btn) {
+  document.querySelectorAll(`[data-filter="${group}"]`).forEach(b => {
+    b.className = 'fbtn';
+  });
+  btn.classList.add('on-' + (val === 'all' ? 'all' : val));
+
+  if (group === 'type')   activeType   = val;
+  if (group === 'member') activeMember = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  let total = 0, feat = 0, fix = 0, ref = 0, test = 0;
+  const perM = { ro:0, br:0, th:0 };
+
+  members.forEach(m => {
+    const sec   = document.getElementById('sec-' + m);
+    const empty = document.getElementById('empty-' + m);
+    const memberMatch = activeMember === 'all' || activeMember === m;
+
+    if (!memberMatch) {
+      sec.classList.add('hidden');
+      return;
+    }
+    sec.classList.remove('hidden');
+
+    let vis = 0;
+    sec.querySelectorAll('tbody tr').forEach(row => {
+      const typeOk   = activeType === 'all' || row.dataset.type === activeType;
+      const searchOk = !q || row.dataset.search.includes(q);
+      const show = typeOk && searchOk;
+      row.classList.toggle('hidden', !show);
+      if (show) {
+        vis++;
+        total++;
+        const t = row.dataset.type;
+        if (t === 'feat') feat++;
+        if (t === 'fix')  fix++;
+        if (t === 'ref')  ref++;
+        if (t === 'test') test++;
+        perM[m]++;
+      }
+    });
+
+    document.getElementById('meta-' + m).textContent = vis + ' card' + (vis !== 1 ? 's' : '');
+    empty.classList.toggle('visible', vis === 0);
+  });
+
+  document.getElementById('resultCount').textContent = total + ' card' + (total !== 1 ? 's' : '');
+  document.getElementById('s-total').textContent = total;
+  document.getElementById('s-feat').textContent  = feat;
+  document.getElementById('s-fix').textContent   = fix;
+  document.getElementById('s-ref').textContent   = ref;
+  document.getElementById('s-test').textContent  = test;
+  document.getElementById('s-ro').textContent    = perM.ro;
+  document.getElementById('s-br').textContent    = perM.br;
+  document.getElementById('s-th').textContent    = perM.th;
+}
+
+render();
+</script>
+</body>
+</html>
