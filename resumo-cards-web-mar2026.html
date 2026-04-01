@@ -333,6 +333,17 @@
     white-space: nowrap;
   }
 
+  .col-id a {
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .col-id a:hover {
+    color: var(--ro);
+    text-decoration: underline;
+  }
+
   .col-title {
     font-size: 13px;
     font-weight: 500;
@@ -425,23 +436,23 @@
     <span class="dot">·</span>
     <span class="accent-th">Thielson</span>
   </div>
-  <div class="hero-sub">13/03/2026 – 31/03/2026 &nbsp;·&nbsp; Tech Spotlight #03</div>
+  <div class="hero-sub">13/03/2026 – 31/03/2026 &nbsp;·&nbsp; Tech Spotlight #02</div>
 
   <div class="stats-row">
     <div class="stat-chip">
-      <div class="stat-val" id="s-total">42</div>
+      <div class="stat-val" id="s-total">63</div>
       <div class="stat-lbl">total</div>
     </div>
     <div class="stat-chip">
-      <div class="stat-val" style="color:var(--feat)" id="s-feat">22</div>
+      <div class="stat-val" style="color:var(--feat)" id="s-feat">35</div>
       <div class="stat-lbl">features</div>
     </div>
     <div class="stat-chip">
-      <div class="stat-val" style="color:var(--fix)" id="s-fix">14</div>
+      <div class="stat-val" style="color:var(--fix)" id="s-fix">22</div>
       <div class="stat-lbl">fixes</div>
     </div>
     <div class="stat-chip">
-      <div class="stat-val" style="color:var(--ref)" id="s-ref">4</div>
+      <div class="stat-val" style="color:var(--ref)" id="s-ref">2</div>
       <div class="stat-lbl">refactors</div>
     </div>
     <div class="stat-chip">
@@ -648,7 +659,7 @@ function render() {
       tr.dataset.member = m;
       tr.dataset.search = (c.id + ' ' + c.title + ' ' + c.desc).toLowerCase();
       tr.innerHTML = `
-        <td class="col-id">${c.id}</td>
+        <td class="col-id"><a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${c.id.replace('#','')}" target="_blank" title="Abrir no Azure DevOps">${c.id}</a></td>
         <td>
           <div class="col-title">${c.title}</div>
           <div class="col-desc">${c.desc}</div>

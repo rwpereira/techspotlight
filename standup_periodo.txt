@@ -1,0 +1,672 @@
+Ronaldo Pereira — 16/03/2026 20:01
+Standup (16/03/2026)
+📆 (Start of week meeting)
+📆 Alinhamento com a WEB/Mobile sobre 'importação' de feats do CheckMilk
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11765 - Criar end-point para integração do Aprosoja (Produtor e Propriedade)
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Implementação de uma API de integração externa, incluindo guardas de segurança dedicadas, controladores, serviços e DTOs.
+        ➜ Criação de documentação para a API de integração.
+        ➜ Adição de novos arquivos de dashboard, possivelmente relacionados à visualização ou gerenciamento da integração.
+        ➜ Realização de uma migração de banco de dados para suportar a nova integração.
+    ➜ Correções Implementadas:
+        ➜ Ajustes menores, como a correção do tema padrão para 'light' e a remoção do e-mail de suporte.
+
+☎️ Com Thielson, alinhando e testando atividades
+☎️ Com Com Carlos, Matheus e Thielson, sobre melhorias no PEC na migração para o Agrotrace
+☎️ Com Gustavo e Iohan, sobre erro no pod da API/dev (Agro)
+
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ 11753 - Gerar Token de Programas - Adicionar prazo
+      ➜ Alterado logica de front e backend adicionando date picker para data de validade do token
+➜ 11741- Desativar Volume por Origem - Volume Global 
+      ➜ Alterado front para incluir filtro avançado, alem de exibir opção para desativar/reativar os Volumes Globais por pais e por filial
+
+ 🚧  In Progress:
+➜ #11542 - Grafico de % mapeado por unidade
+      ➜ Alterando procedure para retornar dados do grafico
+
+☎️ Com Ronaldo alinhando e testando atividades
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11748 - Painel de Gestão - Endpoint para o Mobile
+    ➜ Melhorias Técnicas:
+        ➜ Desenvolvimento do endpoint para consumo de dados do painel pelo aplicativo móvel, garantindo a serialização correta das entidades de gestão e otimização da consulta ao banco de dados.
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Melhorias Técnicas:
+        ➜ Criando POC para validar construção de paginas de landing page e blog com cache e invalidação de cache usando Astro. Criado documento de especificações e primeira implementação. POC criada usando memoryCache e avaliando possibilidade de alterar para cache com Redis.
+
+☎️ Com Elias sobre os endpoints do dashboard de gestão + alterações e novo endpoint para o mesmo
+☎️ Com Matheus sobre desenvolvimento da pagina de landing page e blog por projeto
+
+
+
+
+Ronaldo Pereira — 17/03/2026 22:06
+Standup (17/03/2026)
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11765 - Criar end-point para integração do Aprosoja (Produtor e Propriedade)
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Implementação de solução abrangente para integração externa.
+        ➜ Adição de novo módulo de integração externa com controllers, services, guards, decorators e DTOs específicos.
+        ➜ Criação de endpoints para criar pessoas com propriedades, pessoas externas e propriedades externas.
+        ➜ Implementação de um guard (external-integration.guard) para segurança e autorização.
+        ➜ Adição de componentes e arquivos HTML para documentação da API de integração na interface web.
+        ➜ Adição de gate de token para acesso à documentação da API com validação de token JWT.
+
+🚧 In Progress:
+➜ #11742 - Relatorio expocacer em horizontal
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Adição de serviço para correção de orientação em relatórios RTF.
+
+☎️ Com Thielson e Elias sobre problemas com privacidade dos containers do blobs
+☎️ Com Gustavo, sobre a versão do relatorio no repositório
+☎️ Com Ricardo e Thielson, sobre problemas com privacidade dos containers do blobs
+☎️ Com Thielson, alinhando atividades
+☎️ Com Bruno e Matheus sobre landing page + blog + uso do Astro renderizar conteúdo estatístico com SEO
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ 11645 - Adicionar unidade no volume por produtor
+      ➜ Adicionado nova coluna via migration, incluindo novo na entity e model e alterado o form de cadastro para incluir o novo campo
+➜ 11542 - Grafico de % mapeado por unidade
+      ➜ Corrigido erro na procedure getFormRespostasCharts
+      ➜ Alterado procedure getIndicadoresHomeMinerva para incluir calculo do grafico de volume mapeado por filial
+      ➜ Alterado front para melhorar exibição de dashboard na home minerva e exibir novo grafico
+
+ 🚧  In Progress:
+➜ #11764 -Gestão Reprodutiva
+      ➜ Alterando estrutura de tabelas para incluir alteração alinhadas com o mobile
+
+☎️ Com Ronaldo e Elias sobre problemas com privacidade dos containers do blobs
+☎️ Com Ronaldo e Ricardo sobre problemas com privacidade dos containers do blobs
+☎️ Com Ronaldo alinhando atividades
+
+BRUNO
+📌 agrotrace-v3
+
+🚧 (In Progress):
+➜ Inclusão da aplicação astro no monorepo
+
+➜ #11763 - Home - Suporte à versão Dark
+    ➜ Melhorias Técnicas:
+        ➜ Implementação de tema escuro nos componentes indicadores-comparativo-tabela, language-theme-selector, home-padrao e mapa-coropletico, incluindo ajustes em skeletons, cards, tabelas, abas e elementos de mapa.
+
+☎️ Com Matheus sobre uso do Astro para páginas dinâmicas com cache e design da landing page
+☎️ Com Elias sobre problemas no download do arquivos do agrotrace
+☎️ Com Ronaldo e Matheus sobre landing page + blog + uso do Astro renderizar conteúdo estatístico com SEO
+
+
+Ronaldo Pereira — 18/03/2026 22:26
+Standup (18/03/2026)
+📆 Reunião apresentação Lucas - Mudança infraestrutura
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11742 - Relatório expocacer em horizontal
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Vai gerar o relatório normalmente em jasper
+        ➜ Ao chegar no front, irá ser alterado o arquivo do word, alterando a visualização de algumas páginas 
+        ➜ Vai ser feito o download para o usuário (vai valer para todos relatórios em WORD).
+
+☎️ Com Iohan, sobre token aprosoja (desconfigurou no email) 
+☎️ Com Gustavo, sobre Relatorio expocacer e 3S 
+☎️ Com Iohan, sobre relatório do Minerva (não listava todos Formulários)
+
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11764 -Gestão Reprodutiva
+      ➜ Alterado estrutura de tabelas para incluir alteração alinhadas com o mobile
+            ➜ removido tabela de bov_iatf_diagnostico para usar somente bov_diagnostico, migrado regras de negocio e trigger para bov_diagnostico e alterado front
+            ➜ melhorado visualizado de listagem de itens na gestao produtiva (melhorado scroll
+➜ #11773 - Permitir um anexo público
+      ➜ Acionado campo is_public e alterado logica para salvar em container publico quando o anexo for publico
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11786 - Melhorias na rota de dashboard do gestor.
+    ➜ Melhorias Técnicas:
+        ➜ Adição do filtro 'apenasEtapasVigentes' no DTO de consulta e serviço de métricas do dashboard para otimização da filtragem de etapas. 
+
+➜ #11781 - Forçar o reload da página ao fazer um Deploy
+    ➜ Correções:
+        ➜ Configuração de cabeçalhos no Nginx para evitar cache no index.html.
+        ➜ Implementação de listener para evento 'vite:preloadError' forçando o reload da página em caso de erro de importação dinâmica após deploy.
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Melhorias Técnicas:
+        ➜ Implementação de sistema de renderização baseado em seções dinâmicas via API, incluindo componentes de Hero, Sobre, Estatísticas, Aplicação, Benefícios, Galeria, Contatos, parceiros e Footer.
+        ➜ Integração de cliente HTTP, tipos de dados e configuração de variáveis de ambiente para renderização dinâmica de conteúdo.
+        ➜ Refatoração do componente Navbar e HeroCarousel utilizando Tailwind CSS, variáveis de tema dinâmicas e integração com o framework Astro.
+        ➜ Ajustes de estilo e design para correspondência fiel ao protótipo Pencil.
+
+☎️ Com Elias sobre adição de filtro para etapasVigentes e retorno de datas das etapas no endpoint de gestao dashbaord
+☎️ Com Matheus alinhando resultados do progresso com a landing page + blog
+
+
+
+
+
+Ronaldo Pereira — 19/03/2026 19:52
+Standup (19/03/2026)
+
+📌 agrotrace-v3
+
+✅ Done:
+    ➜ #11787 - Test | Verificar sroll gestao reprodutiva
+    ➜ #11707 - Home - Detalhes do Ranking de uma propriedade
+
+🚧 In Progress:
+    ➜ #11791 - Permissões ACL em PERMISSÔES
+    ➜ #11647 - Adicionar area de APP e RL no relatorio do 3S
+
+☎️ Com Gustavo, sobre retorno da Débora e Thaís, sobre as áreas de APP e Reserva Legal
+☎️ Com Bruno, sobre alinhamento de atividades de alterações para trazer recursos do Biodiesel para o Agrotrace 
+☎️ Com Thielson e Iohan sobre variaveis de ambiente e sobre alterações no acesso dos anexos
+☎️ Com Gustavo, sobre demandas do Minerva (adicionar anexos)
+☎️ Com Iohan, sobre Home do Minerva, percentual dos volumes mapeados.
+
+
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11794 - Redirecionar usuário para URL original após autenticação
+    ➜ Correções:
+        ➜ Correção de binding de input para returnUrl no ProgramSelectionFormComponent e ajuste na extração de paths de login para evitar navegação malformada.
+    ➜ Melhorias Técnicas:
+        ➜ Implementação de suporte para returnUrl nos fluxos de autenticação, componentes de MFA (Web, CMS e libs compartilhadas) e no PrivateRouteGuard.
+
+➜ Hotfix: add UtilsModule to AppModule
+    ➜ Correções:
+        ➜ Correção de acesso aos recursos do módulo Utils na API, garantindo que o UtilsModule seja importado corretamente no AppModule.
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Refatoração do layout da landing page (simplificação do sections), adição de seção de diretoria, implementação de marquee animado para parceiros e integração dinâmica com posts de blog no componente LatestNewsSection.
+
+☎️ Com Elias sobre problemas de perda de acesso ao endpoints de dashboard
+☎️ Com Matheus validando o cadastro da landing page e pegando bug ao tentar criar
+☎️ Com Ronaldo sobre alinhamento de atividades de alterações para trazer recursos do Biodiesel para o Agrotrace
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11772 - Alterar procedure getUrlAnexo
+      ➜ Adicionado nova tabela azure_blob_sas_param para amazerna blob sas params para acessar anexos privados
+      ➜ Alterado getUrlAnexo para consuimir os params dessa tabela ao inves de ficar fixo, e tb verficiar anexos publico e montar url propria 
+      ➜ Adicionado cron para atualizar os blob params 1 vez por dia (os params tem validade de 1 dia)
+➜ #11769 - Relatório de Atendimento - Técnico (renovar token do anexo)
+      ➜ Alterado procedure getRelatorioAtendimentoTecnico para nao usar mais a function  getUrlAnexo  e retornar id, uuid e nome do anexo
+      ➜ Alterado logica do backend para gerar o anexo curto na com duracao de 30 min
+➜ #11795 - Filtro de busca em tempo real na listagem de relatórios
+      ➜ Alterado frontend na tela de relatorios para adicionar filtragem por nome
+
+☎️ Com Ronaldo e Iohan sobre variaveis de ambiente e sobre alterações no acesso dos anexos
+
+
+Ronaldo Pereira — 20/03/2026 21:24
+Standup (20/03/2026)
+📆 Tech Spotlight - DevOps
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+    ➜ #11647 - Adicionar area de APP e RL no relatorio do 3S
+
+🚧 In Progress:
+    ➜ #11791 - Permissões ACL em PERMISSÔES
+
+☎️ Com Thielson, sobre atividade #11792
+☎️ Com Gustavo, Testando ajuste no relatorio do 3S
+
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11792 - Adicionado novo campo no cadastro de volume por filial e volume por pais (alterado o front e back
+➜ #11798 - Correção de layout do modal Dados da Exportação (CMS)
+➜ #11793 - Melhorado visualização de listagem de animais no cadastro de animais na gestao reprodutiva
+
+🚧 (In Progress):
+➜ #11780 - Exportações - Criar Lista para exceções
+      ➜Adicionado tabela para guardar certificadoras que nao deve exibir determinado relatorio
+      ➜Alterando cadastro de exportacao para permitir cadastros de exeções
+
+☎️ Com Ronaldo sobre atividade #11792
+
+BRUNO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11809 - API - Melhoria na rota de dados gerais do projeto
+    ➜ Melhorias Técnicas:
+        ➜ Adição de certificadoraNome ao endpoint resumo e filtros de data (dataInicial/dataFinal) no endpoint detalhes.
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Melhorias Técnicas:
+        ➜ Implementação de listagem de blog, cache invalidation, componentes reutilizáveis (AdaptiveText, EmptyState) e configurações de infraestrutura.
+
+☎️ Com Matheus sobre implementação da pagina de blog
+☎️ Com Elias sobre adicionar novo filtro da rota de detalhes e retornar certificadoraNome na rota de resumo dos endpoints de /dashboard-gestao
+
+
+Ronaldo Pereira — 23/03/2026 19:58
+Standup (23/03/2026)
+📆 (Start of week meeting)
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+  ➜ Testes:
+       ➜ #11815 - Test | Reprodução animal - Verificar listagem de animais ✅ aprovado
+  ➜ Desenvolvimento:
+       ➜ #11825 - Dashboard de Métricas com Tabs na Home do CMS
+       ➜ #11840 - Consolidação em Lote deve desconsiderar atendimentos que não são Diagnóstico na safra de destino
+       ➜ Abertura de cards: #11835, #11836, #11837, #11838, #11839, #11841, #11843, #11856
+
+🚧 In Progress:
+  ➜ Testes:
+       ➜ #11819 - Test | Verificar scroll na tela de exportação no CMS
+            ➜ Feedback enviado, aguardando retorno
+
+☎️ Com Thielson, alinhando demandas do Carbono - IDH
+☎️ Com Iohan, sobre feats de perguntas do formulário dinâmico
+☎️ Com Iohan e Ricardo, sobre gráficos por programas
+☎️ Com Iohan, sobre importação de questionário Agroplus
+☎️ Com Iohan e Thielson, alinhando importação de questionário Agroplus
+☎️ Com Gustavo, sobre ajuste em consolidação em lote
+☎️ Com Ricardo e Iohan, montando protótipo de dashboard Biodiesel
+☎️ Com Thielson, alinhando atividades
+BRUNO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11748 - Painel de Gestão - Endpoint para o Mobile
+    ➜ Melhorias Técnicas:
+        ➜ Alteração do retorno para adicionar novas informações de propriedade como latitude, longitude e endereço
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Implementação de paginação, busca e filtros de categoria com navegação baseada em URL
+    ➜ Integração de cache Redis com suporte a setHeaders e bypass em ambiente de desenvolvimento
+    ➜ Refatoração de componentes de imagem para o novo CmsImage com otimização Astro e estados de loading
+    ➜ Adição de suporte a SEO, meta tags dinâmicas, botões de compartilhamento social e correção de acentuação em textos
+
+☎️ Com Elias sobre adicionar novos retornos de informações de propriedades e etapas nos endpoints de dashboard gestor
+☎️ Com Matheus sobre nova implementação da página de blog e funcionalidade de newsletter
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11839- [FIX] Botão "Salvar" nunca habilitado no modal de edição para perguntas do tipo Tabela
+      ➜Corrigido botao de salvar no dashboard formulario
+➜ #11836- [FEAT] Labels configuráveis nos botões da aba Comparativos — Home Agrotrace
+      ➜Agora é possivel customizar os nome dos botaes na aba compartaivo na home
+➜ #11835 - [FEAT] Adicionar aba CADASTRO na planilha de exportação de Protocolos
+      ➜ Adicionado aba de cadastro na planilha de exportação de protocolos
+➜ #11780 - Exportações - Criar Lista para exceções
+      ➜ Agora é possivel escolher quais certificadoras nao exibir um relatorio
+
+🚧 (In Progress):
+➜ #11837 - [FIX] Dashboard Formulário Dinâmico não persiste configuração de layout no projeto Carbono IDH 2026
+      ➜ Investigando problemas ao salvar layout dashboard formulario
+
+☎️ Com Ronaldo alinhando atividades
+☎️ Com Ronaldo e Iohan sobre melhorias e correções a serem feitas na importação de protocolo 
+
+
+Ronaldo Pereira — 24/03/2026 22:43
+Standup (24/03/2026)
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11864 - [FEAT] Modal de detalhes da requisição nos Logs de Sucesso e Logs de Erro do CMS
+    ➜ Funcionalidades Principais Implementadas: 
+        ➜ Implementação de um modal para exibir o corpo JSON e os parâmetros de consulta para logs.
+        ➜ Adição de funcionalidades de filtragem e insights para logs de erro e sucesso.
+    ➜ Melhorias Técnicas:
+        ➜ Melhorias na listagem de logs com estados de carregamento e propriedades computadas para dados filtrados.
+        ➜ Introdução de novas interfaces para metadados de requisição.
+        ➜ Estilização de scrollbar customizada para o visualizador JSON.
+
+☎️ Com Thayse, sobre perguntas duplicadas após importação do protocolo
+☎️ Com Iohan, sobre sobre padrão de criação de tasks (skill com claude)
+☎️ Com Thielson, investigando problemas com persistência do layout do dashboard formulário
+
+BRUNO
+📌 agrotrace-v3
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Correções:
+        ➜ Ajustes de contraste WCAG em templates de email (newsletter-post.hbs) e correção de redirecionamentos de rota para URLs absolutas.
+        ➜ Refatoração na emissão de eventos blog-post.published e unificação de configurações via API_BASE_URL.
+    ➜ Melhorias Técnicas:
+        ➜ Implementação completa da newsletter: CRUD de inscritos (com migrações), serviços de dispatch/recovery, proxies BFF no Astro e templates de confirmação com paleta HSL dinâmica.
+        ➜ Redesign da página de unsubscribe e melhoria no componente de toggle de tema com detecção de sistema.
+        ➜ Refatoração do ContactSection com máscara de telefone, validação de formulário, honeypot, rate limiting via Redis e templates de email responsivos usando tabelas para alta compatibilidade.
+
+☎️ Com Elias sobre problemas na pesquisa de pessoa com nomeCompleto
+☎️ Com Matheus validando fluxo de newsletter e blog 
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11837 - [FIX] Dashboard Formulário Dinâmico não persiste configuração de layout no projeto Carbono IDH 2026
+      ➜ Investigando problemas ao salvar layout dashboard formulário
+           ➜ Identificado possíveis problemas nas procedures do dashboard e corrigido
+           ➜ Identificado possível problema na tabela e corrigido
+           ➜ Identificado possível problema no codigo e corrigido
+      ➜ Adicionado botao para resetar o layout, para caso ocorra problema de nao conseguir mais persistir. Agora é possível resetar as configs o que faz a persistência voltar a funcionar (o problema principal é com a bilioteca/codigo de alguma forma se perde e salva valores inválidos para as posições e tamanhos dos gráficos o que faz com que nao seja mais possível atualizar as posições e tamanho mesmo movendo ou redimensionando os gráficos, resetando tudo para valores padrões validos volta a ser possível persistir o layout)
+
+☎️ Com Ronaldo investigando problemas com persistência do layout do dashboard formulário
+☎️ Com Iohan sobre solução para persistência dos layouts do dashboard fomulário
+
+
+
+Ronaldo Pereira — 25/03/2026 20:01
+Standup (25/03/2026)
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+  ➜ #11864 - Modal de detalhes da requisição nos Logs de Sucesso e Erro (CMS)
+       ➜ Ajuste de estilo para exibição responsiva da mensagem no componente de dashboard.
+
+☎️ Com Web e Mobile, investigando e modelando solução para problemas de sincronismo de anexos no mobile
+☎️ Com Thielson e Bruno, alinhamento sobre atividade de landing page + blog
+☎️ Com Iohan, sobre anexos em relatórios e planejamento de novas atividades
+☎️ Com Ricardo e Iohan, modelando protótipo dos dados do biodiesel
+
+
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ Removido 'isPublic' do retorno da api para corrigir problema no mobile
+➜ #11841 - [FEAT] Adicionar exportação de planilha na tela de Importar Protocolo/Questionário
+      ➜ Agora é possivel exportar planilha de protocolo/questionario direto da tela de importação
+➜ #11838 - [FIX] Remover modal aninhada no fluxo de Editar Gráfico
+      ➜ corrigido 'problema' visual nos modais
+
+🚧 (In Progress):
+➜ #11856 - [FIX] Normalização e deduplicação na importação de protocolo via planilha
+
+☎️ Com Web e Mobile investigando problema com anexos no mobile
+☎️ Com Web sobre planilha de apresentação de resultados do biodiesel
+☎️ Com Web sobre problema com anexos no relatório atendimento técnico
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11882 - Corrigir geração do link SAS de anexos — UUID com hífens causa token inválido
+    ➜ Azure Storage
+        ➜ Removidos hífens dos UUIDs no path do Azure Blob para corrigir erro 404 em anexos e corrigido double-encoding de filenames.
+
+🚧 (In Progress):
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ CMS e API
+        ➜ Reorganizada estrutura de pastas do CMS, implementado pipeline de processamento de imagens com Sharp e validação (WebP), além de conversão de logos para PNG.
+        ➜ Implementado suporte a cache em memória no ambiente local, validação com Zod em rotas de API e otimização de queries de dispatch em newsletters.
+    ➜ Segurança e Hardening
+        ➜ Aplicadas medidas de segurança críticas: sanitização de HTML (XSS), rate limiting (@nestjs/throttler), validações rigorosas de DTOs, implementação de headers de segurança (CSP, HSTS) e proteção CSRF.
+
+☎️ Com time web e mobile investigando problemas no sincronismo de anexo e procurando solução para evitar futuros problemas que afetem o mobile.
+☎️ Com Thielson e Ronaldo sobre alinhamento da atividade de landing page + blog
+
+
+Ronaldo Pereira — 26/03/2026 20:38
+Standup (26/03/2026)
+
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11872 - Alterar exibição de grafico da home ao passar o mouse
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Implementação de funcionalidade para adicionar suporte a propriedades no gráfico.
+        ➜ Personalização do tooltip do gráfico.
+➜ #11885 - CAR duplicando em novo cadastro
+    ➜ Melhorias Técnicas:
+        ➜ Ajuste na largura da coluna 'car' para evitar problemas de exibição.
+        ➜ Remoção de código comentado nos componentes PropriedadeCar e PropriedadeDocumentosTab para melhorar a manutenibilidade e legibilidade do código.
+    ➜ Correções Implementadas:
+        ➜ Correção do problema de duplicação de CAR (Cadastro Ambiental Rural) ao adicionar uma nova propriedade.
+
+☎️ Com Bruno e Thielson definindo novo comportamento de autenticação independente entre agrotrace e CMS
+☎️ Com Thielson, alinhando atividades
+☎️ Com Iohan, sobre tela de resumo de informações dos produtores (estamos planejando novas telas com foco no produtor)
+☎️ Com Gustavo, duvida em importação de protocolo
+BRUNO
+📌 agrotrace-v3
+
+🚧 (In Progress):
+➜ #11796 - Novo tipo de pergunta: Anexo (upload de documentos)
+    ➜ Formulários Dinâmicos
+        ➜ Implementado tipo de pergunta 'Anexo' com suporte a múltiplos formatos de documento e validação de tamanho máximo por arquivo.
+        ➜ Adicionada migration para banco de dados e triggers de auditoria.
+        ➜ Criados componentes de UI para o editor de estrutura, formulário do produtor e validação interna.
+➜ #11494 - Landing Pages Dinâmicas por Projeto + Blog
+    ➜ Infraestrutura e Deploy
+        ➜ Containerização do blog com Docker, incluindo multi-stage build e ajustes de rede (HOST=0.0.0.0).
+        ➜ Otimização de dependências no Dockerfile (correção do pnpm prune) e configuração de timezone.
+    ➜ Funcionalidades do Blog
+        ➜ Implementado endpoint para listagem de categorias com posts publicados.
+        ➜ Ajustes de UI na página de newsletter e refatoração do prefixo de URL para 'agrotrace'.
+
+☎️ Com Ronaldo e Thielson definindo novo comportamento de autenticação independente entre agrotrace e CMS
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11900 - [FEAT] Importar apelidos de itens de lista via planilha de protocolo
+      ➜ Agr é possivel importar as labels alternativas para itens de lista
+➜ #11856 - [FIX] Normalização e deduplicação na importação de protocolo via planilha
+      ➜ Melhorado a verificação por nome de questionario, temas subtemas e perguntas para evitar duplicação
+      ➜ Adicionado soft-delete para perguntas que nao estao na planilha
+      ➜ corrigido problema na procedure de atualizacao de ranking
+➜ #11857- [FEAT] Diferenciar visualmente a aba Certificadoras conforme o modo de exibição ativo
+      ➜ melhorado a ux no cadastro de exportação, facilintando a identifição do picklist para quais certificadoras nao exibir e o picklist de quais certificadora exibir
+
+🚧 (In Progress):
+➜ #11791 - Permissões ACL em PERMISSÔES
+
+☎️ Com Web alinhando atividades
+
+
+Ronaldo Pereira — 27/03/2026 21:15
+Standup (27/03/2026)
+📆 Tech Spotlight - Mobile
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11910 - [FEAT] Gráfico de erros por hora exibido como linha do tempo contínua ancorada no horário atual
+    ➜ Funcionalidades Principais Implementadas:
+        ➜ Implementação da funcionalidade para ordenar logs de erro por hora, visando uma melhor visualização no gráfico de linha do tempo contínua.
+
+☎️ Com Iohan, Exportação de dados Biodiesel
+☎️ Com Gustavo, Thielson - Verificando arquivos do JBS + Teste de importação de protocolo
+☎️ Com Bruno, dúvidas relacionadas ao funcionamento da exclusão de imagens no form dinâmico e sobre funcionamento de envio de emails 
+☎️ Com Thielson e Gustavo testando importação de apelidos de itens de lista e melhorando layout da tela de exportação/importação de protocolo
+☎️ Com Thielson, testando fluxo de permissões ACL (corrigido)
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11746 - Criar opção "Imprimir"
+        ➜ Adicionei a coluna imprimir à entidade form_pergunta e tabela de auditoria, incluindo a atualização dos triggers de banco de dados.
+        ➜ Implementei o checkbox de impressão no formulário de edição de perguntas.
+➜ #11796 - Novo tipo de pergunta: Anexo (upload de documentos)
+        ➜ Adicionei o tipo de pergunta Anexo, com suporte a configurações de tamanhoMaximoMb (padrão 10MB) e validação de quantidade.
+        ➜ Ajustei o componente de upload para filtrar documentos e realizar a gestão de deleção individual de anexos com correção de layout.
+➜ #11904 - [FIX] Permitir exclusão de imagem única em pergunta do tipo Imagem no formulário dinâmico
+        ➜ Removi a trava de quantidade que impedia a remoção da última imagem e atualizei a validação de campos obrigatórios.
+➜ #11906 - [FIX] Adicionar botão de fechar no modal de visualização de imagem no formulário dinâmico
+        ➜ Adicionei botão de fechamento em todos os componentes de visualização de imagem (CMS e web), garantindo consistência visual.
+➜ #11909 - [FIX] Gráficos de conformidade por tema extrapolam a largura da tela — migrar para carrossel navegável
+        ➜ Migrei a visualização dos gráficos para um carrossel responsivo, eliminando o overflow em resoluções menores.
+
+🚧 (In Progress):
+➜ #11734 - Criar opção "Possui Validação"
+        ➜ Implementei o suporte a expressões de validação customizadas.
+        ➜ Adicionei feedback visual de erro na UI e integrei a checagem de expressões ao fluxo de validação do formulário dinâmico.
+
+☎️ Com Ronaldo sobre funcionamento de envio de emails + dúvidas relacionadas ao funcionamento da exclusão de imagens no form dinâmico
+THIELSON
+ 📌 AGROTRACE
+
+✅ Done:
+➜ #11791 - Permissões ACL em PERMISSÔES
+      ➜ Corrigido problema de usuário poder associar filiais que ele n tem acesso à um pessoa. Isso sem remover dessa pessoa as filiais que outro usuario possa ter associado.
+➜ #11798 - [FIX] Correção de layout do modal Dados da Exportação
+      ➜ Melhorado ux, adicionando scroll interno nas abas no cadastro/edição de exportação
+
+☎️ Com Ronaldo e Gustavo testando importação de apelidos de itens de lista e melhorando layout da tela de exportação/importação de protocolo
+☎️ Com Ronaldo testando fluxo de permissões ACL corrigido
+
+
+Ronaldo Pereira — Ontem às 20:43
+Standup (30/03/2026)
+📆 (Start of week meeting)
+
+
+RONALDO
+
+📌 agrotrace-v3
+
+✅ Done:
+    11819 - Test | Verificar scroll na tela de exportacao no CMS- ok
+        11875 - Test | Verificar o modal de edição dos charts no dashboard formulario - pk
+        11947 - [FIX] Correção de expressão Title Case no relatório Jasper para nomes com múltiplos espaços (AgroPlus)
+
+☎️ Com Bruno e Thielson sobre mcp + skill para criação de procedures
+☎️ Com Iohan, sobre correção erro relatório agroplus e outros ajustes
+☎️ Com Thielson e Bruno, sobre melhorias no fluxo de alterações de procedures, functions e view
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11927 - [FEAT] Melhorias no fluxo de cadastro e sincronização de Exportações
+    ➜ Sincronização de Exportações
+        ➜ Implementada sincronização automática de parâmetros e campos, com feedback visual (overlay) durante o processamento.
+        ➜ Adicionada validação de feedback e correção na cor padrão dos campos (branca).
+➜ #11933 - [REFACTOR] Migrar endpoints de upload de memoryStorage para diskStorage
+    ➜ Arquitetura de Upload
+        ➜ Migrados controllers de importação e relatórios para processamento via diskStorage.
+        ➜ Implementado stream-based upload no AzureBlobService com limpeza automática de arquivos temporários.
+➜ #11932 - Perfil do produtor - Responsividade
+    ➜ Interface do Produtor
+        ➜ Substituído carrossel por layout de pilares scrollável para melhor responsividade.
+➜ #11796 - Novo tipo de pergunta: Anexo (upload de documentos)
+    ➜ Funcionalidade de Anexos
+        ➜ Implementado tracking de progresso (upload, processamento, salvamento) via ProgressBar.
+        ➜ Adicionada validação de quantidade e tamanho máximo (tamanho_maximo_mb) no banco de dados.
+        ➜ Migrada a lógica de upload para stream com armazenamento temporário em disco.
+➜ #11734 - Criar opção "Possui Validação"
+    ➜ Validação de Formulários
+        ➜ adicionada nova UI interativa para construir lógica de validações sem precisar escrever em texto puro (não devs podem usar)
+☎️ Com Ronaldo e Thilson sobre mcp + skill para criação de procedures
+☎️ Com Matheus sobre alinhamento da Landing Page
+☎️ Com Iohan sobre card de testes e validação da task de pergunta anexo
+☎️ Com Brenda sobre uso de IA no Agrotrace
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11879 - Pergunta pai não aparecer no form-dashbaord
+      ➜ Alterado procedure de 'getFormRespostasCharts' e 'formRespostasReferenciadas' para trazer os graficos da perguntas referenciadas mesmo que a pergunta pai esteja configurada pra nao exibir no grafico
+➜ #11870 - Titulo dashboard-formulário
+      ➜ Alterado entidade form_formulario pra incluir coluna 'titulo-dashboard' para exibir titulo no dashboard formulario (alterações: migrations, module, cadastro no cms e dashboard no front)
+➜ Adicionado tool para buscar o ddl das procedures/functions  no mcp-database-metada
+➜ Alterado fluxo de migrations envolvendo procedures, functions e views, otimizando o repositorio e melhorando a analise de alterações de procedures (agora fica mais facil verificar as alterações com o git
+➜ Alterado skill de migrations para incluir processo de criação de migrations para criação/edicao de procedures, views e functions
+
+☎️ Com Ronaldo e Bruno sobre mcp + skill para criação de procedures
+☎️ Com Ronaldo e Bruno sobre melhorias no fluxo de alterações de procedures, functions e view
+
+
+
+Ronaldo Pereira — 22:05
+Standup (31/03/2026)
+
+
+RONALDO
+📌 agrotrace-v3
+
+✅ Done:
+    11807 - [FIX] Remover exibição de URL e QRCode do anexo nos relatórios gerados via Jasper
+        11950 - [FEAT] Criar template HTML estático para exportação do Relatório de Atendimento Técnico
+        11967 - [FIX] Correções no Relatório de Diagnóstico – Grupos MT e MT (COFCO)
+
+☎️ Com Gustavo, sobre erro reportado mas não conseguido replicar
+☎️ Com Bruno e Iohan sobre forma de implementar o feature de referencia de pergunta
+☎️ Com Iohan, sobre solicitações do AgroPlus
+
+BRUNO
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11887 - [REFACTOR] Isolar variáveis de localStorage e tokens de autenticação entre Agrotrace e CMS
+    ➜ Isolamento de Sessão
+        ➜ Concluída refatoração para isolar dados no localStorage utilizando prefixos explícitos (SYSTEM, CMS, SHARED).
+        ➜ Implementada limpeza de dados compartilhados ao finalizar sessão e ajuste de interceptadores de autenticação para uso de origens dinâmicas.
+
+🚧 (In Progress):
+➜ #11730 - Opção "Possui Referência" no cadastro de perguntas do formulário dinâmico
+    ➜ Integração de Referência
+        ➜ Iniciado planejamento e estruturação do banco de dados (colunas de FK) e definição dos cenários de configuração no CMS.
+➜ #11955 - Configuração do tipo anexo na estrutura - encadeada
+    ➜ Configuração de Estrutura
+        ➜ Desenvolvimento da lógica para suporte a perguntas encadeadas em formulários de referência.
+☎️ Com Iohan e Ronaldo sobre forma de implementar o feature de referencia de pergunta
+☎️ Com Iohan sobre aplicar perguntas do tipo anexo como referencia configurável
+THIELSON
+📌 agrotrace-v3
+
+✅ Done:
+➜ #11928 - [FEAT] Botão limpar busca e botão de refresh de dados na tela de Relatórios
+      ➜ adicionado botões para limpar busca de relatorio, de refresh de dados e de expandir/recolher os accordions
+➜ #11951 - [FEAT] Incluir index.html no ZIP de exportação do Relatório de Atendimento Técnico
+      ➜ Alterado exportação de relatório de atendimento tecnico para incluir exporção de html com um pequeno dashboard sobre o relatorio usando como base o arquivos exportados. Adicionado toggle para exportar ou nao o html
+➜ Alterado tool para buscar o ddl das procedures/functions  no mcp-database-metada, para incluir ddl de views e tabelas
+➜ Melhorado skill de migração para melhorar desempenho e incluir migrações views
+
+
+
