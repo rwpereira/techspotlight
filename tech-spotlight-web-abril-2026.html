@@ -844,6 +844,215 @@ kbd {
   padding: 2px 8px;
   border-radius: 12px;
 }
+
+/* ── OVERVIEW CARDS ── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-content: start;
+}
+
+.overview-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+.overview-card:hover {
+  border-color: var(--purple);
+  background: var(--bg3);
+  transform: translateY(-2px);
+}
+
+.overview-card-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.overview-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+  padding-right: 50px;
+}
+
+.overview-card-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.overview-card:hover .overview-card-hint { opacity: 1; }
+
+.overview-card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* ── SCREENSHOT MODAL ── */
+.ss-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.ss-overlay.open { opacity: 1; pointer-events: all; }
+
+.ss-modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 92%;
+  max-width: 1100px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(10px);
+  transition: transform 0.2s;
+}
+.ss-overlay.open .ss-modal { transform: translateY(0); }
+
+.ss-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+
+.ss-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ss-card-id {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--purple);
+  flex-shrink: 0;
+}
+
+.ss-title {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ss-close {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text2);
+  font-size: 14px;
+  padding: 4px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.ss-close:hover { background: var(--bg4); color: var(--text); }
+
+.ss-body {
+  overflow: auto;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 200px;
+}
+
+.ss-body img {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.ss-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  z-index: 2;
+  opacity: 0.8;
+}
+.ss-carousel-btn:hover { background: var(--bg4); border-color: var(--purple); opacity: 1; }
+.ss-carousel-btn.prev { left: 12px; }
+.ss-carousel-btn.next { right: 12px; }
+
+.ss-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text2);
+  z-index: 2;
+}
+
+.ss-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border2);
+  transition: all 0.2s;
+}
+.ss-dot.active { background: var(--purple); transform: scale(1.4); }
+
+.ss-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.ss-empty-icon { font-size: 40px; opacity: 0.5; }
 </style>
 </head>
 <body>
@@ -883,7 +1092,7 @@ kbd {
       </div>
 
       <div class="sidebar-divider"></div>
-      <div class="sidebar-header">Spotlights</div>
+      <div class="sidebar-header">Ronaldo</div>
 
       <div class="sidebar-item" onclick="goTo(3)" id="si-3">
         <span class="sidebar-icon">🔐</span> ext-integration.ts
@@ -891,27 +1100,37 @@ kbd {
       <div class="sidebar-item" onclick="goTo(4)" id="si-4">
         <span class="sidebar-icon">📡</span> health-dashboard.ts
       </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-header">Bruno</div>
+
       <div class="sidebar-item" onclick="goTo(5)" id="si-5">
         <span class="sidebar-icon">🌐</span> landing-page.astro
       </div>
+      <div class="sidebar-item" onclick="goTo(6)" id="si-6">
+        <span class="sidebar-icon">📸</span> overview-bruno.md
+      </div>
 
       <div class="sidebar-divider"></div>
-      <div class="sidebar-header">Lightning</div>
+      <div class="sidebar-header">Thielson</div>
 
-      <div class="sidebar-item" onclick="goTo(6)" id="si-6">
-        <span class="sidebar-icon">⚡</span> mcp-procedures.sql
+      <div class="sidebar-item" onclick="goTo(7)" id="si-7">
+        <span class="sidebar-icon">📦</span> rat-offline.html
+      </div>
+      <div class="sidebar-item" onclick="goTo(8)" id="si-8">
+        <span class="sidebar-icon">📸</span> overview-thielson.md
       </div>
 
       <div class="sidebar-divider"></div>
       <div class="sidebar-header">Wrap-up</div>
 
-      <div class="sidebar-item" onclick="goTo(7)" id="si-7">
+      <div class="sidebar-item" onclick="goTo(9)" id="si-9">
         <span class="sidebar-icon">🏆</span> wins.log
       </div>
-      <div class="sidebar-item" onclick="goTo(8)" id="si-8">
+      <div class="sidebar-item" onclick="goTo(10)" id="si-10">
         <span class="sidebar-icon">🗺️</span> roadmap.todo
       </div>
-      <div class="sidebar-item" onclick="goTo(9)" id="si-9">
+      <div class="sidebar-item" onclick="goTo(11)" id="si-11">
         <span class="sidebar-icon">👋</span> exit.ts
       </div>
     </div>
@@ -946,7 +1165,7 @@ kbd {
         <div>
           <div class="cover-tag">// Tech Spotlight — Edition #02</div>
           <div class="cover-title">Web<br><span class="accent">Engineering</span><br>Team</div>
-          <div class="cover-subtitle">02 de abril de 2026 · 30 min – 1h</div>
+          <div class="cover-subtitle">02 de abril de 2026 · ~1h</div>
 
           <div class="flex-row mb-20">
             <span class="pill">🧑‍💻 Ronaldo</span>
@@ -978,7 +1197,7 @@ kbd {
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Integração externa"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Painel de Monitoramento"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Landing + Blog"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Skills + MCP"</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Relatório offline"</span><br>
             &nbsp;&nbsp;]<br>
             }
           </div>
@@ -1002,7 +1221,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">00:00 – 03:00 · Ronaldo</div>
+            <div class="tl-time">00:00 – 05:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-purple">Abertura</span>
               <span style="font-size:16px; color:var(--text)">Métricas do período</span>
@@ -1015,7 +1234,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">03:00 – 10:00 · Ronaldo</div>
+            <div class="tl-time">05:00 – 13:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-purple">Spotlight 1</span>
               <span style="font-size:16px; color:var(--text)">Portal de API externa com documentação rica — Aprosoja</span>
@@ -1029,7 +1248,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">10:00 – 17:00 · Ronaldo</div>
+            <div class="tl-time">13:00 – 20:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-teal">Spotlight 2</span>
               <span style="font-size:16px; color:var(--text)">Painel de Monitoramento do sistema — CMS</span>
@@ -1043,10 +1262,23 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">17:00 – 22:00 · Bruno</div>
+            <div class="tl-time">20:00 – 28:00 · Bruno</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-blue">Spotlight 3</span>
               <span style="font-size:16px; color:var(--text)">Landing Pages dinâmicas com Astro</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-line">
+            <div class="tl-dot" style="background:var(--blue)"></div>
+            <div class="tl-connector"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-time">28:00 – 33:00 · Bruno</div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
+              <span class="badge badge-blue">Overview</span>
+              <span style="font-size:16px; color:var(--text)">7 entregas em destaque</span>
             </div>
           </div>
         </div>
@@ -1056,10 +1288,23 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">22:00 – 27:00 · Thielson</div>
+            <div class="tl-time">33:00 – 41:00 · Thielson</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
-              <span class="badge badge-amber">Lightning ⚡</span>
-              <span style="font-size:16px; color:var(--text)">MCP + Skills para procedures e views</span>
+              <span class="badge badge-amber">Spotlight 4</span>
+              <span style="font-size:16px; color:var(--text)">Relatório offline navegável — index.html no ZIP</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-line">
+            <div class="tl-dot" style="background:var(--amber)"></div>
+            <div class="tl-connector"></div>
+          </div>
+          <div class="tl-body">
+            <div class="tl-time">41:00 – 46:00 · Thielson</div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
+              <span class="badge badge-amber">Overview</span>
+              <span style="font-size:16px; color:var(--text)">8 entregas em destaque</span>
             </div>
           </div>
         </div>
@@ -1069,7 +1314,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">27:00 – 30:00 · Ronaldo</div>
+            <div class="tl-time">46:00 – 51:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px">
               <span class="badge badge-green">Wins + Roadmap</span>
               <span style="font-size:16px; color:var(--text)">Conquistas e próximas prioridades</span>
@@ -1081,7 +1326,7 @@ kbd {
             <div class="tl-dot" style="background:var(--text3)"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">30:00</div>
+            <div class="tl-time">51:00</div>
             <div style="font-size:16px; color:var(--text3)">Perguntas &amp; encerramento</div>
           </div>
         </div>
@@ -1258,6 +1503,7 @@ kbd {
         <span style="font-family:var(--font-mono); font-size:14px; color:var(--amber)">🎬 DEMO AO VIVO</span>
         <a href="https://app.projecttrace.com.br/agrotrace/#/docs/api-integracao-externa" target="_blank" style="background:var(--purple); color:#fff; font-family:var(--font-mono); font-size:13px; padding:6px 16px; border-radius:var(--radius); text-decoration:none; cursor:pointer; transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Abrir Portal</a>
         <button onclick="navigator.clipboard.writeText('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0IiwiY2lkIjo2OSwiaXNJYnMiOiJleHRlcm5hbCIsImlhdCI6MTc3MzgzOTY5MiwiZXhwIjoxODkzNDE3MjkyfQ.7x8xKPfjK90PnqUhEtPeWPF7vLIULo0iNuhwCn94Sjg');this.textContent='Copiado!';this.style.borderColor='var(--teal)';this.style.color='var(--teal)';setTimeout(()=>{this.textContent='Copiar Token JWT';this.style.borderColor='#78350f';this.style.color='var(--amber)'},2000)" style="background:transparent; border:1px solid #78350f; color:var(--amber); font-family:var(--font-mono); font-size:13px; padding:6px 16px; border-radius:var(--radius); cursor:pointer; transition:all 0.15s">Copiar Token JWT</button>
+        <button onclick="openScreenshot('11765-login','Tela de Login — Token JWT')" style="background:transparent; border:1px solid #78350f; color:var(--amber); font-family:var(--font-mono); font-size:13px; padding:6px 16px; border-radius:var(--radius); cursor:pointer; transition:all 0.15s" onmouseover="this.style.borderColor='var(--purple)';this.style.color='var(--purple)'" onmouseout="this.style.borderColor='#78350f';this.style.color='var(--amber)'">📷 Ver Tela de Login</button>
       </div>
     </div>
 
@@ -1419,121 +1665,207 @@ kbd {
       </div>
     </div>
 
-    <!-- ─── SLIDE 6: LIGHTNING ─── -->
+    <!-- ─── SLIDE 6: OVERVIEW BRUNO ─── -->
     <div class="slide" id="slide-6">
-      <div class="slide-title">// lightning tech — Thielson — 5 min</div>
+      <div class="slide-title">// overview — Bruno — 5 min</div>
       <div class="flex-row mb-8">
-        <span class="badge badge-amber">⚡ MCP + Skills</span>
-        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">mcp-procedures.sql</span>
+        <span class="badge badge-blue">📸 overview</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">overview-bruno.md</span>
       </div>
-      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Criação de procedures com <span>IA + contexto real</span> do banco</div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Outras <span>entregas</span> — Bruno</div>
 
-      <div class="grid-2" style="gap:16px">
-        <div style="display:flex; flex-direction:column; gap:12px">
-          <div class="card card-accent-coral">
-            <div class="section-label" style="color:var(--coral)">❌ antes</div>
-            <div style="font-size:16px; color:var(--text2); line-height:1.7">
-              Criar ou alterar uma procedure significava: abrir DBeaver, copiar o DDL, pedir ajuda sem contexto, escrever a migration manualmente, sem diff legível no git. ~20 min de overhead por tarefa.
-            </div>
-          </div>
-
-          <div class="card card-accent-amber">
-            <div class="section-label" style="color:var(--amber)">✓ agora</div>
-            <div class="timeline" style="margin-top:4px">
-              <div class="tl-item" style="padding-bottom:10px">
-                <div class="tl-line">
-                  <div class="tl-dot" style="background:var(--amber); width:8px; height:8px; margin-top:3px"></div>
-                  <div class="tl-connector"></div>
-                </div>
-                <div class="tl-body">
-                  <div style="font-size:15px; color:var(--text2)"><span style="color:var(--amber); font-family:var(--font-mono)">MCP metadata</span> — busca o DDL da procedure/view/tabela direto do banco</div>
-                </div>
-              </div>
-              <div class="tl-item" style="padding-bottom:10px">
-                <div class="tl-line">
-                  <div class="tl-dot" style="background:var(--amber); width:8px; height:8px; margin-top:3px"></div>
-                  <div class="tl-connector"></div>
-                </div>
-                <div class="tl-body">
-                  <div style="font-size:15px; color:var(--text2)"><span style="color:var(--amber); font-family:var(--font-mono)">Claude</span> — entende o schema real antes de sugerir qualquer mudança</div>
-                </div>
-              </div>
-              <div class="tl-item" style="padding-bottom:0">
-                <div class="tl-line">
-                  <div class="tl-dot" style="background:var(--amber); width:8px; height:8px; margin-top:3px"></div>
-                </div>
-                <div class="tl-body">
-                  <div style="font-size:15px; color:var(--text2)"><span style="color:var(--amber); font-family:var(--font-mono)">Skill migration</span> — gera o arquivo correto + git diff legível</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="background:var(--bg3); display:flex; gap:24px; align-items:center">
-            <div style="text-align:center">
-              <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--coral)">~20</div>
-              <div style="font-size:13px; color:var(--text3)">min antes</div>
-            </div>
-            <div style="font-size:20px; color:var(--text3)">→</div>
-            <div style="text-align:center">
-              <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--teal)">~3</div>
-              <div style="font-size:13px; color:var(--text3)">min agora</div>
-            </div>
-            <div style="font-size:14px; color:var(--text2); flex:1">por migration de procedure, com contexto e git diff</div>
-          </div>
+      <div class="overview-grid">
+        <div class="overview-card" onclick="openScreenshot('11794','Redirecionar usuário para URL original após autenticação')">
+          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
+          <div class="overview-card-id">#11794</div>
+          <div class="overview-card-title">Redirecionar usuário para URL original após autenticação</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
         </div>
-
-        <div class="code-block">
-          <div class="code-block-header">⚡ exemplo de migration gerada</div>
-          <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18</div>
-            <div class="code-lines">
-              <span class="cmt">-- migration: 20260327-fix-getFormRespostasCharts.sql</span><br><br>
-              <span class="kw">DROP PROCEDURE IF EXISTS</span><br>
-              &nbsp;&nbsp;<span class="fn">getFormRespostasCharts</span>;<br><br>
-              <span class="kw">CREATE PROCEDURE</span><br>
-              &nbsp;&nbsp;<span class="fn">getFormRespostasCharts</span>(<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">p_projeto_id</span> <span class="kw">INT</span>,<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">p_safra_id</span> <span class="kw">INT</span><br>
-              &nbsp;&nbsp;)<br>
-              <span class="kw">BEGIN</span><br>
-              &nbsp;&nbsp;<span class="cmt">-- inclui perguntas referenciadas</span><br>
-              &nbsp;&nbsp;<span class="cmt">-- mesmo que pai não exiba no gráfico</span><br>
-              &nbsp;&nbsp;<span class="kw">SELECT</span> ...<br>
-              &nbsp;&nbsp;<span class="kw">FROM</span> form_resposta fr<br>
-              &nbsp;&nbsp;<span class="kw">LEFT JOIN</span> form_referencia ref<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">ON</span> fr.pergunta_id = ref.pai_id<br>
-              &nbsp;&nbsp;...<br>
-              <span class="kw">END</span>
-            </div>
-          </div>
+        <div class="overview-card" onclick="openScreenshot('11927','Melhorias no fluxo de cadastro e sincronização de Exportações')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11927</div>
+          <div class="overview-card-title">Melhorias no fluxo de cadastro e sincronização de Exportações</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11933','Migrar upload de memoryStorage para diskStorage')">
+          <div class="overview-card-badge"><span class="badge badge-blue" style="font-size:11px; padding:2px 8px">refactor</span></div>
+          <div class="overview-card-id">#11933</div>
+          <div class="overview-card-title">Migrar upload de memoryStorage para diskStorage</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11932','Perfil do produtor — responsividade')">
+          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
+          <div class="overview-card-id">#11932</div>
+          <div class="overview-card-title">Perfil do produtor — responsividade</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11796','Novo tipo de pergunta: Anexo (upload de documentos)')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11796</div>
+          <div class="overview-card-title">Novo tipo de pergunta: Anexo (upload de documentos)</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11746','Criar opção Imprimir nas perguntas')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11746</div>
+          <div class="overview-card-title">Criar opção "Imprimir" nas perguntas</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11734','Opção Possui Validação no cadastro de perguntas')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11734</div>
+          <div class="overview-card-title">Opção "Possui Validação" no cadastro de perguntas</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
         </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 7: WINS ─── -->
+    <!-- ─── SLIDE 7: SPOTLIGHT 4 — THIELSON ─── -->
     <div class="slide" id="slide-7">
+      <div class="slide-title">// spotlight 4 — Thielson — 8 min</div>
+      <div class="flex-row mb-8">
+        <span class="badge badge-amber">📦 feature</span>
+        <span class="badge badge-green">#11951 + #11950</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">rat-offline.html</span>
+      </div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Relatório de Atendimento <span>100% offline</span> — index.html no ZIP</div>
+
+      <div class="grid-2" style="gap:16px; flex:1">
+        <div style="display:flex; flex-direction:column; gap:12px">
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">❌ problema</div>
+            <div style="font-size:16px; color:var(--text2); line-height:1.7">
+              O ZIP do Relatório de Atendimento Técnico continha <strong style="color:var(--text)">fotos e documentos soltos</strong>, sem contexto. O consultor em campo — muitas vezes sem internet — não tinha como visualizar o relatório de forma organizada.
+            </div>
+          </div>
+
+          <div class="card card-accent-amber">
+            <div class="section-label" style="color:var(--amber)">✓ solução</div>
+            <div style="font-size:16px; color:var(--text2); line-height:1.7; margin-bottom:10px">
+              Template HTML standalone incluído no ZIP via checkbox opt-in. O <strong style="color:var(--text)">index.html</strong> funciona como um mini-site navegável com:
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:15px; color:var(--text2)">
+              <div>✓ Galeria de fotos com lightbox</div>
+              <div>✓ Lista de arquivos do relatório</div>
+              <div>✓ Toggle dark / light mode</div>
+              <div>✓ 100% offline — sem CDN</div>
+              <div>✓ Marcadores dinâmicos no template</div>
+              <div>✓ Responsivo (mobile/desktop)</div>
+            </div>
+          </div>
+
+          <div class="card card-accent-teal">
+            <div class="section-label" style="color:var(--teal)">📈 resultado</div>
+            <div style="font-size:16px; color:var(--text2); line-height:1.7">
+              Consultor abre o ZIP, dá duplo-clique no <strong style="color:var(--text)">index.html</strong> e navega tudo — fotos, documentos, dados do atendimento — <strong style="color:var(--text)">sem internet, sem app, sem dependências</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block" style="height:fit-content">
+          <div class="code-block-header">📦 rat-report.template.html</div>
+          <div class="code-body">
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20</div>
+            <div class="code-lines">
+              <span class="cmt">&lt;!-- rat-report.template.html --&gt;</span><br>
+              <span class="cmt">&lt;!-- 100% standalone, zero CDN --&gt;</span><br><br>
+              <span class="kw">&lt;title&gt;</span><span class="str">Relatório de Atendimento</span><span class="kw">&lt;/title&gt;</span><br><br>
+              <span class="cmt">&lt;!-- Marcadores dinâmicos --&gt;</span><br>
+              <span class="prop">{{DATA_INICIO}}</span> → data inicial<br>
+              <span class="prop">{{DATA_FIM}}</span> → data final<br>
+              <span class="prop">{{FOLDER}}</span> → nome da pasta<br>
+              <span class="prop">{{FILES}}</span> → lista de arquivos<br><br>
+              <span class="cmt">&lt;!-- Toggle theme --&gt;</span><br>
+              <span class="kw">const</span> <span class="prop">toggle</span> = () =&gt; {<br>
+              &nbsp;&nbsp;<span class="prop">document</span>.<span class="prop">body</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">classList</span>.<span class="fn">toggle</span>(<span class="str">'dark'</span>)<br>
+              }<br><br>
+              <span class="cmt">&lt;!-- Checkbox opt-in na exportação --&gt;</span><br>
+              <span class="kw">if</span> (<span class="prop">incluirHtml</span>) {<br>
+              &nbsp;&nbsp;<span class="fn">addToZip</span>(<span class="str">'index.html'</span>)<br>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; padding:10px 14px; background:var(--amber-bg); border:1px solid #78350f; border-radius:var(--radius); font-family:var(--font-mono); font-size:14px; color:var(--amber)">
+        🎬 DEMO: Exportar ZIP com checkbox → Abrir index.html → Navegar fotos + alternar dark/light
+      </div>
+    </div>
+
+    <!-- ─── SLIDE 8: OVERVIEW THIELSON ─── -->
+    <div class="slide" id="slide-8">
+      <div class="slide-title">// overview — Thielson — 5 min</div>
+      <div class="flex-row mb-8">
+        <span class="badge badge-amber">📸 overview</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">overview-thielson.md</span>
+      </div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Outras <span>entregas</span> — Thielson</div>
+
+      <div class="overview-grid">
+        <div class="overview-card" onclick="openScreenshot('11928','Botões limpar busca e refresh de dados — tela de Relatórios')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11928</div>
+          <div class="overview-card-title">Botões limpar busca e refresh de dados — tela de Relatórios</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11870','Título configurável no dashboard formulário')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11870</div>
+          <div class="overview-card-title">Título configurável no dashboard formulário</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11791','Permissões ACL — impedir associação de filiais sem acesso')">
+          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
+          <div class="overview-card-id">#11791</div>
+          <div class="overview-card-title">Permissões ACL — impedir associação de filiais sem acesso</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11836','Labels configuráveis nos botões — aba Comparativos')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11836</div>
+          <div class="overview-card-title">Labels configuráveis nos botões — aba Comparativos</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11798','Correção de layout do modal Dados da Exportação')">
+          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
+          <div class="overview-card-id">#11798</div>
+          <div class="overview-card-title">Correção de layout do modal Dados da Exportação</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11792','Novo campo no cadastro de volume por filial e por país')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11792</div>
+          <div class="overview-card-title">Novo campo no cadastro de volume por filial e por país</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11795','Filtro de busca em tempo real na listagem de relatórios')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11795</div>
+          <div class="overview-card-title">Filtro de busca em tempo real na listagem de relatórios</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+        <div class="overview-card" onclick="openScreenshot('11645','Adicionar unidade no volume por produtor')">
+          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
+          <div class="overview-card-id">#11645</div>
+          <div class="overview-card-title">Adicionar unidade no volume por produtor</div>
+          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SLIDE 9: WINS ─── -->
+    <div class="slide" id="slide-9">
       <div class="slide-title">// wins.log</div>
       <div class="slide-heading">Engineering <span>Wins</span></div>
 
       <div style="display:flex; flex-direction:column; gap:14px; flex:1">
-        <div class="win-card" style="border-left:3px solid var(--purple)">
-          <div class="win-icon">🏆</div>
-          <div class="win-who" style="color:var(--purple)">Thielson — Bug mais difícil do período</div>
-          <div class="win-text">
-            Resolveu o bug de persistência do layout no Dashboard Formulário — um problema que envolvia <strong style="color:var(--text)">biblioteca, banco de dados e código ao mesmo tempo</strong>. Após identificar e corrigir as três camadas, ainda adicionou um botão de reset como rede de segurança em produção.
-          </div>
-          <div class="tag-list">
-            <span class="chip">#11837</span>
-            <span class="chip">procedure + código + biblioteca</span>
-          </div>
-        </div>
-
         <div class="win-card" style="border-left:3px solid var(--blue)">
           <div class="win-icon">🚀</div>
-          <div class="win-who" style="color:var(--blue)">Bruno — Entrega de maior amplitude</div>
+          <div class="win-who" style="color:var(--blue)">Bruno — Landing Page + Blog do zero ao deploy</div>
           <div class="win-text">
-            Saiu do zero e entregou a <strong style="color:var(--text)">Landing Page + Blog em produção em 3 semanas</strong>: POC → containerizado com Docker, com newsletter, SEO, cache Redis, modo dark e hardening de segurança completo.
+            Saiu do zero e entregou a <strong style="color:var(--text)">Landing Page + Blog em produção em 3 semanas</strong>: POC → containerizado com Docker, com newsletter, SEO, cache Redis, modo dark e hardening de segurança completo. Primeira vez trabalhando com <strong style="color:var(--text)">Astro</strong> — absorveu o framework, aplicou SSR com dados dinâmicos via API e já entregou com performance de site estático.
           </div>
           <div class="tag-list">
             <span class="chip">#11494</span>
@@ -1541,22 +1873,47 @@ kbd {
           </div>
         </div>
 
+        <div class="win-card" style="border-left:3px solid var(--purple)">
+          <div class="win-icon">🏆</div>
+          <div class="win-who" style="color:var(--purple)">Thielson — Volume e consistência</div>
+          <div class="win-text">
+            O membro que <strong style="color:var(--text)">mais atuou em cards diferentes</strong> no período — focado em resolver problemas e ajustes pontuais conforme iam surgindo. De bugs em procedures a melhorias de UI, manteve o ritmo sem deixar nenhuma demanda parada. Não tem tempo ruim com esses meninos.
+          </div>
+          <div class="tag-list">
+            <span class="chip">+25 cards</span>
+            <span class="chip">procedure + código + UI</span>
+          </div>
+        </div>
+
         <div class="win-card" style="border-left:3px solid var(--teal)">
           <div class="win-icon">🤝</div>
-          <div class="win-who" style="color:var(--teal)">Time Web inteiro — Fix crítico de anexos</div>
+          <div class="win-who" style="color:var(--teal)">Web + Mobile + DevOps — Fix crítico de anexos</div>
           <div class="win-text">
-            UUID com hífens estava gerando token SAS inválido no Azure Blob, quebrando todos os anexos no mobile. Web, Mobile e DevOps trabalharam em paralelo e <strong style="color:var(--text)">resolveram no mesmo dia</strong>.
+            Dois problemas simultâneos: UUID com hífens gerando <strong style="color:var(--text)">token SAS inválido</strong> no Azure Blob, e uma nova coluna na tabela de anexos (opcional na API) que causou <strong style="color:var(--text)">efeito colateral no mobile</strong> — a entidade foi replicada mas a coluna ainda não existia no banco local do celular. Os 3 times (Web, Mobile, DevOps) atuaram juntos e <strong style="color:var(--text)">resolveram no mesmo dia</strong>.
           </div>
           <div class="tag-list">
             <span class="chip">#11882</span>
-            <span class="chip">Azure Blob + UUID + SAS token</span>
+            <span class="chip">#11773</span>
+            <span class="chip">Azure Blob + SQLite mobile + deploy</span>
+          </div>
+        </div>
+
+        <div class="win-card" style="border-left:3px solid var(--coral)">
+          <div class="win-icon">🙌</div>
+          <div class="win-who" style="color:var(--coral)">Matheus (Mobile) — Colaboração cross-team</div>
+          <div class="win-text">
+            Mesmo atuando no time Mobile, o Matheus trabalhou em conjunto com o Bruno no desenvolvimento da <strong style="color:var(--text)">API e CMS da Landing Page</strong> — contribuição direta que acelerou a entrega do projeto.
+          </div>
+          <div class="tag-list">
+            <span class="chip">#11494</span>
+            <span class="chip">NestJS + CMS</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 8: ROADMAP ─── -->
-    <div class="slide" id="slide-8">
+    <!-- ─── SLIDE 10: ROADMAP ─── -->
+    <div class="slide" id="slide-10">
       <div class="slide-title">// roadmap.todo</div>
       <div class="slide-heading">Próximas <span>prioridades</span></div>
 
@@ -1564,18 +1921,18 @@ kbd {
         <div class="todo-item">
           <div class="todo-check"></div>
           <div class="todo-content">
-            <div class="todo-title">#11730 — Referência entre perguntas no formulário dinâmico</div>
-            <div class="todo-desc">Encadear perguntas de diferentes formulários — feature estratégica para workflows complexos de diagnóstico</div>
+            <div class="todo-title">Migração CheckMilk → Agrotrace</div>
+            <div class="todo-desc">Retomar a migração das telas do CheckMilk para o Agrotrace — já migramos Reprodução Bovina, faltam Lactação, Pesagem, Qualidade e Partos</div>
           </div>
           <div class="flex-row">
-            <span class="badge badge-purple">Bruno + Iohan</span>
+            <span class="badge badge-purple">Thielson</span>
           </div>
         </div>
 
         <div class="todo-item">
           <div class="todo-check"></div>
           <div class="todo-content">
-            <div class="todo-title">#11887 — Autenticação independente Agrotrace ↔ CMS</div>
+            <div class="todo-title">Autenticação independente Agrotrace ↔ CMS</div>
             <div class="todo-desc">localStorage isolado por prefixo (SYSTEM, CMS, SHARED) — em progresso, finalizar interceptadores</div>
           </div>
           <div class="flex-row">
@@ -1586,8 +1943,8 @@ kbd {
         <div class="todo-item">
           <div class="todo-check"></div>
           <div class="todo-content">
-            <div class="todo-title">Dashboard Biodiesel — IBS / Cargill</div>
-            <div class="todo-desc">Novo painel de dados agrícolas com safras 2024-25 e 2025-26 — em planejamento com Iohan e Ricardo</div>
+            <div class="todo-title">Relatório de Fechamento — Biodiesel / Cargill</div>
+            <div class="todo-desc">Relatório completo de fechamento do projeto com gráficos, tabelas e textos descritivos — baseado no modelo da Débora. Analisar o documento para propor as telas</div>
           </div>
           <div class="flex-row">
             <span class="badge badge-teal">Ronaldo + Iohan</span>
@@ -1598,17 +1955,28 @@ kbd {
           <div class="todo-check"></div>
           <div class="todo-content">
             <div class="todo-title">Tela de Resumo do Produtor</div>
-            <div class="todo-desc">Nova visão consolidada focada no produtor — prototipada, iniciando desenvolvimento</div>
+            <div class="todo-desc">Visão consolidada onde ao selecionar um produtor, tudo que o sistema tem sobre ele aparece em um único lugar — sem precisar navegar tela por tela e pesquisar novamente</div>
           </div>
           <div class="flex-row">
             <span class="badge badge-amber">Ronaldo + Iohan</span>
           </div>
         </div>
+
+        <div class="todo-item">
+          <div class="todo-check"></div>
+          <div class="todo-content">
+            <div class="todo-title">Skills para aceleração do desenvolvimento</div>
+            <div class="todo-desc">Pesquisa e montagem de skills customizadas para automatizar tarefas recorrentes e acelerar o fluxo de desenvolvimento do time</div>
+          </div>
+          <div class="flex-row">
+            <span class="badge badge-coral">Thielson</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 9: EXIT ─── -->
-    <div class="slide" id="slide-9">
+    <!-- ─── SLIDE 11: EXIT ─── -->
+    <div class="slide" id="slide-11">
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:24px">
         <div style="font-family:var(--font-mono); font-size:14px; color:var(--text3); letter-spacing:0.15em; text-transform:uppercase">// exit.ts</div>
 
@@ -1616,25 +1984,29 @@ kbd {
           Obrigado pela<br><span style="color:var(--purple)">presença!</span>
         </div>
 
-        <div class="code-block" style="max-width:680px; width:100%">
+        <div class="code-block" style="max-width:720px; width:100%">
           <div class="code-block-header">👋 exit.ts</div>
           <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7</div>
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</div>
             <div class="code-lines">
               <span class="kw">const</span> <span class="prop">team</span> = [<span class="str">"Ronaldo"</span>, <span class="str">"Bruno"</span>, <span class="str">"Thielson"</span>]<br>
-              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Dúvidas? Fala com:"</span>, team)<br>
-              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Próxima edição Web: 24/04/2026"</span>)<br>
-              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Próxima: DevOps 10/04/2026"</span>)<br><br>
-              <span class="cmt">// process.exit(0) ✓</span><br>
-              <span class="ok">// ✓ Spotlight concluído com sucesso</span>
+              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Dúvidas? Fala com:"</span>, team)<br><br>
+              <span class="cmt">// Edition #02 finalizada ✓</span><br>
+              <span class="kw">await</span> <span class="fn">spotlight</span>.<span class="fn">close</span>(<span class="num">2</span>)<br><br>
+              <span class="cmt">// Iniciando Edition #03...</span><br>
+              <span class="kw">const</span> <span class="prop">next</span> = <span class="fn">spotlight</span>.<span class="fn">schedule</span>({<br>
+              &nbsp;&nbsp;<span class="prop">edition</span>: <span class="num">3</span>,<br>
+              &nbsp;&nbsp;<span class="prop">date</span>: <span class="str">"24/04/2026"</span>,<br>
+              })<br>
+              <span class="ok">// ✓ See you on Edition #03</span>
             </div>
           </div>
         </div>
 
-        <div class="flex-row" style="justify-content:center">
-          <span class="pill">⏱️ 02/04/2026</span>
-          <span class="pill">📅 Próxima: 24/04/2026</span>
-          <span class="pill">🔢 Edition #02</span>
+        <div class="flex-row" style="justify-content:center; gap:8px">
+          <span class="pill" style="border-color:var(--border2); color:var(--text3)">✓ Edition #02 concluída</span>
+          <span class="pill" style="border-color:#4c1d95; color:var(--purple)">→ Edition #03 — 24/04/2026</span>
+          <span class="pill">📅 Próxima: DevOps 10/04/2026</span>
         </div>
       </div>
     </div>
@@ -1646,7 +2018,7 @@ kbd {
 <div class="nav-controls">
   <button class="nav-btn" onclick="prev()">← prev</button>
   <div class="nav-dots" id="navDots"></div>
-  <span class="slide-counter" id="slideCounter">1 / 10</span>
+  <span class="slide-counter" id="slideCounter">1 / 12</span>
   <button class="nav-btn" onclick="next()">next →</button>
 </div>
 
@@ -1672,6 +2044,21 @@ kbd {
         </thead>
         <tbody id="kpiBody"></tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<!-- SCREENSHOT MODAL -->
+<div class="ss-overlay" id="ssOverlay" onclick="if(event.target===this)closeScreenshot()">
+  <div class="ss-modal">
+    <div class="ss-header">
+      <div class="ss-header-left">
+        <span class="ss-card-id" id="ssCardId">#00000</span>
+        <span class="ss-title" id="ssTitle">Título</span>
+      </div>
+      <button class="ss-close" onclick="closeScreenshot()">✕ Fechar</button>
+    </div>
+    <div class="ss-body" id="ssBody">
     </div>
   </div>
 </div>
@@ -1772,11 +2159,111 @@ document.querySelectorAll('.metric-click').forEach(el => {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && document.getElementById('kpiOverlay').classList.contains('open')) {
-    closeKpiModal();
-    e.stopPropagation();
+  if (e.key === 'Escape') {
+    if (document.getElementById('ssOverlay').classList.contains('open')) {
+      closeScreenshot();
+      e.stopPropagation();
+      return;
+    }
+    if (document.getElementById('kpiOverlay').classList.contains('open')) {
+      closeKpiModal();
+      e.stopPropagation();
+    }
   }
 });
+
+// ── Screenshot carousel ──
+let ssImages = [];
+let ssIndex = 0;
+let ssCardId = '';
+
+function openScreenshot(cardId, title) {
+  ssCardId = cardId;
+  ssImages = [];
+  ssIndex = 0;
+  document.getElementById('ssCardId').textContent = '#' + cardId;
+  document.getElementById('ssTitle').textContent = title;
+  const body = document.getElementById('ssBody');
+  body.innerHTML = '<div class="ss-empty"><div class="ss-empty-icon">⏳</div>Carregando...</div>';
+  document.getElementById('ssOverlay').classList.add('open');
+
+  // Tenta carregar imagem única (assets/XXXXX.png)
+  // e múltiplas (assets/XXXXX-1.png, assets/XXXXX-2.png, ...)
+  const single = new Image();
+  single.src = 'assets/' + cardId + '.png';
+  single.onload = () => {
+    ssImages = [single.src];
+    // Agora tenta encontrar mais imagens numeradas
+    probeNext(cardId, 2, () => renderCarousel());
+  };
+  single.onerror = () => {
+    // Sem imagem única, tenta numeradas a partir de 1
+    const first = new Image();
+    first.src = 'assets/' + cardId + '-1.png';
+    first.onload = () => {
+      ssImages = [first.src];
+      probeNext(cardId, 2, () => renderCarousel());
+    };
+    first.onerror = () => {
+      body.innerHTML = '<div class="ss-empty"><div class="ss-empty-icon">📷</div>Screenshot ainda não adicionado<br><span style="font-size:12px;color:var(--text3)">Salve em assets/' + cardId + '.png ou assets/' + cardId + '-1.png, -2.png, ...</span></div>';
+    };
+  };
+}
+
+function probeNext(cardId, n, done) {
+  const img = new Image();
+  img.src = 'assets/' + cardId + '-' + n + '.png';
+  img.onload = () => {
+    ssImages.push(img.src);
+    probeNext(cardId, n + 1, done);
+  };
+  img.onerror = done;
+}
+
+function renderCarousel() {
+  const body = document.getElementById('ssBody');
+  const img = document.createElement('img');
+  img.src = ssImages[ssIndex];
+  img.alt = '#' + ssCardId + ' — imagem ' + (ssIndex + 1);
+  body.innerHTML = '';
+  body.appendChild(img);
+
+  // Remove botões/counter anteriores
+  body.querySelectorAll('.ss-carousel-btn, .ss-counter').forEach(el => el.remove());
+
+  if (ssImages.length > 1) {
+    const prev = document.createElement('button');
+    prev.className = 'ss-carousel-btn prev';
+    prev.innerHTML = '‹';
+    prev.onclick = (e) => { e.stopPropagation(); ssNav(-1); };
+
+    const next = document.createElement('button');
+    next.className = 'ss-carousel-btn next';
+    next.innerHTML = '›';
+    next.onclick = (e) => { e.stopPropagation(); ssNav(1); };
+
+    const counter = document.createElement('div');
+    counter.className = 'ss-counter';
+    counter.innerHTML = ssImages.map((_, i) =>
+      '<div class="ss-dot' + (i === ssIndex ? ' active' : '') + '"></div>'
+    ).join('') + '<span>' + (ssIndex + 1) + ' / ' + ssImages.length + '</span>';
+
+    body.appendChild(prev);
+    body.appendChild(next);
+    body.appendChild(counter);
+  }
+}
+
+function ssNav(dir) {
+  ssIndex = (ssIndex + dir + ssImages.length) % ssImages.length;
+  renderCarousel();
+}
+
+function closeScreenshot() {
+  document.getElementById('ssOverlay').classList.remove('open');
+  ssImages = [];
+  ssIndex = 0;
+}
 
 const slides = document.querySelectorAll('.slide');
 const sidebarItems = document.querySelectorAll('[id^="si-"]');
@@ -1786,7 +2273,8 @@ let cur = 0;
 const labels = [
   'README.md','agenda.ts','stats.json',
   'ext-integration.ts','health-dashboard.ts','landing-page.astro',
-  'mcp-procedures.sql','wins.log','roadmap.todo','exit.ts'
+  'overview-bruno.md','rat-offline.html','overview-thielson.md',
+  'wins.log','roadmap.todo','exit.ts'
 ];
 
 // Build tabs
@@ -1794,7 +2282,7 @@ const tabsBar = document.getElementById('tabsBar');
 labels.forEach((l, i) => {
   const t = document.createElement('div');
   t.className = 'tab-item' + (i === 0 ? ' active' : '');
-  const icons = ['📋','📊','📅','🔐','📡','🌐','⚡','🏆','🗺️','👋'];
+  const icons = ['📋','📅','📊','🔐','📡','🌐','📸','📦','📸','🏆','🗺️','👋'];
   t.innerHTML = `<span class="tab-icon">${icons[i]}</span>${l}`;
   t.onclick = () => goTo(i);
   t.id = 'tab-' + i;
@@ -1836,6 +2324,14 @@ function next() { goTo(cur + 1); }
 function prev() { goTo(cur - 1); }
 
 document.addEventListener('keydown', e => {
+  // Se o modal de screenshot está aberto, setas navegam o carrossel
+  if (document.getElementById('ssOverlay').classList.contains('open')) {
+    if (ssImages.length > 1) {
+      if (e.key === 'ArrowRight') { ssNav(1); e.stopPropagation(); return; }
+      if (e.key === 'ArrowLeft') { ssNav(-1); e.stopPropagation(); return; }
+    }
+    return;
+  }
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
   if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
   if (e.key === 'f' || e.key === 'F') {
