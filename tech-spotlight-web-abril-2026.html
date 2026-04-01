@@ -844,215 +844,6 @@ kbd {
   padding: 2px 8px;
   border-radius: 12px;
 }
-
-/* ── OVERVIEW CARDS ── */
-.overview-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  align-content: start;
-}
-
-.overview-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-}
-.overview-card:hover {
-  border-color: var(--purple);
-  background: var(--bg3);
-  transform: translateY(-2px);
-}
-
-.overview-card-id {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text3);
-}
-
-.overview-card-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.35;
-  padding-right: 50px;
-}
-
-.overview-card-hint {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text3);
-  margin-top: 4px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.overview-card:hover .overview-card-hint { opacity: 1; }
-
-.overview-card-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-/* ── SCREENSHOT MODAL ── */
-.ss-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 1100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.ss-overlay.open { opacity: 1; pointer-events: all; }
-
-.ss-modal {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  width: 92%;
-  max-width: 1100px;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  transform: translateY(10px);
-  transition: transform 0.2s;
-}
-.ss-overlay.open .ss-modal { transform: translateY(0); }
-
-.ss-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border);
-  gap: 12px;
-}
-
-.ss-header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-.ss-card-id {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--purple);
-  flex-shrink: 0;
-}
-
-.ss-title {
-  font-size: 15px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ss-close {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text2);
-  font-size: 14px;
-  padding: 4px 12px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.ss-close:hover { background: var(--bg4); color: var(--text); }
-
-.ss-body {
-  overflow: auto;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  min-height: 200px;
-}
-
-.ss-body img {
-  max-width: 100%;
-  max-height: 70vh;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-
-.ss-carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  color: var(--text);
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-  z-index: 2;
-  opacity: 0.8;
-}
-.ss-carousel-btn:hover { background: var(--bg4); border-color: var(--purple); opacity: 1; }
-.ss-carousel-btn.prev { left: 12px; }
-.ss-carousel-btn.next { right: 12px; }
-
-.ss-counter {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text2);
-  z-index: 2;
-}
-
-.ss-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--border2);
-  transition: all 0.2s;
-}
-.ss-dot.active { background: var(--purple); transform: scale(1.4); }
-
-.ss-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 48px;
-  color: var(--text3);
-  font-family: var(--font-mono);
-  font-size: 14px;
-}
-
-.ss-empty-icon { font-size: 40px; opacity: 0.5; }
 </style>
 </head>
 <body>
@@ -1092,7 +883,7 @@ kbd {
       </div>
 
       <div class="sidebar-divider"></div>
-      <div class="sidebar-header">Ronaldo</div>
+      <div class="sidebar-header">Spotlights</div>
 
       <div class="sidebar-item" onclick="goTo(3)" id="si-3">
         <span class="sidebar-icon">🔐</span> ext-integration.ts
@@ -1100,37 +891,41 @@ kbd {
       <div class="sidebar-item" onclick="goTo(4)" id="si-4">
         <span class="sidebar-icon">📡</span> health-dashboard.ts
       </div>
-
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-header">Bruno</div>
-
       <div class="sidebar-item" onclick="goTo(5)" id="si-5">
         <span class="sidebar-icon">🌐</span> landing-page.astro
       </div>
       <div class="sidebar-item" onclick="goTo(6)" id="si-6">
-        <span class="sidebar-icon">📸</span> overview-bruno.md
+        <span class="sidebar-icon">⚡</span> mcp-procedures.sql
       </div>
-
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-header">Thielson</div>
-
       <div class="sidebar-item" onclick="goTo(7)" id="si-7">
-        <span class="sidebar-icon">📦</span> rat-offline.html
+        <span class="sidebar-icon">📊</span> painel-gestao.ts
       </div>
       <div class="sidebar-item" onclick="goTo(8)" id="si-8">
-        <span class="sidebar-icon">📸</span> overview-thielson.md
+        <span class="sidebar-icon">🔐</span> auth-session.ts
+      </div>
+      <div class="sidebar-item" onclick="goTo(9)" id="si-9">
+        <span class="sidebar-icon">📋</span> forms-dinamicos.ts
+      </div>
+      <div class="sidebar-item" onclick="goTo(10)" id="si-10">
+        <span class="sidebar-icon">📄</span> relatorios.ts
+      </div>
+      <div class="sidebar-item" onclick="goTo(11)" id="si-11">
+        <span class="sidebar-icon">⚙️</span> infra.ts
+      </div>
+      <div class="sidebar-item" onclick="goTo(12)" id="si-12">
+        <span class="sidebar-icon">🎨</span> ui-fixes.ts
       </div>
 
       <div class="sidebar-divider"></div>
       <div class="sidebar-header">Wrap-up</div>
 
-      <div class="sidebar-item" onclick="goTo(9)" id="si-9">
+      <div class="sidebar-item" onclick="goTo(13)" id="si-13">
         <span class="sidebar-icon">🏆</span> wins.log
       </div>
-      <div class="sidebar-item" onclick="goTo(10)" id="si-10">
+      <div class="sidebar-item" onclick="goTo(14)" id="si-14">
         <span class="sidebar-icon">🗺️</span> roadmap.todo
       </div>
-      <div class="sidebar-item" onclick="goTo(11)" id="si-11">
+      <div class="sidebar-item" onclick="goTo(15)" id="si-15">
         <span class="sidebar-icon">👋</span> exit.ts
       </div>
     </div>
@@ -1165,7 +960,7 @@ kbd {
         <div>
           <div class="cover-tag">// Tech Spotlight — Edition #02</div>
           <div class="cover-title">Web<br><span class="accent">Engineering</span><br>Team</div>
-          <div class="cover-subtitle">02 de abril de 2026 · ~1h</div>
+          <div class="cover-subtitle">02 de abril de 2026 · 30 min – 1h</div>
 
           <div class="flex-row mb-20">
             <span class="pill">🧑‍💻 Ronaldo</span>
@@ -1197,7 +992,7 @@ kbd {
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Integração externa"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Painel de Monitoramento"</span>,<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Landing + Blog"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Relatório offline"</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Skills + MCP"</span><br>
             &nbsp;&nbsp;]<br>
             }
           </div>
@@ -1221,7 +1016,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">00:00 – 05:00 · Ronaldo</div>
+            <div class="tl-time">00:00 – 03:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-purple">Abertura</span>
               <span style="font-size:16px; color:var(--text)">Métricas do período</span>
@@ -1234,7 +1029,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">05:00 – 13:00 · Ronaldo</div>
+            <div class="tl-time">03:00 – 10:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-purple">Spotlight 1</span>
               <span style="font-size:16px; color:var(--text)">Portal de API externa com documentação rica — Aprosoja</span>
@@ -1248,7 +1043,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">13:00 – 20:00 · Ronaldo</div>
+            <div class="tl-time">10:00 – 17:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-teal">Spotlight 2</span>
               <span style="font-size:16px; color:var(--text)">Painel de Monitoramento do sistema — CMS</span>
@@ -1262,7 +1057,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">20:00 – 28:00 · Bruno</div>
+            <div class="tl-time">17:00 – 22:00 · Bruno</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
               <span class="badge badge-blue">Spotlight 3</span>
               <span style="font-size:16px; color:var(--text)">Landing Pages dinâmicas com Astro</span>
@@ -1271,40 +1066,14 @@ kbd {
         </div>
         <div class="tl-item">
           <div class="tl-line">
-            <div class="tl-dot" style="background:var(--blue)"></div>
-            <div class="tl-connector"></div>
-          </div>
-          <div class="tl-body">
-            <div class="tl-time">28:00 – 33:00 · Bruno</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
-              <span class="badge badge-blue">Overview</span>
-              <span style="font-size:16px; color:var(--text)">7 entregas em destaque</span>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-line">
             <div class="tl-dot" style="background:var(--amber)"></div>
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">33:00 – 41:00 · Thielson</div>
+            <div class="tl-time">22:00 – 27:00 · Thielson</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
-              <span class="badge badge-amber">Spotlight 4</span>
-              <span style="font-size:16px; color:var(--text)">Relatório offline navegável — index.html no ZIP</span>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-line">
-            <div class="tl-dot" style="background:var(--amber)"></div>
-            <div class="tl-connector"></div>
-          </div>
-          <div class="tl-body">
-            <div class="tl-time">41:00 – 46:00 · Thielson</div>
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px">
-              <span class="badge badge-amber">Overview</span>
-              <span style="font-size:16px; color:var(--text)">8 entregas em destaque</span>
+              <span class="badge badge-amber">Lightning ⚡</span>
+              <span style="font-size:16px; color:var(--text)">MCP + Skills para procedures e views</span>
             </div>
           </div>
         </div>
@@ -1314,7 +1083,7 @@ kbd {
             <div class="tl-connector"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">46:00 – 51:00 · Ronaldo</div>
+            <div class="tl-time">27:00 – 30:00 · Ronaldo</div>
             <div style="display:flex; align-items:center; gap:8px">
               <span class="badge badge-green">Wins + Roadmap</span>
               <span style="font-size:16px; color:var(--text)">Conquistas e próximas prioridades</span>
@@ -1326,7 +1095,7 @@ kbd {
             <div class="tl-dot" style="background:var(--text3)"></div>
           </div>
           <div class="tl-body">
-            <div class="tl-time">51:00</div>
+            <div class="tl-time">30:00</div>
             <div style="font-size:16px; color:var(--text3)">Perguntas &amp; encerramento</div>
           </div>
         </div>
@@ -1503,7 +1272,6 @@ kbd {
         <span style="font-family:var(--font-mono); font-size:14px; color:var(--amber)">🎬 DEMO AO VIVO</span>
         <a href="https://app.projecttrace.com.br/agrotrace/#/docs/api-integracao-externa" target="_blank" style="background:var(--purple); color:#fff; font-family:var(--font-mono); font-size:13px; padding:6px 16px; border-radius:var(--radius); text-decoration:none; cursor:pointer; transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Abrir Portal</a>
         <button onclick="navigator.clipboard.writeText('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI0IiwiY2lkIjo2OSwiaXNJYnMiOiJleHRlcm5hbCIsImlhdCI6MTc3MzgzOTY5MiwiZXhwIjoxODkzNDE3MjkyfQ.7x8xKPfjK90PnqUhEtPeWPF7vLIULo0iNuhwCn94Sjg');this.textContent='Copiado!';this.style.borderColor='var(--teal)';this.style.color='var(--teal)';setTimeout(()=>{this.textContent='Copiar Token JWT';this.style.borderColor='#78350f';this.style.color='var(--amber)'},2000)" style="background:transparent; border:1px solid #78350f; color:var(--amber); font-family:var(--font-mono); font-size:13px; padding:6px 16px; border-radius:var(--radius); cursor:pointer; transition:all 0.15s">Copiar Token JWT</button>
-        <button onclick="openScreenshot('11765-login','Tela de Login — Token JWT')" style="background:transparent; border:1px solid #78350f; color:var(--amber); font-family:var(--font-mono); font-size:13px; padding:6px 16px; border-radius:var(--radius); cursor:pointer; transition:all 0.15s" onmouseover="this.style.borderColor='var(--purple)';this.style.color='var(--purple)'" onmouseout="this.style.borderColor='#78350f';this.style.color='var(--amber)'">📷 Ver Tela de Login</button>
       </div>
     </div>
 
@@ -1665,207 +1433,799 @@ kbd {
       </div>
     </div>
 
-    <!-- ─── SLIDE 6: OVERVIEW BRUNO ─── -->
+    <!-- ─── SLIDE 6: LIGHTNING ─── -->
     <div class="slide" id="slide-6">
-      <div class="slide-title">// overview — Bruno — 5 min</div>
+      <div class="slide-title">// lightning tech — Thielson — 5 min</div>
       <div class="flex-row mb-8">
-        <span class="badge badge-blue">📸 overview</span>
-        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">overview-bruno.md</span>
+        <span class="badge badge-amber">⚡ MCP + Skills</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">mcp-procedures.sql</span>
       </div>
-      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Outras <span>entregas</span> — Bruno</div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Criação de procedures com <span>IA + contexto real</span> do banco</div>
 
-      <div class="overview-grid">
-        <div class="overview-card" onclick="openScreenshot('11794','Redirecionar usuário para URL original após autenticação')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#11794</div>
-          <div class="overview-card-title">Redirecionar usuário para URL original após autenticação</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+      <div class="grid-2" style="gap:16px">
+        <div style="display:flex; flex-direction:column; gap:12px">
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">❌ antes</div>
+            <div style="font-size:16px; color:var(--text2); line-height:1.7">
+              Criar ou alterar uma procedure significava: abrir DBeaver, copiar o DDL, pedir ajuda sem contexto, escrever a migration manualmente, sem diff legível no git. ~20 min de overhead por tarefa.
+            </div>
+          </div>
+
+          <div class="card card-accent-amber">
+            <div class="section-label" style="color:var(--amber)">✓ agora</div>
+            <div class="timeline" style="margin-top:4px">
+              <div class="tl-item" style="padding-bottom:10px">
+                <div class="tl-line">
+                  <div class="tl-dot" style="background:var(--amber); width:8px; height:8px; margin-top:3px"></div>
+                  <div class="tl-connector"></div>
+                </div>
+                <div class="tl-body">
+                  <div style="font-size:15px; color:var(--text2)"><span style="color:var(--amber); font-family:var(--font-mono)">MCP metadata</span> — busca o DDL da procedure/view/tabela direto do banco</div>
+                </div>
+              </div>
+              <div class="tl-item" style="padding-bottom:10px">
+                <div class="tl-line">
+                  <div class="tl-dot" style="background:var(--amber); width:8px; height:8px; margin-top:3px"></div>
+                  <div class="tl-connector"></div>
+                </div>
+                <div class="tl-body">
+                  <div style="font-size:15px; color:var(--text2)"><span style="color:var(--amber); font-family:var(--font-mono)">Claude</span> — entende o schema real antes de sugerir qualquer mudança</div>
+                </div>
+              </div>
+              <div class="tl-item" style="padding-bottom:0">
+                <div class="tl-line">
+                  <div class="tl-dot" style="background:var(--amber); width:8px; height:8px; margin-top:3px"></div>
+                </div>
+                <div class="tl-body">
+                  <div style="font-size:15px; color:var(--text2)"><span style="color:var(--amber); font-family:var(--font-mono)">Skill migration</span> — gera o arquivo correto + git diff legível</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="background:var(--bg3); display:flex; gap:24px; align-items:center">
+            <div style="text-align:center">
+              <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--coral)">~20</div>
+              <div style="font-size:13px; color:var(--text3)">min antes</div>
+            </div>
+            <div style="font-size:20px; color:var(--text3)">→</div>
+            <div style="text-align:center">
+              <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--teal)">~3</div>
+              <div style="font-size:13px; color:var(--text3)">min agora</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); flex:1">por migration de procedure, com contexto e git diff</div>
+          </div>
         </div>
-        <div class="overview-card" onclick="openScreenshot('11927','Melhorias no fluxo de cadastro e sincronização de Exportações')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11927</div>
-          <div class="overview-card-title">Melhorias no fluxo de cadastro e sincronização de Exportações</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11933','Migrar upload de memoryStorage para diskStorage')">
-          <div class="overview-card-badge"><span class="badge badge-blue" style="font-size:11px; padding:2px 8px">refactor</span></div>
-          <div class="overview-card-id">#11933</div>
-          <div class="overview-card-title">Migrar upload de memoryStorage para diskStorage</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11932','Perfil do produtor — responsividade')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#11932</div>
-          <div class="overview-card-title">Perfil do produtor — responsividade</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11796','Novo tipo de pergunta: Anexo (upload de documentos)')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11796</div>
-          <div class="overview-card-title">Novo tipo de pergunta: Anexo (upload de documentos)</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11746','Criar opção Imprimir nas perguntas')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11746</div>
-          <div class="overview-card-title">Criar opção "Imprimir" nas perguntas</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11734','Opção Possui Validação no cadastro de perguntas')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11734</div>
-          <div class="overview-card-title">Opção "Possui Validação" no cadastro de perguntas</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+
+        <div class="code-block">
+          <div class="code-block-header">⚡ exemplo de migration gerada</div>
+          <div class="code-body">
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18</div>
+            <div class="code-lines">
+              <span class="cmt">-- migration: 20260327-fix-getFormRespostasCharts.sql</span><br><br>
+              <span class="kw">DROP PROCEDURE IF EXISTS</span><br>
+              &nbsp;&nbsp;<span class="fn">getFormRespostasCharts</span>;<br><br>
+              <span class="kw">CREATE PROCEDURE</span><br>
+              &nbsp;&nbsp;<span class="fn">getFormRespostasCharts</span>(<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">p_projeto_id</span> <span class="kw">INT</span>,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">p_safra_id</span> <span class="kw">INT</span><br>
+              &nbsp;&nbsp;)<br>
+              <span class="kw">BEGIN</span><br>
+              &nbsp;&nbsp;<span class="cmt">-- inclui perguntas referenciadas</span><br>
+              &nbsp;&nbsp;<span class="cmt">-- mesmo que pai não exiba no gráfico</span><br>
+              &nbsp;&nbsp;<span class="kw">SELECT</span> ...<br>
+              &nbsp;&nbsp;<span class="kw">FROM</span> form_resposta fr<br>
+              &nbsp;&nbsp;<span class="kw">LEFT JOIN</span> form_referencia ref<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">ON</span> fr.pergunta_id = ref.pai_id<br>
+              &nbsp;&nbsp;...<br>
+              <span class="kw">END</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 7: SPOTLIGHT 4 — THIELSON ─── -->
+    <!-- ─── SLIDE 7: PAINEL DE GESTÃO ─── -->
     <div class="slide" id="slide-7">
-      <div class="slide-title">// spotlight 4 — Thielson — 8 min</div>
+      <div class="slide-title">// sprint 97/98 — Painel de Gestão</div>
       <div class="flex-row mb-8">
-        <span class="badge badge-amber">📦 feature</span>
-        <span class="badge badge-green">#11951 + #11950</span>
-        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">rat-offline.html</span>
+        <span class="badge badge-purple">📊 feature</span>
+        <span class="badge badge-green">#11748 #11786 #11809</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">painel-gestao.ts</span>
       </div>
-      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Relatório de Atendimento <span>100% offline</span> — index.html no ZIP</div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Dashboard do <span>Gestor</span> — Suporte ao Mobile</div>
 
       <div class="grid-2" style="gap:16px; flex:1">
         <div style="display:flex; flex-direction:column; gap:12px">
           <div class="card card-accent-coral">
             <div class="section-label" style="color:var(--coral)">❌ problema</div>
             <div style="font-size:16px; color:var(--text2); line-height:1.7">
-              O ZIP do Relatório de Atendimento Técnico continha <strong style="color:var(--text)">fotos e documentos soltos</strong>, sem contexto. O consultor em campo — muitas vezes sem internet — não tinha como visualizar o relatório de forma organizada.
+              O app Mobile precisava consumir dados do Painel de Gestão, mas os endpoints existentes eram voltados apenas para a Web — sem filtros otimizados, sem dados de etapas vigentes e sem nome da certificadora.
             </div>
           </div>
 
-          <div class="card card-accent-amber">
-            <div class="section-label" style="color:var(--amber)">✓ solução</div>
-            <div style="font-size:16px; color:var(--text2); line-height:1.7; margin-bottom:10px">
-              Template HTML standalone incluído no ZIP via checkbox opt-in. O <strong style="color:var(--text)">index.html</strong> funciona como um mini-site navegável com:
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:15px; color:var(--text2)">
-              <div>✓ Galeria de fotos com lightbox</div>
-              <div>✓ Lista de arquivos do relatório</div>
-              <div>✓ Toggle dark / light mode</div>
-              <div>✓ 100% offline — sem CDN</div>
-              <div>✓ Marcadores dinâmicos no template</div>
-              <div>✓ Responsivo (mobile/desktop)</div>
-            </div>
-          </div>
-
-          <div class="card card-accent-teal">
-            <div class="section-label" style="color:var(--teal)">📈 resultado</div>
-            <div style="font-size:16px; color:var(--text2); line-height:1.7">
-              Consultor abre o ZIP, dá duplo-clique no <strong style="color:var(--text)">index.html</strong> e navega tudo — fotos, documentos, dados do atendimento — <strong style="color:var(--text)">sem internet, sem app, sem dependências</strong>.
+          <div class="card card-accent-purple">
+            <div class="section-label" style="color:var(--purple)">✓ solução</div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:16px; color:var(--text2)">
+              <div style="display:flex; gap:8px; align-items:flex-start">
+                <span style="color:var(--purple); font-family:var(--font-mono)">→</span>
+                <span><strong style="color:var(--text)">#11748</strong> — Novo endpoint dedicado para Mobile: produtores atendidos, atendimentos executados, diagnósticos concluídos e estados atendidos</span>
+              </div>
+              <div style="display:flex; gap:8px; align-items:flex-start">
+                <span style="color:var(--purple); font-family:var(--font-mono)">→</span>
+                <span><strong style="color:var(--text)">#11786</strong> — Filtro de etapas vigentes (baseado na data atual) + retorno do período (data inicial/final) de cada etapa</span>
+              </div>
+              <div style="display:flex; gap:8px; align-items:flex-start">
+                <span style="color:var(--purple); font-family:var(--font-mono)">→</span>
+                <span><strong style="color:var(--text)">#11809</strong> — Nome da certificadora no resumo do gestor, usando <code style="color:var(--amber); background:var(--bg4); padding:1px 6px; border-radius:3px">certificadoraId</code> como parâmetro</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="code-block" style="height:fit-content">
-          <div class="code-block-header">📦 rat-report.template.html</div>
+          <div class="code-block-header">📊 dashboard-gestor.controller.ts</div>
           <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20</div>
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15</div>
             <div class="code-lines">
-              <span class="cmt">&lt;!-- rat-report.template.html --&gt;</span><br>
-              <span class="cmt">&lt;!-- 100% standalone, zero CDN --&gt;</span><br><br>
-              <span class="kw">&lt;title&gt;</span><span class="str">Relatório de Atendimento</span><span class="kw">&lt;/title&gt;</span><br><br>
-              <span class="cmt">&lt;!-- Marcadores dinâmicos --&gt;</span><br>
-              <span class="prop">{{DATA_INICIO}}</span> → data inicial<br>
-              <span class="prop">{{DATA_FIM}}</span> → data final<br>
-              <span class="prop">{{FOLDER}}</span> → nome da pasta<br>
-              <span class="prop">{{FILES}}</span> → lista de arquivos<br><br>
-              <span class="cmt">&lt;!-- Toggle theme --&gt;</span><br>
-              <span class="kw">const</span> <span class="prop">toggle</span> = () =&gt; {<br>
-              &nbsp;&nbsp;<span class="prop">document</span>.<span class="prop">body</span><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">classList</span>.<span class="fn">toggle</span>(<span class="str">'dark'</span>)<br>
-              }<br><br>
-              <span class="cmt">&lt;!-- Checkbox opt-in na exportação --&gt;</span><br>
-              <span class="kw">if</span> (<span class="prop">incluirHtml</span>) {<br>
-              &nbsp;&nbsp;<span class="fn">addToZip</span>(<span class="str">'index.html'</span>)<br>
+              <span class="cmt">// Novo endpoint — Mobile</span><br>
+              <span class="kw">@Get</span>(<span class="str">'dados-gerais/mobile'</span>)<br>
+              <span class="fn">getDadosGeraisMobile</span>(<br>
+              &nbsp;&nbsp;<span class="prop">@Query</span>() filters: {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">etapa</span>?: <span class="prop">number</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">periodo</span>?: <span class="prop">string</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">tipoAtendimento</span>?: <span class="prop">string</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">tecnicoId</span>?: <span class="prop">number</span><br>
+              &nbsp;&nbsp;}<br>
+              ) {<br>
+              &nbsp;&nbsp;<span class="kw">return</span> {<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">produtoresAtendidos</span>,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">diagnosticosConcluidos</span>,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">estadosAtendidos</span><br>
+              &nbsp;&nbsp;}<br>
               }
             </div>
           </div>
         </div>
       </div>
-
-      <div style="margin-top:14px; padding:10px 14px; background:var(--amber-bg); border:1px solid #78350f; border-radius:var(--radius); font-family:var(--font-mono); font-size:14px; color:var(--amber)">
-        🎬 DEMO: Exportar ZIP com checkbox → Abrir index.html → Navegar fotos + alternar dark/light
-      </div>
     </div>
 
-    <!-- ─── SLIDE 8: OVERVIEW THIELSON ─── -->
+    <!-- ─── SLIDE 8: AUTENTICAÇÃO E SESSÃO ─── -->
     <div class="slide" id="slide-8">
-      <div class="slide-title">// overview — Thielson — 5 min</div>
+      <div class="slide-title">// sprint 97/98 — Autenticação e Sessão</div>
       <div class="flex-row mb-8">
-        <span class="badge badge-amber">📸 overview</span>
-        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">overview-thielson.md</span>
+        <span class="badge badge-blue">🔐 feature + fix + refactor</span>
+        <span class="badge badge-green">#11781 #11794 #11887</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">auth-session.ts</span>
       </div>
-      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Outras <span>entregas</span> — Thielson</div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Autenticação e <span>Sessão</span> — UX e Segurança</div>
 
-      <div class="overview-grid">
-        <div class="overview-card" onclick="openScreenshot('11928','Botões limpar busca e refresh de dados — tela de Relatórios')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11928</div>
-          <div class="overview-card-title">Botões limpar busca e refresh de dados — tela de Relatórios</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+      <div class="grid-2" style="gap:16px; flex:1">
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <!-- #11781 -->
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">#11781 — Reload automático após deploy</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              Após novo deploy, assets JS em cache ficavam desatualizados e geravam <strong style="color:var(--text)">erros em branco</strong> para o usuário. Agora o sistema detecta a nova versão e <strong style="color:var(--text)">força reload automático</strong> — sem intervenção do usuário.
+            </div>
+            <div class="flow" style="font-size:13px">
+              <div class="flow-step" style="padding:6px 12px">Novo deploy</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">Detecta hash diferente</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px; border-color:var(--teal); color:var(--teal)">Auto-reload</div>
+            </div>
+          </div>
+
+          <!-- #11794 -->
+          <div class="card card-accent-blue">
+            <div class="section-label" style="color:var(--blue)">#11794 — Redirecionamento para URL original após login</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              Usuário que acessava <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">/pagina-x</code> sem autenticação era jogado na home após login. Agora o <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">AuthGuard</code> salva a rota original via <code style="color:var(--teal); background:var(--bg4); padding:2px 8px; border-radius:3px">returnUrl</code> e redireciona de volta.
+            </div>
+            <div class="flow" style="font-size:13px">
+              <div class="flow-step" style="padding:6px 12px">/pagina-x</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">AuthGuard salva URL</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">/login?returnUrl=</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px; border-color:var(--teal); color:var(--teal)">/pagina-x ✓</div>
+            </div>
+          </div>
+
         </div>
-        <div class="overview-card" onclick="openScreenshot('11870','Título configurável no dashboard formulário')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11870</div>
-          <div class="overview-card-title">Título configurável no dashboard formulário</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11791','Permissões ACL — impedir associação de filiais sem acesso')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#11791</div>
-          <div class="overview-card-title">Permissões ACL — impedir associação de filiais sem acesso</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11836','Labels configuráveis nos botões — aba Comparativos')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11836</div>
-          <div class="overview-card-title">Labels configuráveis nos botões — aba Comparativos</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11798','Correção de layout do modal Dados da Exportação')">
-          <div class="overview-card-badge"><span class="badge badge-red" style="font-size:11px; padding:2px 8px">fix</span></div>
-          <div class="overview-card-id">#11798</div>
-          <div class="overview-card-title">Correção de layout do modal Dados da Exportação</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11792','Novo campo no cadastro de volume por filial e por país')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11792</div>
-          <div class="overview-card-title">Novo campo no cadastro de volume por filial e por país</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11795','Filtro de busca em tempo real na listagem de relatórios')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11795</div>
-          <div class="overview-card-title">Filtro de busca em tempo real na listagem de relatórios</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
-        </div>
-        <div class="overview-card" onclick="openScreenshot('11645','Adicionar unidade no volume por produtor')">
-          <div class="overview-card-badge"><span class="badge badge-green" style="font-size:11px; padding:2px 8px">feat</span></div>
-          <div class="overview-card-id">#11645</div>
-          <div class="overview-card-title">Adicionar unidade no volume por produtor</div>
-          <div class="overview-card-hint">📷 clique para ver screenshot</div>
+
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <!-- #11887 — destaque principal -->
+          <div class="card card-accent-purple">
+            <div class="section-label" style="color:var(--purple)">#11887 — Isolamento de sessão Agrotrace ↔ CMS</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              Agrotrace e CMS compartilhavam o <strong style="color:var(--text)">mesmo cookie de autenticação</strong>. Fazer logout em um sistema derrubava a sessão do outro. Refactor completo para cookies independentes — Mobile continua via <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">Authorization: Bearer</code>.
+            </div>
+
+            <div style="display:flex; gap:16px; margin-bottom:12px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--coral); margin-bottom:6px; font-weight:700">❌ ANTES</div>
+                <div style="font-family:var(--font-mono); font-size:13px; color:var(--text2); line-height:1.8">
+                  <span class="err">cookie: auth_token</span><br>
+                  <span class="cmt">// compartilhado!</span><br>
+                  <span class="cmt">// logout CMS → mata Agrotrace</span>
+                </div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--teal); margin-bottom:6px; font-weight:700">✓ DEPOIS</div>
+                <div style="font-family:var(--font-mono); font-size:13px; color:var(--text2); line-height:1.8">
+                  <span class="ok">cookie: agrotrace</span><br>
+                  <span class="ok">cookie: cms</span><br>
+                  <span class="ok">header: Bearer (mobile)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tag-list">
+              <span class="chip">cookies independentes</span>
+              <span class="chip">interceptadores HTTP</span>
+              <span class="chip">localStorage isolado</span>
+              <span class="chip">mobile inalterado</span>
+            </div>
+          </div>
+
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">🔐 auth-guard.service.ts</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</div>
+              <div class="code-lines">
+                <span class="cmt">// returnUrl → redireciona após login</span><br>
+                <span class="kw">canActivate</span>(route, state) {<br>
+                &nbsp;&nbsp;<span class="kw">if</span> (!<span class="prop">this</span>.<span class="fn">isAuthenticated</span>()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span> <span class="prop">returnUrl</span> =<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state.<span class="prop">url</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">this</span>.<span class="prop">router</span>.<span class="fn">navigate</span>(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="str">'/login'</span>],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="prop">queryParams</span>: { returnUrl } }<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="num">false</span><br>
+                &nbsp;&nbsp;}<br>
+                }
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 9: WINS ─── -->
+    <!-- ─── SLIDE 9: FORMULÁRIOS DINÂMICOS ─── -->
     <div class="slide" id="slide-9">
+      <div class="slide-title">// sprint 97/98 — Formulários Dinâmicos</div>
+      <div class="flex-row mb-8">
+        <span class="badge badge-teal">📋 feature + fix</span>
+        <span class="badge badge-green">#11796 #11734 #11746 #11904 #11906</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">forms-dinamicos.ts</span>
+      </div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Formulários <span>Dinâmicos</span> — Novo tipo de pergunta + Laudos</div>
+
+      <div class="grid-2" style="gap:16px; flex:1">
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <!-- #11796 destaque -->
+          <div class="card card-accent-teal">
+            <div class="section-label" style="color:var(--teal)">#11796 — Novo tipo de pergunta: Anexo</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              Produtores agora podem fazer <strong style="color:var(--text)">upload de documentos</strong> (PDF, DOCX, XLS, etc.) diretamente como resposta a uma pergunta. O CMS permite configurar <strong style="color:var(--text)">quantidade mínima/máxima</strong> de arquivos e <strong style="color:var(--text)">tamanho máximo</strong> por arquivo (default: 10 MB). O botão de upload trava automaticamente ao atingir o limite.
+            </div>
+            <div class="flow" style="font-size:13px">
+              <div class="flow-step" style="padding:6px 12px">CMS configura limites</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">Produtor abre formulário</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">Upload de arquivos</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px; border-color:var(--teal); color:var(--teal)">Salvo no blob</div>
+            </div>
+          </div>
+
+          <!-- Laudos Biodiesel -->
+          <div class="card card-accent-amber">
+            <div class="section-label" style="color:var(--amber)">Laudos Biodiesel — Duas novas opções</div>
+            <div style="display:flex; gap:16px; margin-top:4px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--amber); margin-bottom:6px; font-weight:700">#11746 — "Imprimir"</div>
+                <div style="font-size:14px; color:var(--text2); line-height:1.6">
+                  Campos podem ser marcados para <strong style="color:var(--text)">controlar o que aparece na impressão</strong> do laudo. Visibilidade granular por campo.
+                </div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--amber); margin-bottom:6px; font-weight:700">#11734 — "Possui Validação"</div>
+                <div style="font-size:14px; color:var(--text2); line-height:1.6">
+                  Campos recebem <strong style="color:var(--text)">expressão de validação</strong> e mensagem de erro customizada, configurável via CMS.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Correções -->
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">Correções de UX</div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:15px; color:var(--text2); margin-top:4px">
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700; min-width:60px">#11904</span>
+                <div>
+                  <strong style="color:var(--text)">Exclusão de imagem única bloqueada</strong> — lógica de validação impedia remover quando havia apenas 1 imagem. Condição corrigida.
+                </div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700; min-width:60px">#11906</span>
+                <div>
+                  <strong style="color:var(--text)">Lightbox sem botão de fechar</strong> — modal de visualização de imagem não tinha botão <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">x</code>, forçando uso de <kbd>Esc</kbd>. Adicionado botão acessível inclusive no mobile.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px">
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">📋 pergunta-anexo.config.ts</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14</div>
+              <div class="code-lines">
+                <span class="kw">interface</span> <span class="fn">PerguntaAnexo</span> {<br>
+                &nbsp;&nbsp;<span class="prop">tipo</span>: <span class="str">'anexo'</span><br>
+                &nbsp;&nbsp;<span class="prop">minArquivos</span>: <span class="num">1</span><br>
+                &nbsp;&nbsp;<span class="prop">maxArquivos</span>: <span class="num">5</span><br>
+                &nbsp;&nbsp;<span class="prop">maxTamanhoMB</span>: <span class="num">10</span><br>
+                &nbsp;&nbsp;<span class="prop">extensoes</span>: [<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'.pdf'</span>, <span class="str">'.docx'</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'.xls'</span>, <span class="str">'.xlsx'</span><br>
+                &nbsp;&nbsp;]<br>
+                }<br><br>
+                <span class="cmt">// Botão trava ao atingir maxArquivos</span><br>
+                <span class="kw">get</span> <span class="fn">podeAnexar</span>() {<br>
+                &nbsp;&nbsp;<span class="kw">return</span> <span class="prop">this</span>.<span class="prop">files</span>.<span class="prop">length</span> &lt; <span class="prop">this</span>.<span class="prop">maxArquivos</span><br>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">🔧 laudo-biodiesel.config.ts</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</div>
+              <div class="code-lines">
+                <span class="kw">interface</span> <span class="fn">CampoBiodiesel</span> {<br>
+                &nbsp;&nbsp;<span class="prop">label</span>: <span class="prop">string</span><br>
+                &nbsp;&nbsp;<span class="prop">valor</span>: <span class="prop">unknown</span><br><br>
+                &nbsp;&nbsp;<span class="cmt">// #11746 — novo</span><br>
+                &nbsp;&nbsp;<span class="ok">imprimir</span>: <span class="prop">boolean</span><br><br>
+                &nbsp;&nbsp;<span class="cmt">// #11734 — novo</span><br>
+                &nbsp;&nbsp;<span class="ok">possuiValidacao</span>: <span class="prop">boolean</span><br>
+                &nbsp;&nbsp;<span class="ok">expressaoValidacao</span>?: <span class="prop">string</span><br>
+                &nbsp;&nbsp;<span class="ok">mensagemErro</span>?: <span class="prop">string</span><br>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SLIDE 10: RELATÓRIOS E EXPORTAÇÕES ─── -->
+    <div class="slide" id="slide-10">
+      <div class="slide-title">// sprint 97/98 — Relatórios e Exportações</div>
+      <div class="flex-row mb-8">
+        <span class="badge badge-amber">📄 feature + fix</span>
+        <span class="badge badge-green">#11742 #11807 #11647 #11947 #11950 #11967 #11927</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">relatorios.ts</span>
+      </div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Relatórios e <span>Exportações</span> — Ciclo completo</div>
+
+      <div class="grid-2" style="gap:16px; flex:1">
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <!-- Segurança -->
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">#11807 — Tokens fixos expostos no PDF</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:10px">
+              Relatórios Jasper incluíam <strong style="color:var(--text)">URL e QRCode de anexos com tokens fixos de acesso</strong>, expondo credenciais no PDF gerado. Removidos completamente.
+            </div>
+            <div style="display:flex; gap:16px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:8px 12px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--coral); margin-bottom:4px; font-weight:700">ANTES</div>
+                <div style="font-family:var(--font-mono); font-size:12px; color:var(--text2); line-height:1.7">
+                  <span class="err">URL: blob.core/...?sig=TOKEN</span><br>
+                  <span class="err">QRCode: [token exposto]</span>
+                </div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:8px 12px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--teal); margin-bottom:4px; font-weight:700">DEPOIS</div>
+                <div style="font-family:var(--font-mono); font-size:12px; color:var(--text2); line-height:1.7">
+                  <span class="ok">URL: removida</span><br>
+                  <span class="ok">QRCode: removido</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Novas features -->
+          <div class="card card-accent-teal">
+            <div class="section-label" style="color:var(--teal)">Melhorias em Relatórios</div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:15px; color:var(--text2); margin-top:4px">
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--teal); font-family:var(--font-mono); font-weight:700; min-width:60px">#11742</span>
+                <span>Relatório Expocacer agora exporta Word em <strong style="color:var(--text)">orientação paisagem</strong> (horizontal)</span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--teal); font-family:var(--font-mono); font-weight:700; min-width:60px">#11647</span>
+                <span>Dados de <strong style="color:var(--text)">APP</strong> (Preserv. Permanente) e <strong style="color:var(--text)">RL</strong> (Reserva Legal) do CAR-Sicar incluídos no relatório 3S</span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--teal); font-family:var(--font-mono); font-weight:700; min-width:60px">#11950</span>
+                <span>Template HTML estático para <strong style="color:var(--text)">Relatório de Atend. Técnico</strong> — dark/light, 100% offline, marcadores dinâmicos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fixes -->
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">Correções Jasper</div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:15px; color:var(--text2); margin-top:4px">
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700; min-width:60px">#11947</span>
+                <div>Title Case falhava com múltiplos espaços:<br>
+                  <code style="color:var(--coral); background:var(--bg4); padding:2px 8px; border-radius:3px">.split(" ")</code> → <code style="color:var(--teal); background:var(--bg4); padding:2px 8px; border-radius:3px">.split("\\s+")</code>
+                </div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700; min-width:60px">#11967</span>
+                <span>Relatório de Diagnóstico — <strong style="color:var(--text)">Grupos MT e MT(COFCO)</strong>: falha na geração + textos de Apresentação e Conclusão atualizados</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <!-- Exportações CMS -->
+          <div class="card card-accent-amber">
+            <div class="section-label" style="color:var(--amber)">#11927 — Melhorias no fluxo de Exportações (CMS)</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:10px">
+              Quatro ajustes que simplificam o cadastro e eliminam fricção:
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--text2)">
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--amber); font-family:var(--font-mono); font-weight:700">1.</span>
+                <span>"Título do Relatório" <strong style="color:var(--text)">deixou de ser obrigatório</strong></span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--amber); font-family:var(--font-mono); font-weight:700">2.</span>
+                <span>Sincronização de parâmetros <strong style="color:var(--text)">não preenche</strong> "Label Alternativa" automaticamente</span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--amber); font-family:var(--font-mono); font-weight:700">3.</span>
+                <span>Cor default de campos sincronizados = <strong style="color:var(--text)">branca</strong> (Excel gerado legível — sem texto preto sobre fundo preto)</span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--amber); font-family:var(--font-mono); font-weight:700">4.</span>
+                <span>Ao criar nova exportação, sincronização de parâmetros e campos é <strong style="color:var(--text)">executada automaticamente</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Code block RAT template -->
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">📄 rat-report.template.html — #11950</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13</div>
+              <div class="code-lines">
+                <span class="cmt">&lt;!-- Template 100% offline --&gt;</span><br>
+                <span class="cmt">&lt;!-- Suporta dark/light mode --&gt;</span><br><br>
+                <span class="kw">&lt;meta</span> <span class="prop">name</span>=<span class="str">"color-scheme"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">content</span>=<span class="str">"light dark"</span><span class="kw">&gt;</span><br><br>
+                <span class="cmt">&lt;!-- Marcadores dinâmicos --&gt;</span><br>
+                <span class="tag">{{DATA_INICIO}}</span> → data inicial<br>
+                <span class="tag">{{DATA_FIM}}</span> &nbsp;&nbsp;→ data final<br>
+                <span class="tag">{{FOLDER}}</span> &nbsp;&nbsp;&nbsp;→ pasta de anexos<br>
+                <span class="tag">{{FILES}}</span> &nbsp;&nbsp;&nbsp;&nbsp;→ lista de arquivos<br><br>
+                <span class="cmt">&lt;!-- Substituídos no build do ZIP --&gt;</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SLIDE 11: INFRAESTRUTURA ─── -->
+    <div class="slide" id="slide-11">
+      <div class="slide-title">// sprint 97/98 — Infraestrutura e Confiabilidade</div>
+      <div class="flex-row mb-8">
+        <span class="badge badge-coral">⚙️ fix + refactor</span>
+        <span class="badge badge-green">#11882 #11933</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">infra.ts</span>
+      </div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Infraestrutura e <span>Confiabilidade</span> — Dois incidentes resolvidos</div>
+
+      <div class="grid-2" style="gap:16px; flex:1">
+
+        <!-- #11882 -->
+        <div style="display:flex; flex-direction:column; gap:12px">
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">#11882 — Fix SAS Token de Anexos (Azure Blob)</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              UUIDs com hífens geravam <strong style="color:var(--text)">tokens SAS inválidos</strong> no Azure Blob Storage, quebrando <strong style="color:var(--text)">todos os anexos no mobile</strong>. Web, Mobile e DevOps trabalharam em paralelo e resolveram no mesmo dia.
+            </div>
+
+            <div style="display:flex; gap:16px; margin-bottom:12px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--coral); margin-bottom:6px; font-weight:700">ANTES — path inválido</div>
+                <div style="font-family:var(--font-mono); font-size:13px; color:var(--text2); line-height:1.8">
+                  <span class="err">uuid: a1b2c3d4-e5f6-7890</span><br>
+                  <span class="err">path: /a1b2c3d4-e5f6-7890/</span><br>
+                  <span class="cmt">// SAS token → 403 Forbidden</span>
+                </div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--teal); margin-bottom:6px; font-weight:700">DEPOIS — UUID sanitizado</div>
+                <div style="font-family:var(--font-mono); font-size:13px; color:var(--text2); line-height:1.8">
+                  <span class="ok">uuid: a1b2c3d4e5f67890</span><br>
+                  <span class="ok">path: /a1b2c3d4e5f67890/</span><br>
+                  <span class="cmt">// SAS token → 200 OK ✓</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flow" style="font-size:13px">
+              <div class="flow-step" style="padding:6px 12px">UUID recebido</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">.replace(/-/g, '')</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px">Monta path limpo</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step" style="padding:6px 12px; border-color:var(--teal); color:var(--teal)">SAS válido ✓</div>
+            </div>
+          </div>
+
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">🔧 sas-token.service.ts</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
+              <div class="code-lines">
+                <span class="kw">function</span> <span class="fn">getSasUrl</span>(uuid: <span class="prop">string</span>) {<br>
+                &nbsp;&nbsp;<span class="cmt">// Sanitiza UUID antes do path</span><br>
+                &nbsp;&nbsp;<span class="kw">const</span> <span class="prop">cleanId</span> = uuid<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.<span class="fn">replace</span>(<span class="str">/-/g</span>, <span class="str">''</span>)<br><br>
+                &nbsp;&nbsp;<span class="kw">const</span> <span class="prop">blobPath</span> =<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">`${container}/${cleanId}`</span><br><br>
+                &nbsp;&nbsp;<span class="kw">return</span> <span class="fn">generateSasToken</span>(blobPath)<br>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- #11933 -->
+        <div style="display:flex; flex-direction:column; gap:12px">
+          <div class="card card-accent-blue">
+            <div class="section-label" style="color:var(--blue)">#11933 — Migração de upload: memoryStorage → diskStorage</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              Upload de arquivo de <strong style="color:var(--text)">150 MB</strong> causou crash por OOM — o Multer carregava o <strong style="color:var(--text)">arquivo inteiro na RAM</strong> do servidor NestJS. Endpoints migrados para <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">diskStorage</code> com diretório temporário. Arquivos deletados via <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">try/finally</code> para garantir cleanup mesmo em caso de erro.
+            </div>
+
+            <div style="display:flex; gap:16px; margin-bottom:12px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--coral); margin-bottom:6px; font-weight:700">ANTES — memoryStorage</div>
+                <div style="font-family:var(--font-mono); font-size:13px; color:var(--text2); line-height:1.8">
+                  <span class="err">arquivo → buffer na RAM</span><br>
+                  <span class="err">150MB → heap overflow</span><br>
+                  <span class="cmt">// servidor crash 💥</span>
+                </div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="font-family:var(--font-mono); font-size:11px; color:var(--teal); margin-bottom:6px; font-weight:700">DEPOIS — diskStorage</div>
+                <div style="font-family:var(--font-mono); font-size:13px; color:var(--text2); line-height:1.8">
+                  <span class="ok">arquivo → disco tmpdir()</span><br>
+                  <span class="ok">stream → Azure Blob</span><br>
+                  <span class="cmt">// finally { unlink(tmp) }</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:12px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:12px 16px; text-align:center">
+                <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--coral)">150MB</div>
+                <div style="font-size:12px; color:var(--text3)">causava crash</div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:12px 16px; text-align:center; display:flex; align-items:center; justify-content:center">
+                <div style="font-size:20px; color:var(--text3)">→</div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:12px 16px; text-align:center">
+                <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--teal)">∞</div>
+                <div style="font-size:12px; color:var(--text3)">sem limite de RAM</div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:12px 16px; text-align:center">
+                <div style="font-size:28px; font-weight:700; font-family:var(--font-mono); color:var(--teal)">0</div>
+                <div style="font-size:12px; color:var(--text3)">arquivos orphans</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">🔧 upload.service.ts</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</div>
+              <div class="code-lines">
+                <span class="cmt">// Antes — arquivo inteiro na RAM</span><br>
+                <span class="err">multer({ storage: memoryStorage() })</span><br><br>
+                <span class="cmt">// Depois — disco temporário + cleanup</span><br>
+                <span class="ok">multer({ storage: diskStorage({</span><br>
+                <span class="ok">&nbsp;&nbsp;destination: tmpdir()</span><br>
+                <span class="ok">})})</span><br><br>
+                <span class="kw">async</span> <span class="fn">uploadToBlob</span>(file) {<br>
+                &nbsp;&nbsp;<span class="kw">try</span> {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">await</span> <span class="fn">streamToBlob</span>(file.<span class="prop">path</span>)<br>
+                &nbsp;&nbsp;} <span class="kw">finally</span> {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">// Sempre limpa o arquivo temp</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">unlinkSync</span>(file.<span class="prop">path</span>)<br>
+                &nbsp;&nbsp;}<br>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─── SLIDE 12: UI/UX E CORREÇÕES ─── -->
+    <div class="slide" id="slide-12">
+      <div class="slide-title">// sprint 97/98 — UI/UX e Correções</div>
+      <div class="flex-row mb-8">
+        <span class="badge badge-blue">🎨 fix + feature</span>
+        <span class="badge badge-green">#11763 #11909 #11932 #11885 #11840 #11707 #11872</span>
+        <span style="font-size:14px; color:var(--text3); font-family:var(--font-mono)">ui-fixes.ts</span>
+      </div>
+      <div class="slide-heading" style="font-size:28px; margin-bottom:20px">Perfil do Produtor, <span>UI/UX</span> e Correções</div>
+
+      <div class="grid-2" style="gap:16px; flex:1">
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <!-- Carrossel destaque -->
+          <div class="card card-accent-blue">
+            <div class="section-label" style="color:var(--blue)">#11909 — Gráficos de conformidade → Carrossel navegável</div>
+            <div style="font-size:15px; color:var(--text2); line-height:1.7; margin-bottom:12px">
+              Gráficos de conformidade <strong style="color:var(--text)">extrapolavam a largura da tela</strong> e o último ficava cortado. Migrado para <code style="color:var(--amber); background:var(--bg4); padding:2px 8px; border-radius:3px">p-carousel</code> do PrimeNG com breakpoints responsivos.
+            </div>
+            <div style="display:flex; gap:12px">
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px; text-align:center">
+                <div style="font-size:22px; font-weight:700; font-family:var(--font-mono); color:var(--blue)">4</div>
+                <div style="font-size:12px; color:var(--text3)">itens desktop</div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px; text-align:center">
+                <div style="font-size:22px; font-weight:700; font-family:var(--font-mono); color:var(--blue)">2</div>
+                <div style="font-size:12px; color:var(--text3)">itens tablet</div>
+              </div>
+              <div style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px; text-align:center">
+                <div style="font-size:22px; font-weight:700; font-family:var(--font-mono); color:var(--blue)">1</div>
+                <div style="font-size:12px; color:var(--text3)">item mobile</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dark mode + responsividade -->
+          <div class="card card-accent-purple">
+            <div class="section-label" style="color:var(--purple)">Melhorias visuais no Perfil do Produtor</div>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:15px; color:var(--text2); margin-top:4px">
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--purple); font-family:var(--font-mono); font-weight:700; min-width:60px">#11763</span>
+                <span><strong style="color:var(--text)">Suporte a Dark Mode na Home</strong> — quadros da tela inicial que não estavam adaptados ao tema escuro agora renderizam corretamente em ambos os modos</span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start">
+                <span style="color:var(--purple); font-family:var(--font-mono); font-weight:700; min-width:60px">#11932</span>
+                <span><strong style="color:var(--text)">Responsividade do Perfil Público</strong> — ajustes nos gráficos dos temas para adaptar em telas menores sem quebra de layout</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="code-block" style="height:fit-content">
+            <div class="code-block-header">🎨 conformidade-carousel.component.ts</div>
+            <div class="code-body">
+              <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</div>
+              <div class="code-lines">
+                <span class="cmt">// Antes — overflow cortava o último</span><br>
+                <span class="err">&lt;div class="flex-row"&gt; ...gráficos&lt;/div&gt;</span><br><br>
+                <span class="cmt">// Depois — carrossel responsivo</span><br>
+                <span class="ok">&lt;p-carousel [value]="graficos"</span><br>
+                <span class="ok">&nbsp;&nbsp;[numVisible]="4"</span><br>
+                <span class="ok">&nbsp;&nbsp;[numScroll]="1"</span><br>
+                <span class="ok">&nbsp;&nbsp;[responsiveOptions]="breakpoints"&gt;</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:12px">
+
+          <div class="card card-accent-coral">
+            <div class="section-label" style="color:var(--coral)">Bugs de produção corrigidos</div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:15px; color:var(--text2); margin-top:4px">
+
+              <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:6px">
+                  <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700">#11885</span>
+                  <strong style="color:var(--text)">CAR duplicando em novo cadastro</strong>
+                </div>
+                <div style="font-size:14px; color:var(--text3); line-height:1.6">
+                  Ao registrar uma nova propriedade, o CAR era duplicado no banco. Bug de produção identificado e corrigido na lógica de persistência.
+                </div>
+              </div>
+
+              <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:6px">
+                  <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700">#11840</span>
+                  <strong style="color:var(--text)">Consolidação em lote bloqueando indevidamente</strong>
+                </div>
+                <div style="font-size:14px; color:var(--text3); line-height:1.6">
+                  Propriedades com atendimentos não-diagnóstico na safra de destino eram bloqueadas incorretamente. Lógica de validação corrigida para considerar apenas diagnósticos.
+                </div>
+              </div>
+
+              <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:6px">
+                  <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700">#11707</span>
+                  <strong style="color:var(--text)">Ranking de importância repetido na Home</strong>
+                </div>
+                <div style="font-size:14px; color:var(--text3); line-height:1.6">
+                  Tela inicial do perfil do produtor exibia o detalhe de importância do ranking múltiplas vezes. Query de agregação corrigida.
+                </div>
+              </div>
+
+              <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:10px 14px">
+                <div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:6px">
+                  <span style="color:var(--coral); font-family:var(--font-mono); font-weight:700">#11872</span>
+                  <strong style="color:var(--text)">Tooltip do gráfico mostrando percentual</strong>
+                </div>
+                <div style="font-size:14px; color:var(--text3); line-height:1.6">
+                  Tooltip agora exibe o <strong style="color:var(--text2)">total de respostas</strong> ao invés de percentual ao passar o mouse sobre o gráfico da Home.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SLIDE 13: WINS ─── -->
+    <div class="slide" id="slide-13">
       <div class="slide-title">// wins.log</div>
       <div class="slide-heading">Engineering <span>Wins</span></div>
 
       <div style="display:flex; flex-direction:column; gap:14px; flex:1">
+        <div class="win-card" style="border-left:3px solid var(--purple)">
+          <div class="win-icon">🏆</div>
+          <div class="win-who" style="color:var(--purple)">Thielson — Bug mais difícil do período</div>
+          <div class="win-text">
+            Resolveu o bug de persistência do layout no Dashboard Formulário — um problema que envolvia <strong style="color:var(--text)">biblioteca, banco de dados e código ao mesmo tempo</strong>. Após identificar e corrigir as três camadas, ainda adicionou um botão de reset como rede de segurança em produção.
+          </div>
+          <div class="tag-list">
+            <span class="chip">#11837</span>
+            <span class="chip">procedure + código + biblioteca</span>
+          </div>
+        </div>
+
         <div class="win-card" style="border-left:3px solid var(--blue)">
           <div class="win-icon">🚀</div>
-          <div class="win-who" style="color:var(--blue)">Bruno — Landing Page + Blog do zero ao deploy</div>
+          <div class="win-who" style="color:var(--blue)">Bruno — Entrega de maior amplitude</div>
           <div class="win-text">
-            Saiu do zero e entregou a <strong style="color:var(--text)">Landing Page + Blog em produção em 3 semanas</strong>: POC → containerizado com Docker, com newsletter, SEO, cache Redis, modo dark e hardening de segurança completo. Primeira vez trabalhando com <strong style="color:var(--text)">Astro</strong> — absorveu o framework, aplicou SSR com dados dinâmicos via API e já entregou com performance de site estático.
+            Saiu do zero e entregou a <strong style="color:var(--text)">Landing Page + Blog em produção em 3 semanas</strong>: POC → containerizado com Docker, com newsletter, SEO, cache Redis, modo dark e hardening de segurança completo.
           </div>
           <div class="tag-list">
             <span class="chip">#11494</span>
@@ -1873,47 +2233,22 @@ kbd {
           </div>
         </div>
 
-        <div class="win-card" style="border-left:3px solid var(--purple)">
-          <div class="win-icon">🏆</div>
-          <div class="win-who" style="color:var(--purple)">Thielson — Volume e consistência</div>
-          <div class="win-text">
-            O membro que <strong style="color:var(--text)">mais atuou em cards diferentes</strong> no período — focado em resolver problemas e ajustes pontuais conforme iam surgindo. De bugs em procedures a melhorias de UI, manteve o ritmo sem deixar nenhuma demanda parada. Não tem tempo ruim com esses meninos.
-          </div>
-          <div class="tag-list">
-            <span class="chip">+25 cards</span>
-            <span class="chip">procedure + código + UI</span>
-          </div>
-        </div>
-
         <div class="win-card" style="border-left:3px solid var(--teal)">
           <div class="win-icon">🤝</div>
-          <div class="win-who" style="color:var(--teal)">Web + Mobile + DevOps — Fix crítico de anexos</div>
+          <div class="win-who" style="color:var(--teal)">Time Web inteiro — Fix crítico de anexos</div>
           <div class="win-text">
-            Dois problemas simultâneos: UUID com hífens gerando <strong style="color:var(--text)">token SAS inválido</strong> no Azure Blob, e uma nova coluna na tabela de anexos (opcional na API) que causou <strong style="color:var(--text)">efeito colateral no mobile</strong> — a entidade foi replicada mas a coluna ainda não existia no banco local do celular. Os 3 times (Web, Mobile, DevOps) atuaram juntos e <strong style="color:var(--text)">resolveram no mesmo dia</strong>.
+            UUID com hífens estava gerando token SAS inválido no Azure Blob, quebrando todos os anexos no mobile. Web, Mobile e DevOps trabalharam em paralelo e <strong style="color:var(--text)">resolveram no mesmo dia</strong>.
           </div>
           <div class="tag-list">
             <span class="chip">#11882</span>
-            <span class="chip">#11773</span>
-            <span class="chip">Azure Blob + SQLite mobile + deploy</span>
-          </div>
-        </div>
-
-        <div class="win-card" style="border-left:3px solid var(--coral)">
-          <div class="win-icon">🙌</div>
-          <div class="win-who" style="color:var(--coral)">Matheus (Mobile) — Colaboração cross-team</div>
-          <div class="win-text">
-            Mesmo atuando no time Mobile, o Matheus trabalhou em conjunto com o Bruno no desenvolvimento da <strong style="color:var(--text)">API e CMS da Landing Page</strong> — contribuição direta que acelerou a entrega do projeto.
-          </div>
-          <div class="tag-list">
-            <span class="chip">#11494</span>
-            <span class="chip">NestJS + CMS</span>
+            <span class="chip">Azure Blob + UUID + SAS token</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 10: ROADMAP ─── -->
-    <div class="slide" id="slide-10">
+    <!-- ─── SLIDE 14: ROADMAP ─── -->
+    <div class="slide" id="slide-14">
       <div class="slide-title">// roadmap.todo</div>
       <div class="slide-heading">Próximas <span>prioridades</span></div>
 
@@ -1921,18 +2256,18 @@ kbd {
         <div class="todo-item">
           <div class="todo-check"></div>
           <div class="todo-content">
-            <div class="todo-title">Migração CheckMilk → Agrotrace</div>
-            <div class="todo-desc">Retomar a migração das telas do CheckMilk para o Agrotrace — já migramos Reprodução Bovina, faltam Lactação, Pesagem, Qualidade e Partos</div>
+            <div class="todo-title">#11730 — Referência entre perguntas no formulário dinâmico</div>
+            <div class="todo-desc">Encadear perguntas de diferentes formulários — feature estratégica para workflows complexos de diagnóstico</div>
           </div>
           <div class="flex-row">
-            <span class="badge badge-purple">Thielson</span>
+            <span class="badge badge-purple">Bruno + Iohan</span>
           </div>
         </div>
 
         <div class="todo-item">
           <div class="todo-check"></div>
           <div class="todo-content">
-            <div class="todo-title">Autenticação independente Agrotrace ↔ CMS</div>
+            <div class="todo-title">#11887 — Autenticação independente Agrotrace ↔ CMS</div>
             <div class="todo-desc">localStorage isolado por prefixo (SYSTEM, CMS, SHARED) — em progresso, finalizar interceptadores</div>
           </div>
           <div class="flex-row">
@@ -1943,8 +2278,8 @@ kbd {
         <div class="todo-item">
           <div class="todo-check"></div>
           <div class="todo-content">
-            <div class="todo-title">Relatório de Fechamento — Biodiesel / Cargill</div>
-            <div class="todo-desc">Relatório completo de fechamento do projeto com gráficos, tabelas e textos descritivos — baseado no modelo da Débora. Analisar o documento para propor as telas</div>
+            <div class="todo-title">Dashboard Biodiesel — IBS / Cargill</div>
+            <div class="todo-desc">Novo painel de dados agrícolas com safras 2024-25 e 2025-26 — em planejamento com Iohan e Ricardo</div>
           </div>
           <div class="flex-row">
             <span class="badge badge-teal">Ronaldo + Iohan</span>
@@ -1955,28 +2290,17 @@ kbd {
           <div class="todo-check"></div>
           <div class="todo-content">
             <div class="todo-title">Tela de Resumo do Produtor</div>
-            <div class="todo-desc">Visão consolidada onde ao selecionar um produtor, tudo que o sistema tem sobre ele aparece em um único lugar — sem precisar navegar tela por tela e pesquisar novamente</div>
+            <div class="todo-desc">Nova visão consolidada focada no produtor — prototipada, iniciando desenvolvimento</div>
           </div>
           <div class="flex-row">
             <span class="badge badge-amber">Ronaldo + Iohan</span>
           </div>
         </div>
-
-        <div class="todo-item">
-          <div class="todo-check"></div>
-          <div class="todo-content">
-            <div class="todo-title">Skills para aceleração do desenvolvimento</div>
-            <div class="todo-desc">Pesquisa e montagem de skills customizadas para automatizar tarefas recorrentes e acelerar o fluxo de desenvolvimento do time</div>
-          </div>
-          <div class="flex-row">
-            <span class="badge badge-coral">Thielson</span>
-          </div>
-        </div>
       </div>
     </div>
 
-    <!-- ─── SLIDE 11: EXIT ─── -->
-    <div class="slide" id="slide-11">
+    <!-- ─── SLIDE 15: EXIT ─── -->
+    <div class="slide" id="slide-15">
       <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:24px">
         <div style="font-family:var(--font-mono); font-size:14px; color:var(--text3); letter-spacing:0.15em; text-transform:uppercase">// exit.ts</div>
 
@@ -1984,29 +2308,25 @@ kbd {
           Obrigado pela<br><span style="color:var(--purple)">presença!</span>
         </div>
 
-        <div class="code-block" style="max-width:720px; width:100%">
+        <div class="code-block" style="max-width:680px; width:100%">
           <div class="code-block-header">👋 exit.ts</div>
           <div class="code-body">
-            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11</div>
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7</div>
             <div class="code-lines">
               <span class="kw">const</span> <span class="prop">team</span> = [<span class="str">"Ronaldo"</span>, <span class="str">"Bruno"</span>, <span class="str">"Thielson"</span>]<br>
-              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Dúvidas? Fala com:"</span>, team)<br><br>
-              <span class="cmt">// Edition #02 finalizada ✓</span><br>
-              <span class="kw">await</span> <span class="fn">spotlight</span>.<span class="fn">close</span>(<span class="num">2</span>)<br><br>
-              <span class="cmt">// Iniciando Edition #03...</span><br>
-              <span class="kw">const</span> <span class="prop">next</span> = <span class="fn">spotlight</span>.<span class="fn">schedule</span>({<br>
-              &nbsp;&nbsp;<span class="prop">edition</span>: <span class="num">3</span>,<br>
-              &nbsp;&nbsp;<span class="prop">date</span>: <span class="str">"24/04/2026"</span>,<br>
-              })<br>
-              <span class="ok">// ✓ See you on Edition #03</span>
+              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Dúvidas? Fala com:"</span>, team)<br>
+              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Próxima edição Web: 24/04/2026"</span>)<br>
+              <span class="prop">console</span>.<span class="fn">log</span>(<span class="str">"Próxima: DevOps 10/04/2026"</span>)<br><br>
+              <span class="cmt">// process.exit(0) ✓</span><br>
+              <span class="ok">// ✓ Spotlight concluído com sucesso</span>
             </div>
           </div>
         </div>
 
-        <div class="flex-row" style="justify-content:center; gap:8px">
-          <span class="pill" style="border-color:var(--border2); color:var(--text3)">✓ Edition #02 concluída</span>
-          <span class="pill" style="border-color:#4c1d95; color:var(--purple)">→ Edition #03 — 24/04/2026</span>
-          <span class="pill">📅 Próxima: DevOps 10/04/2026</span>
+        <div class="flex-row" style="justify-content:center">
+          <span class="pill">⏱️ 02/04/2026</span>
+          <span class="pill">📅 Próxima: 24/04/2026</span>
+          <span class="pill">🔢 Edition #02</span>
         </div>
       </div>
     </div>
@@ -2018,7 +2338,7 @@ kbd {
 <div class="nav-controls">
   <button class="nav-btn" onclick="prev()">← prev</button>
   <div class="nav-dots" id="navDots"></div>
-  <span class="slide-counter" id="slideCounter">1 / 12</span>
+  <span class="slide-counter" id="slideCounter">1 / 16</span>
   <button class="nav-btn" onclick="next()">next →</button>
 </div>
 
@@ -2044,21 +2364,6 @@ kbd {
         </thead>
         <tbody id="kpiBody"></tbody>
       </table>
-    </div>
-  </div>
-</div>
-
-<!-- SCREENSHOT MODAL -->
-<div class="ss-overlay" id="ssOverlay" onclick="if(event.target===this)closeScreenshot()">
-  <div class="ss-modal">
-    <div class="ss-header">
-      <div class="ss-header-left">
-        <span class="ss-card-id" id="ssCardId">#00000</span>
-        <span class="ss-title" id="ssTitle">Título</span>
-      </div>
-      <button class="ss-close" onclick="closeScreenshot()">✕ Fechar</button>
-    </div>
-    <div class="ss-body" id="ssBody">
     </div>
   </div>
 </div>
@@ -2159,111 +2464,11 @@ document.querySelectorAll('.metric-click').forEach(el => {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    if (document.getElementById('ssOverlay').classList.contains('open')) {
-      closeScreenshot();
-      e.stopPropagation();
-      return;
-    }
-    if (document.getElementById('kpiOverlay').classList.contains('open')) {
-      closeKpiModal();
-      e.stopPropagation();
-    }
+  if (e.key === 'Escape' && document.getElementById('kpiOverlay').classList.contains('open')) {
+    closeKpiModal();
+    e.stopPropagation();
   }
 });
-
-// ── Screenshot carousel ──
-let ssImages = [];
-let ssIndex = 0;
-let ssCardId = '';
-
-function openScreenshot(cardId, title) {
-  ssCardId = cardId;
-  ssImages = [];
-  ssIndex = 0;
-  document.getElementById('ssCardId').textContent = '#' + cardId;
-  document.getElementById('ssTitle').textContent = title;
-  const body = document.getElementById('ssBody');
-  body.innerHTML = '<div class="ss-empty"><div class="ss-empty-icon">⏳</div>Carregando...</div>';
-  document.getElementById('ssOverlay').classList.add('open');
-
-  // Tenta carregar imagem única (assets/XXXXX.png)
-  // e múltiplas (assets/XXXXX-1.png, assets/XXXXX-2.png, ...)
-  const single = new Image();
-  single.src = 'assets/' + cardId + '.png';
-  single.onload = () => {
-    ssImages = [single.src];
-    // Agora tenta encontrar mais imagens numeradas
-    probeNext(cardId, 2, () => renderCarousel());
-  };
-  single.onerror = () => {
-    // Sem imagem única, tenta numeradas a partir de 1
-    const first = new Image();
-    first.src = 'assets/' + cardId + '-1.png';
-    first.onload = () => {
-      ssImages = [first.src];
-      probeNext(cardId, 2, () => renderCarousel());
-    };
-    first.onerror = () => {
-      body.innerHTML = '<div class="ss-empty"><div class="ss-empty-icon">📷</div>Screenshot ainda não adicionado<br><span style="font-size:12px;color:var(--text3)">Salve em assets/' + cardId + '.png ou assets/' + cardId + '-1.png, -2.png, ...</span></div>';
-    };
-  };
-}
-
-function probeNext(cardId, n, done) {
-  const img = new Image();
-  img.src = 'assets/' + cardId + '-' + n + '.png';
-  img.onload = () => {
-    ssImages.push(img.src);
-    probeNext(cardId, n + 1, done);
-  };
-  img.onerror = done;
-}
-
-function renderCarousel() {
-  const body = document.getElementById('ssBody');
-  const img = document.createElement('img');
-  img.src = ssImages[ssIndex];
-  img.alt = '#' + ssCardId + ' — imagem ' + (ssIndex + 1);
-  body.innerHTML = '';
-  body.appendChild(img);
-
-  // Remove botões/counter anteriores
-  body.querySelectorAll('.ss-carousel-btn, .ss-counter').forEach(el => el.remove());
-
-  if (ssImages.length > 1) {
-    const prev = document.createElement('button');
-    prev.className = 'ss-carousel-btn prev';
-    prev.innerHTML = '‹';
-    prev.onclick = (e) => { e.stopPropagation(); ssNav(-1); };
-
-    const next = document.createElement('button');
-    next.className = 'ss-carousel-btn next';
-    next.innerHTML = '›';
-    next.onclick = (e) => { e.stopPropagation(); ssNav(1); };
-
-    const counter = document.createElement('div');
-    counter.className = 'ss-counter';
-    counter.innerHTML = ssImages.map((_, i) =>
-      '<div class="ss-dot' + (i === ssIndex ? ' active' : '') + '"></div>'
-    ).join('') + '<span>' + (ssIndex + 1) + ' / ' + ssImages.length + '</span>';
-
-    body.appendChild(prev);
-    body.appendChild(next);
-    body.appendChild(counter);
-  }
-}
-
-function ssNav(dir) {
-  ssIndex = (ssIndex + dir + ssImages.length) % ssImages.length;
-  renderCarousel();
-}
-
-function closeScreenshot() {
-  document.getElementById('ssOverlay').classList.remove('open');
-  ssImages = [];
-  ssIndex = 0;
-}
 
 const slides = document.querySelectorAll('.slide');
 const sidebarItems = document.querySelectorAll('[id^="si-"]');
@@ -2273,7 +2478,8 @@ let cur = 0;
 const labels = [
   'README.md','agenda.ts','stats.json',
   'ext-integration.ts','health-dashboard.ts','landing-page.astro',
-  'overview-bruno.md','rat-offline.html','overview-thielson.md',
+  'mcp-procedures.sql','painel-gestao.ts','auth-session.ts','forms-dinamicos.ts',
+  'relatorios.ts','infra.ts','ui-fixes.ts',
   'wins.log','roadmap.todo','exit.ts'
 ];
 
@@ -2282,7 +2488,7 @@ const tabsBar = document.getElementById('tabsBar');
 labels.forEach((l, i) => {
   const t = document.createElement('div');
   t.className = 'tab-item' + (i === 0 ? ' active' : '');
-  const icons = ['📋','📅','📊','🔐','📡','🌐','📸','📦','📸','🏆','🗺️','👋'];
+  const icons = ['📋','📊','📅','🔐','📡','🌐','⚡','📊','🔐','📋','📄','⚙️','🎨','🏆','🗺️','👋'];
   t.innerHTML = `<span class="tab-icon">${icons[i]}</span>${l}`;
   t.onclick = () => goTo(i);
   t.id = 'tab-' + i;
@@ -2324,14 +2530,6 @@ function next() { goTo(cur + 1); }
 function prev() { goTo(cur - 1); }
 
 document.addEventListener('keydown', e => {
-  // Se o modal de screenshot está aberto, setas navegam o carrossel
-  if (document.getElementById('ssOverlay').classList.contains('open')) {
-    if (ssImages.length > 1) {
-      if (e.key === 'ArrowRight') { ssNav(1); e.stopPropagation(); return; }
-      if (e.key === 'ArrowLeft') { ssNav(-1); e.stopPropagation(); return; }
-    }
-    return;
-  }
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
   if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
   if (e.key === 'f' || e.key === 'F') {
