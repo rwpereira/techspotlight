@@ -1136,6 +1136,15 @@ kbd {
 .term-body .t-check { color: var(--text3); }
 .term-body .t-link { color: var(--blue); text-decoration: underline; }
 .term-body .t-dim { color: var(--text3); }
+.term-body .t-sparkle { color: #c15f3c; font-weight: 700; }
+.term-body .t-step-pipe { color: var(--text3); display:inline; }
+.term-body .t-spin-dot { color: #e5a94e; font-weight: 700; display:inline; }
+.term-body .t-spin-text { color: var(--text3); display:inline; }
+.term-body .t-done-dot { color: var(--teal); font-weight: 700; display:inline; }
+.term-body .t-done-text { color: var(--text3); display:inline; }
+.term-body .t-cyan { color: var(--blue); font-weight: 700; }
+.term-body .t-bold { color: #e6edf3; font-weight: 700; }
+@keyframes termPulse { 0%,100%{ opacity:1; } 50%{ opacity:.3; } }
 .term-body .t-cursor {
   display: inline-block;
   width: 8px;
@@ -2297,90 +2306,120 @@ kbd {
 /* ── TERMINAL DEMO ANIMATION ── */
 const TERM_SEQUENCES = {
   pr: [
-    { type:'prompt', text:'~/agrotrace-v3 on feat/11796-anexo-upload' },
-    { type:'cmd', text:'$ create-pr-description', typeSpeed:40 },
+    { type:'prompt', text:'~/agrotrace-v3 on feat/11796-anexo-upload 📦 1 פֿ 3  2 🤷 ‍16 via .NET via  v22.17.1' },
+    { type:'cmd', text:'➜ create-pr-description', typeSpeed:40 },
     { delay:600 },
-    { type:'info', text:'[INFO] Detectando contexto...' },
-    { delay:400 },
-    { type:'dim', text:'  Branch: feat/11796-anexo-upload' },
-    { type:'dim', text:'  Work Item: #11796 — Novo tipo de pergunta: Anexo' },
-    { type:'dim', text:'  Sprint: sprint/98' },
-    { type:'dim', text:'  Target: dev + sprint/98' },
+    { type:'sparkle', text:' ✦ Gerando descricao do PR...' },
     { delay:300 },
-    { type:'info', text:'[INFO] Coletando git diff + git log...' },
+    { type:'spin', spinText:'Validando dependencias...', doneText:'Dependencias validadas', spinDuration:500 },
+    { type:'spin', spinText:'Carregando configuracao...', doneText:'Configuracao carregada', spinDuration:400 },
+    { type:'spin', spinText:'Validando API keys...', doneText:'API keys validadas', spinDuration:450 },
+    { type:'spin', spinText:'Validando branch...', doneText:'Branch validada', spinDuration:350 },
+    { type:'spin', spinText:'Coletando contexto git...', doneText:'Contexto git coletado (feat/11796-anexo-upload)', spinDuration:600 },
+    { type:'spin', spinText:'Detectando work item...', doneText:'Work item: #11796', spinDuration:400 },
+    { type:'spin', spinText:'Detectando sprint...', doneText:'Sprint: 98', spinDuration:300 },
+    { type:'spin', spinText:'Resolvendo repositório Azure DevOps...', doneText:'Repositório: ibsbiosistemico/AGROTRACE/agrotrace-v3', spinDuration:500 },
+    { type:'spin', spinText:'Gerando descrição via LLM...', doneText:'Descrição gerada (openrouter/qwen/qwen3.6-plus-preview:free)', spinDuration:1400 },
+    { delay:600 },
+    { type:'header', text:'\n==========================================' },
+    { type:'bold', text:'PR - feat/11796-anexo-upload' },
+    { type:'dim', text:'Target branches: dev, sprint/98' },
+    { type:'dim', text:'Provider: openrouter (qwen/qwen3.6-plus-preview:free)' },
+    { type:'dim', text:'Work Item: #11796' },
+    { type:'header', text:'==========================================' },
+    { delay:200 },
+    { type:'cyan', text:'\nTitulo: Novo tipo de pergunta Anexo com upload de documentos' },
+    { delay:100 },
+    { type:'bold', text:'\nDescrição:' },
+    { delay:100 },
+    { type:'h2', text:'\n  ## Descricao' },
+    { type:'text', text:'  Implementa o tipo de pergunta **Anexo** no formulário dinâmico,' },
+    { type:'text', text:'  permitindo upload de documentos (PDF, DOCX, XLS) como resposta' },
+    { type:'text', text:'  a perguntas configuráveis no CMS.' },
+    { delay:100 },
+    { type:'h2', text:'\n  ## Alteracoes' },
+    { type:'text', text:'\n  ### Componentes atualizados' },
+    { type:'text', text:'  • question-type.enum.ts: Novo tipo `anexo` no enum' },
+    { type:'text', text:'  • upload.component.ts: Componente de upload com drag & drop' },
+    { type:'text', text:'  • disk-storage.service.ts: Integração com Azure Blob Storage' },
+    { type:'text', text:'  • validators.ts: Validação de extensões e tamanho' },
+    { delay:100 },
+    { type:'h2', text:'\n  ## Tipo de mudanca' },
+    { type:'text', text:'  [ ] Bug fix' },
+    { type:'text', text:'  [✓] Nova feature' },
+    { type:'text', text:'  [ ] Breaking change' },
+    { type:'text', text:'  [ ] Refactoring' },
+    { type:'text', text:'\n  Relacionado a: #11796' },
+    { delay:400 },
+    { type:'header', text:'\n==========================================' },
+    { delay:200 },
+    { type:'dim', text:'\nWork Item:' },
+    { type:'dim', text:'  -> #11796:' },
+    { type:'link', text:'     https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/11796' },
+    { delay:100 },
+    { type:'dim', text:'\nAbrir PR:' },
+    { type:'dim', text:'\n  -> dev:' },
+    { type:'link', text:'     https://dev.azure.com/ibsbiosistemico/AGROTRACE/_git/agrotrace-v3/pullrequestcreate?sourceRef=feat/11796...' },
+    { type:'dim', text:'\n  -> sprint/98:' },
+    { type:'link', text:'     https://dev.azure.com/ibsbiosistemico/AGROTRACE/_git/agrotrace-v3/pullrequestcreate?sourceRef=feat/11796...' },
+    { delay:200 },
+    { type:'header', text:'\n==========================================' },
+    { type:'ok', text:'Descrição copiada para o clipboard!' },
+    { type:'dim', text:'  Titulo disponivel acima para copiar manualmente.' },
+    { type:'header', text:'==========================================' },
     { delay:500 },
-    { type:'dim', text:'  12 files changed, 847 insertions(+), 63 deletions(-)' },
-    { delay:300 },
-    { type:'info', text:'[INFO] Gerando descrição via LLM...' },
-    { type:'dim', text:'  Provider: groq (llama-3.3-70b-versatile)' },
-    { delay:1200 },
-    { type:'header', text:'\n========================================' },
-    { type:'header', text:'PR Description — feat/11796-anexo-upload' },
-    { type:'header', text:'========================================' },
-    { delay:200 },
-    { type:'h2', text:'\n## Novo tipo de pergunta: Anexo (upload de documentos)' },
-    { delay:100 },
-    { type:'text', text:'\n### Resumo' },
-    { type:'text', text:'Implementa o tipo de pergunta **Anexo** no formulário dinâmico,' },
-    { type:'text', text:'permitindo upload de documentos (PDF, DOCX, XLS) como resposta.' },
-    { delay:100 },
-    { type:'text', text:'\n### Mudanças' },
-    { type:'text', text:'- Novo tipo `anexo` no enum de perguntas' },
-    { type:'text', text:'- Configuração de min/max arquivos e tamanho máximo (CMS)' },
-    { type:'text', text:'- Componente de upload com drag & drop no formulário' },
-    { type:'text', text:'- Validação de extensões e tamanho no frontend e backend' },
-    { type:'text', text:'- Integração com Azure Blob Storage via diskStorage' },
-    { delay:100 },
-    { type:'text', text:'\n### Checklist de teste' },
-    { type:'check', text:'- [ ] Opção "Anexo" aparece no dropdown do CMS' },
-    { type:'check', text:'- [ ] Campos de configuração (min, max, tamanho) funcionais' },
-    { type:'check', text:'- [ ] Upload aceita apenas extensões permitidas' },
-    { type:'check', text:'- [ ] Botão trava ao atingir limite de arquivos' },
-    { type:'check', text:'- [ ] Arquivo acima do tamanho exibe erro' },
-    { delay:400 },
-    { type:'header', text:'\n========================================' },
-    { delay:200 },
-    { type:'ok', text:'\n[OK] Descrição copiada para o clipboard ✓' },
-    { delay:300 },
-    { type:'dim', text:'\n  Criar PR no Azure DevOps? [y/N]: y' },
-    { delay:800 },
-    { type:'info', text:'[INFO] Criando PR → dev...' },
+    { type:'header', text:'\n==========================================' },
+    { type:'dim', text:'  Criar PR(s) no Azure DevOps? [y/N]: y' },
     { delay:600 },
-    { type:'ok', text:'[OK] PR #10513 criado com sucesso ✓' },
+    { type:'dim', text:'\n  PR -> dev' },
+    { type:'dim', text:'  Reviewer (email) [ronaldo.pereira@biosistemico.com.br]: ' },
+    { delay:400 },
+    { type:'info', text:'[INFO] Criando PR para dev...' },
+    { delay:300 },
+    { type:'dim', text:'  -> [INFO] Resolvendo reviewer: ronaldo.pereira@biosistemico.com.br...' },
+    { delay:400 },
+    { type:'ok', text:'[OK] Reviewer resolvido: a66bb3ff...' },
+    { type:'ok', text:'[OK] PR #10513 criado para dev' },
     { type:'link', text:'https://dev.azure.com/ibsbiosistemico/AGROTRACE/_git/agrotrace-v3/pullrequest/10513' },
     { delay:300 },
-    { type:'info', text:'[INFO] Criando PR → sprint/98...' },
-    { delay:600 },
-    { type:'ok', text:'[OK] PR #10514 criado com sucesso ✓' },
+    { type:'dim', text:'\n  PR -> sprint/98' },
+    { type:'dim', text:'  Reviewer (email) [iohan.hinokuma@biosistemico.org.br]: ' },
+    { delay:400 },
+    { type:'info', text:'[INFO] Criando PR para sprint/98...' },
+    { delay:300 },
+    { type:'dim', text:'  -> [INFO] Resolvendo reviewer: iohan.hinokuma@biosistemico.org.br...' },
+    { delay:400 },
+    { type:'ok', text:'[OK] Reviewer resolvido: 348a7e35...' },
+    { type:'ok', text:'[OK] PR #10514 criado para sprint/98' },
     { type:'link', text:'https://dev.azure.com/ibsbiosistemico/AGROTRACE/_git/agrotrace-v3/pullrequest/10514' },
   ],
   tc: [
-    { type:'prompt', text:'~/agrotrace-v3 on sprint/98' },
-    { type:'cmd', text:'$ create-test-card --work-item 11796 --pr 10513', typeSpeed:35 },
+    { type:'prompt', text:'~/agrotrace-v3 on feat/11796-anexo-upload 📦 1 פֿ 3  2 🤷 ‍16 via .NET via  v22.17.1' },
+    { type:'cmd', text:'➜ create-test-card --work-item 11796 --pr 10513', typeSpeed:35 },
     { delay:600 },
-    { type:'info', text:'[INFO] Resolvendo contexto do Azure DevOps...' },
-    { delay:400 },
-    { type:'info', text:'[INFO] Resolvendo PR...' },
+    { type:'sparkle', text:' ✦ Gerando card de teste...' },
     { delay:300 },
-    { type:'info', text:'[INFO] Resolvendo work item pai...' },
-    { delay:300 },
-    { type:'info', text:'[INFO] Buscando alterações do PR...' },
+    { type:'spin', spinText:'Validando dependencias...', doneText:'Dependencias validadas', spinDuration:400 },
+    { type:'spin', spinText:'Carregando configuracao...', doneText:'Configuracao carregada', spinDuration:350 },
+    { type:'spin', spinText:'Validando Azure PAT...', doneText:'Azure PAT validado', spinDuration:400 },
+    { type:'spin', spinText:'Validando API keys...', doneText:'API keys validadas', spinDuration:350 },
+    { type:'spin', spinText:'Detectando contexto git...', doneText:'Contexto git detectado', spinDuration:500 },
+    { type:'spin', spinText:'Resolvendo contexto Azure DevOps...', doneText:'Azure DevOps: ibsbiosistemico/AGROTRACE', spinDuration:500 },
+    { type:'spin', spinText:'Resolvendo PR...', doneText:'PR: #10513 — Novo tipo de pergunta: Anexo', spinDuration:450 },
+    { type:'spin', spinText:'Resolvendo work item...', doneText:'Work item: #11796 — Novo tipo de pergunta: Anexo', spinDuration:400 },
+    { type:'spin', spinText:'Buscando alteracoes do PR...', doneText:'Alteracoes coletadas', spinDuration:500 },
+    { type:'spin', spinText:'Buscando exemplos de test case...', doneText:'Exemplos coletados', spinDuration:450 },
+    { type:'spin', spinText:'Preparando campos de criacao...', doneText:'Campos resolvidos', spinDuration:400 },
+    { type:'spin', spinText:'Gerando card via LLM...', doneText:'Card gerado (openrouter/qwen/qwen3-32b)', spinDuration:1400 },
     { delay:400 },
-    { type:'info', text:'[INFO] Buscando exemplos de Test Case...' },
-    { delay:300 },
-    { type:'info', text:'[INFO] Resolvendo defaults de criação do Test Case...' },
-    { delay:400 },
-    { type:'info', text:'[INFO] Gerando card de teste via LLM...' },
-    { type:'dim', text:'  Provider: groq (qwen/qwen3-32b)' },
-    { delay:1400 },
-    { type:'header', text:'\n========================================' },
-    { type:'header', text:'Test Card - PR #10513' },
-    { type:'header', text:'========================================' },
-    { type:'dim', text:'Provider: groq (qwen/qwen3-32b)' },
+    { type:'header', text:'\n==========================================' },
+    { type:'bold', text:'Test Card - PR #10513' },
+    { type:'header', text:'==========================================' },
+    { type:'dim', text:'Provider: openrouter (qwen/qwen3-32b)' },
     { type:'dim', text:'Work Item pai: #11796 - Novo tipo de pergunta: Anexo' },
     { type:'dim', text:'AreaPath Teste: AGROTRACE\\Devops' },
     { delay:200 },
-    { type:'label', text:'\nTitulo: Teste funcional para novo tipo de pergunta "Anexo" no CMS' },
+    { type:'cyan', text:'\nTitulo: Teste funcional para novo tipo de pergunta "Anexo" no CMS' },
     { delay:200 },
     { type:'h2', text:'\n## Objetivo' },
     { type:'text', text:'Validar a funcionalidade completa do novo tipo de pergunta' },
@@ -2416,27 +2455,25 @@ const TERM_SEQUENCES = {
     { type:'text', text:'Upload respeita limites de quantidade, tamanho e tipo.' },
     { type:'text', text:'Validações e feedbacks visuais adequados em todas as etapas.' },
     { delay:500 },
-    { type:'header', text:'\n========================================' },
+    { type:'header', text:'\n==========================================' },
     { delay:300 },
     { type:'dim', text:'\n  Criar este Test Case no Azure DevOps? [y/N]: y' },
-    { delay:800 },
-    { type:'info', text:'[INFO] Criando Test Case no Azure DevOps...' },
-    { delay:700 },
-    { type:'ok', text:'\n[OK] Test Case criado com sucesso: #11937' },
+    { delay:600 },
+    { type:'spin', spinText:'Criando test case no Azure DevOps...', doneText:'Test case criado: #11937', spinDuration:800 },
+    { delay:200 },
     { type:'link', text:'https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/11937' },
     { delay:400 },
     { type:'dim', text:'\n  Atualizar o work item #11796 para Test QA? [y/N]: y' },
-    { delay:600 },
-    { type:'info', text:'[INFO] Atualizando work item #11796 para Test QA...' },
-    { delay:400 },
-    { type:'ok', text:'[OK] Work item #11796 atualizado para Test QA.' },
+    { delay:500 },
+    { type:'ok', text:'  ✓ Work item #11796 atualizado para Test QA' },
   ]
 };
 
 const TERM_CLASSES = {
   prompt:'t-prompt', cmd:'t-cmd', info:'t-info', header:'t-header',
   label:'t-label', ok:'t-ok', h2:'t-h2', check:'t-check',
-  link:'t-link', dim:'t-dim', text:''
+  link:'t-link', dim:'t-dim', text:'',
+  sparkle:'t-sparkle', cyan:'t-cyan', bold:'t-bold'
 };
 
 let termAnimId = 0;
@@ -2462,7 +2499,36 @@ async function openTermDemo(which) {
       continue;
     }
 
-    if (step.type === 'cmd' && step.typeSpeed) {
+    if (step.type === 'spin') {
+      /* ── spinner step: show pulsing ● then replace with ✓ ── */
+      const line = document.createElement('div');
+      const pipe = document.createElement('span');
+      pipe.className = 't-step-pipe';
+      pipe.textContent = '  │ ';
+      const dot = document.createElement('span');
+      dot.className = 't-spin-dot';
+      dot.textContent = '●';
+      dot.style.animation = 'termPulse .6s ease-in-out infinite';
+      const txt = document.createElement('span');
+      txt.className = 't-spin-text';
+      txt.textContent = ' ' + step.spinText;
+      line.append(pipe, dot, txt);
+      body.appendChild(line);
+      body.scrollTop = body.scrollHeight;
+
+      await new Promise(r => setTimeout(r, step.spinDuration || 500));
+      if (runId !== termAnimId) return;
+
+      /* replace with done state */
+      dot.style.animation = '';
+      dot.className = 't-done-dot';
+      dot.textContent = '✓';
+      txt.className = 't-done-text';
+      txt.textContent = ' ' + step.doneText;
+      body.scrollTop = body.scrollHeight;
+      await new Promise(r => setTimeout(r, 80));
+
+    } else if (step.type === 'cmd' && step.typeSpeed) {
       const line = document.createElement('div');
       const span = document.createElement('span');
       span.className = TERM_CLASSES[step.type] || '';
