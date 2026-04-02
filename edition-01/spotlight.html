@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Spotlight — Web Team | Edition #01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --purple: #a78bfa;
+  --purple-d: #7c3aed;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+}
+.edition-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.date {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+.message {
+  color: var(--text2);
+  font-size: 1rem;
+  line-height: 1.6;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--bg2);
+}
+.message code {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--purple);
+  font-size: 0.85rem;
+}
+a.back {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--purple);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+a.back:hover { opacity: 0.7; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="edition-badge">EDITION #01</div>
+  <h1>Tech Spotlight</h1>
+  <div class="date">13/03/2026</div>
+  <div class="message">
+    Os arquivos desta edição serão adicionados em breve.<br>
+    <code>// TODO: importar slides e assets</code>
+  </div>
+  <a href="../index.html" class="back">← Voltar ao Hub</a>
+</div>
+</body>
+</html>

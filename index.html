@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Spotlight — Web Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #1c2128;
+  --bg4: #21262d;
+  --border: #30363d;
+  --border2: #484f58;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --purple: #a78bfa;
+  --purple-d: #7c3aed;
+  --purple-bg: #1a1033;
+  --teal: #34d399;
+  --teal-bg: #0a2218;
+  --coral: #fb923c;
+  --coral-bg: #2a1100;
+  --blue: #60a5fa;
+  --blue-bg: #0c1a2e;
+  --amber: #fbbf24;
+  --amber-bg: #241a00;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.header {
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.header-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--purple);
+  border: 1px solid rgba(167,139,250,0.3);
+  border-radius: 4px;
+  padding: 4px 14px;
+  margin-bottom: 1rem;
+}
+.header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+.header p {
+  color: var(--text2);
+  font-size: 1rem;
+}
+.header-terminal {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text3);
+  margin-top: 1rem;
+}
+.header-terminal span { color: var(--teal); }
+
+/* ── GRID ── */
+.grid-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  flex: 1;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  border-color: var(--purple);
+  box-shadow: 0 0 20px rgba(167,139,250,0.08);
+}
+.card.upcoming {
+  opacity: 0.55;
+  border-style: dashed;
+}
+.card.upcoming:hover {
+  border-color: var(--border2);
+  box-shadow: none;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.card-edition {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--purple);
+}
+.card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.card-status.done {
+  background: var(--teal-bg);
+  color: var(--teal);
+  border: 1px solid rgba(52,211,153,0.25);
+}
+.card-status.next {
+  background: var(--amber-bg);
+  color: var(--amber);
+  border: 1px solid rgba(251,191,36,0.25);
+}
+
+.card-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.card-period {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-bottom: 1.25rem;
+}
+.card-period code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text3);
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+.card-actions a, .card-actions span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+a.btn-spotlight {
+  background: var(--purple-d);
+  color: #fff;
+}
+a.btn-spotlight:hover {
+  background: #6d28d9;
+}
+a.btn-cards {
+  background: var(--bg3);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+a.btn-cards:hover {
+  background: var(--bg4);
+  color: var(--text);
+}
+span.btn-disabled {
+  background: var(--bg3);
+  color: var(--text3);
+  border: 1px solid var(--border);
+  cursor: not-allowed;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  text-align: center;
+}
+.footer-keys {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.footer-keys .key-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.key-hint kbd {
+  display: inline-block;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 0.65rem;
+  color: var(--text2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── STATUSBAR ── */
+.statusbar {
+  height: 24px;
+  background: var(--purple-d);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.85);
+  gap: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">Web Team</div>
+  <h1>Tech Spotlight</h1>
+  <p>Central de apresentações do time Web</p>
+  <div class="header-terminal"><span>$</span> ls editions/ --sort=date --reverse</div>
+</div>
+
+<div class="grid-container">
+  <div class="grid">
+
+    <!-- Edition #03 -->
+    <div class="card upcoming">
+      <div class="card-header">
+        <span class="card-edition">#03</span>
+        <span class="card-status next">Próxima</span>
+      </div>
+      <div class="card-date">24/04/2026</div>
+      <div class="card-period">Período: <code>02/04 – 23/04/2026</code></div>
+      <div class="card-actions">
+        <span class="btn-disabled">▶ Em breve</span>
+        <span class="btn-disabled">📋 Em breve</span>
+      </div>
+    </div>
+
+    <!-- Edition #02 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-edition">#02</span>
+        <span class="card-status done">Apresentado</span>
+      </div>
+      <div class="card-date">02/04/2026</div>
+      <div class="card-period">Período: <code>13/03 – 01/04/2026</code></div>
+      <div class="card-actions">
+        <a href="edition-02/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
+        <a href="edition-02/cards.html" class="btn-cards">📋 Ver Cards</a>
+      </div>
+    </div>
+
+    <!-- Edition #01 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-edition">#01</span>
+        <span class="card-status done">Apresentado</span>
+      </div>
+      <div class="card-date">13/03/2026</div>
+      <div class="card-period">Período: <code>23/02 – 13/03/2026</code></div>
+      <div class="card-actions">
+        <a href="edition-01/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
+        <a href="edition-01/cards.html" class="btn-cards">📋 Ver Cards</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-keys">
+    <div class="key-hint"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> Ir para edição</div>
+    <div class="key-hint"><kbd>←</kbd><kbd>→</kbd> Navegar slides</div>
+    <div class="key-hint"><kbd>Esc</kbd> Fechar modal</div>
+  </div>
+</div>
+
+<div class="statusbar">
+  <div>🌿 main</div>
+  <div>index.html</div>
+  <div style="margin-left:auto">Tech Spotlight Hub — Web Team</div>
+</div>
+
+<script>
+document.addEventListener('keydown', e => {
+  if (e.key === '1') window.location.href = 'edition-01/spotlight.html';
+  if (e.key === '2') window.location.href = 'edition-02/spotlight.html';
+});
+</script>
+
+</body>
+</html>

@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(unzip -o /c/tmp/tech-spotlight-web.skill -d /tmp/skill-extract)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(git mv:*)"
     ]
   }
 }

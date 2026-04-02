@@ -267,6 +267,48 @@ body {
   gap: 5px;
 }
 
+/* ── TIMER WIDGET ── */
+.timer-widget {
+  position: fixed;
+  top: 46px;
+  right: 16px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.timer-widget:hover {
+  border-color: var(--border2);
+  background: var(--bg3);
+}
+.timer-icon {
+  font-size: 12px;
+  color: var(--text3);
+  transition: color 0.2s;
+}
+.timer-display {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.timer-widget.running .timer-icon { color: var(--teal); }
+.timer-widget.running .timer-display { color: var(--teal); }
+.timer-widget.warning .timer-display { color: var(--amber); }
+.timer-widget.warning .timer-icon { color: var(--amber); }
+.timer-widget.overtime .timer-display { color: var(--red); }
+.timer-widget.overtime .timer-icon { color: var(--red); }
+
 /* ── CODE BLOCK ── */
 .code-block {
   background: var(--bg);
@@ -1054,6 +1096,28 @@ kbd {
 
 .ss-empty-icon { font-size: 40px; opacity: 0.5; }
 
+/* ── STATS FILTER ── */
+.stats-filter {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.stats-filter:hover {
+  border-color: var(--border2);
+  color: var(--text);
+}
+.stats-filter.active {
+  background: var(--f-color, var(--purple-d));
+  border-color: var(--f-color, var(--purple-d));
+  color: #fff;
+}
+
 /* ── TERMINAL DEMO ── */
 .term-overlay {
   position: fixed;
@@ -1174,14 +1238,20 @@ kbd {
 </head>
 <body>
 
+<!-- TIMER WIDGET -->
+<div class="timer-widget" id="timerBtn" onclick="toggleTimer()" title="Clique para iniciar (ou pressione T)">
+  <span class="timer-icon" id="timerIcon">▶</span>
+  <span class="timer-display" id="timerDisplay">00:00</span>
+</div>
+
 <!-- TOPBAR -->
 <div class="topbar">
-  <div class="topbar-logo">
+  <a href="../index.html" class="topbar-logo" style="text-decoration:none; color:var(--text2)" title="Voltar ao índice">
     <div class="dot dot-red"></div>
     <div class="dot dot-amber"></div>
     <div class="dot dot-green"></div>
-    &nbsp;agrotrace-v3
-  </div>
+    &nbsp;⌂ hub
+  </a>
   <div class="tabs-bar" id="tabsBar"></div>
   <div class="topbar-right">
     <span>UTF-8</span>
@@ -1329,7 +1399,7 @@ kbd {
       </div>
 
       <div style="margin-top:auto; padding-top:24px; display:flex; align-items:center; justify-content:center; gap:12px; font-family:var(--font-mono); font-size:11px; color:var(--text3);">
-        Use <kbd>←</kbd> <kbd>→</kbd> para navegar &nbsp;·&nbsp; <kbd>F</kbd> para tela cheia
+        Use <kbd>←</kbd> <kbd>→</kbd> para navegar &nbsp;·&nbsp; <kbd>F</kbd> tela cheia &nbsp;·&nbsp; <kbd>T</kbd> cronômetro
       </div>
     </div>
 
@@ -1460,27 +1530,37 @@ kbd {
     <!-- ─── SLIDE 2: STATS ─── -->
     <div class="slide" id="slide-2">
       <div class="slide-title">// stats.json</div>
-      <div class="slide-heading">Métricas do <span>período</span></div>
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px; flex-wrap:wrap">
+        <div class="slide-heading" style="margin-bottom:0">Métricas do <span>período</span></div>
+        <div style="font-family:var(--font-mono); font-size:18px; color:var(--text2); margin-bottom:0; letter-spacing:0.03em">📅 13/03 – 01/04/2026</div>
+        <div style="display:flex; gap:6px; margin-left:auto; align-items:center">
+          <button class="stats-filter active" data-member="all" onclick="filterStats('all')">Todos</button>
+          <button class="stats-filter" data-member="Ronaldo" onclick="filterStats('Ronaldo')" style="--f-color:var(--purple)">Ronaldo</button>
+          <button class="stats-filter" data-member="Bruno" onclick="filterStats('Bruno')" style="--f-color:var(--blue)">Bruno</button>
+          <button class="stats-filter" data-member="Thielson" onclick="filterStats('Thielson')" style="--f-color:var(--teal)">Thielson</button>
+          <span id="statsCount" style="font-family:var(--font-mono); font-size:12px; color:var(--text3); margin-left:8px">63 cards</span>
+        </div>
+      </div>
 
       <div class="grid-4 mb-24" style="grid-template-columns: repeat(5, 1fr)">
         <div class="metric metric-click" data-kpi="all" title="Clique para ver os cards">
-          <div class="metric-val" style="color:var(--purple)">63</div>
+          <div class="metric-val" id="mv-all" style="color:var(--purple)">63</div>
           <div class="metric-lbl">cards entregues</div>
         </div>
         <div class="metric metric-click" data-kpi="feat" title="Clique para ver os cards">
-          <div class="metric-val" style="color:var(--teal)">35</div>
+          <div class="metric-val" id="mv-feat" style="color:var(--teal)">35</div>
           <div class="metric-lbl">features novas</div>
         </div>
         <div class="metric metric-click" data-kpi="fix" title="Clique para ver os cards">
-          <div class="metric-val" style="color:var(--coral)">22</div>
+          <div class="metric-val" id="mv-fix" style="color:var(--coral)">22</div>
           <div class="metric-lbl">bugs corrigidos</div>
         </div>
         <div class="metric metric-click" data-kpi="ref" title="Clique para ver os cards">
-          <div class="metric-val" style="color:var(--blue)">2</div>
+          <div class="metric-val" id="mv-ref" style="color:var(--blue)">2</div>
           <div class="metric-lbl">refactors</div>
         </div>
         <div class="metric metric-click" data-kpi="test" title="Clique para ver os cards">
-          <div class="metric-val" style="color:var(--amber)">4</div>
+          <div class="metric-val" id="mv-test" style="color:var(--amber)">4</div>
           <div class="metric-lbl">testes</div>
         </div>
       </div>
@@ -1496,7 +1576,7 @@ kbd {
           </div>
 
           <div class="section-label">stack utilizada</div>
-          <div class="tag-list">
+          <div class="tag-list mb-16">
             <span class="chip">NestJS</span>
             <span class="chip">Angular + PrimeNG</span>
             <span class="chip">TypeORM</span>
@@ -1506,40 +1586,28 @@ kbd {
             <span class="chip">Redis</span>
             <span class="chip">Docker</span>
           </div>
+
+          <div class="section-label">cards por dev</div>
+          <div style="display:flex; gap:10px">
+            <div class="metric" style="cursor:pointer; flex:1; padding:10px 12px" onclick="filterStats('Ronaldo')">
+              <div class="metric-val" id="mv-ronaldo" style="color:var(--purple); font-size:22px; margin-bottom:2px">18</div>
+              <div class="metric-lbl" style="font-size:12px">ronaldo</div>
+            </div>
+            <div class="metric" style="cursor:pointer; flex:1; padding:10px 12px" onclick="filterStats('Bruno')">
+              <div class="metric-val" id="mv-bruno" style="color:var(--blue); font-size:22px; margin-bottom:2px">18</div>
+              <div class="metric-lbl" style="font-size:12px">bruno</div>
+            </div>
+            <div class="metric" style="cursor:pointer; flex:1; padding:10px 12px" onclick="filterStats('Thielson')">
+              <div class="metric-val" id="mv-thielson" style="color:var(--teal); font-size:22px; margin-bottom:2px">27</div>
+              <div class="metric-lbl" style="font-size:12px">thielson</div>
+            </div>
+          </div>
         </div>
 
         <div class="code-block">
           <div class="code-block-header">📊 distribuição por tipo</div>
           <div class="code-body">
-            <div class="code-lines" style="padding:14px 18px">
-              <div style="margin-bottom:10px">
-                <div style="display:flex; justify-content:space-between; margin-bottom:4px">
-                  <span class="kw">features (35)</span>
-                  <span class="num">56%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width:56%"></div></div>
-              </div>
-              <div style="margin-bottom:10px">
-                <div style="display:flex; justify-content:space-between; margin-bottom:4px">
-                  <span style="color:var(--red)">fixes (22)</span>
-                  <span class="num">35%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width:35%; background:linear-gradient(90deg, var(--red), var(--coral))"></div></div>
-              </div>
-              <div style="margin-bottom:10px">
-                <div style="display:flex; justify-content:space-between; margin-bottom:4px">
-                  <span style="color:var(--teal)">refactors (2)</span>
-                  <span class="num">3%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width:3%; background:linear-gradient(90deg, var(--teal), var(--blue))"></div></div>
-              </div>
-              <div>
-                <div style="display:flex; justify-content:space-between; margin-bottom:4px">
-                  <span style="color:var(--amber)">testes (4)</span>
-                  <span class="num">6%</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width:6%; background:linear-gradient(90deg, var(--amber), var(--coral))"></div></div>
-              </div>
+            <div class="code-lines" style="padding:14px 18px" id="statsDistribution">
             </div>
           </div>
         </div>
@@ -2252,7 +2320,8 @@ kbd {
   <div class="status-item">🌿 main</div>
   <div class="status-item" id="statusFile">README.md</div>
   <div class="status-item">Tech Spotlight — Web Team</div>
-  <div class="status-item" style="margin-left:auto">02/04/2026</div>
+  <a href="cards.html" class="status-item" style="text-decoration:none; color:rgba(255,255,255,0.85); margin-left:auto; transition:color 0.15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.85)'">📋 Ver Cards</a>
+  <div class="status-item" style="margin-left:0">02/04/2026</div>
 </div>
 
 <!-- KPI MODAL -->
@@ -2644,18 +2713,73 @@ const KPI_COLORS = { feat:'var(--teal)', fix:'var(--coral)', ref:'var(--blue)', 
 const KPI_BG = { feat:'var(--teal-bg)', fix:'var(--coral-bg)', ref:'var(--blue-bg)', test:'var(--amber-bg)' };
 const KPI_NAMES = { feat:'feature', fix:'fix', ref:'refactor', test:'teste' };
 
+// ── Stats filter by member ──
+let statsMember = 'all';
+
+function filterStats(member) {
+  statsMember = member;
+  document.querySelectorAll('.stats-filter').forEach(b => {
+    b.classList.toggle('active', b.dataset.member === member);
+  });
+  const cards = member === 'all' ? KPI_CARDS : KPI_CARDS.filter(c => c.who === member);
+  const total = cards.length;
+  const feat = cards.filter(c => c.type === 'feat').length;
+  const fix = cards.filter(c => c.type === 'fix').length;
+  const ref = cards.filter(c => c.type === 'ref').length;
+  const test = cards.filter(c => c.type === 'test').length;
+
+  document.getElementById('mv-all').textContent = total;
+  document.getElementById('mv-feat').textContent = feat;
+  document.getElementById('mv-fix').textContent = fix;
+  document.getElementById('mv-ref').textContent = ref;
+  document.getElementById('mv-test').textContent = test;
+  document.getElementById('statsCount').textContent = total + ' cards';
+
+  // Update per-dev counts
+  const devR = (member === 'all' ? KPI_CARDS : cards).filter(c => c.who === 'Ronaldo').length;
+  const devB = (member === 'all' ? KPI_CARDS : cards).filter(c => c.who === 'Bruno').length;
+  const devT = (member === 'all' ? KPI_CARDS : cards).filter(c => c.who === 'Thielson').length;
+  document.getElementById('mv-ronaldo').textContent = devR;
+  document.getElementById('mv-bruno').textContent = devB;
+  document.getElementById('mv-thielson').textContent = devT;
+
+  // Update distribution bars
+  const dist = document.getElementById('statsDistribution');
+  const bars = [
+    { label:'features', count:feat, color:'var(--purple)', grad:'linear-gradient(90deg, var(--purple), var(--blue))' },
+    { label:'fixes', count:fix, color:'var(--red)', grad:'linear-gradient(90deg, var(--red), var(--coral))' },
+    { label:'refactors', count:ref, color:'var(--teal)', grad:'linear-gradient(90deg, var(--teal), var(--blue))' },
+    { label:'testes', count:test, color:'var(--amber)', grad:'linear-gradient(90deg, var(--amber), var(--coral))' },
+  ];
+  dist.innerHTML = bars.map((b, i) => {
+    const pct = total > 0 ? Math.round(b.count / total * 100) : 0;
+    return `<div style="margin-bottom:${i < 3 ? '10px' : '0'}">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+        <span style="color:${b.color}">${b.label} (${b.count})</span>
+        <span class="num">${pct}%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${b.grad};transition:width 0.4s"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// Render initial stats
+filterStats('all');
+
 function openKpiModal(kpi) {
-  const filtered = kpi === 'all' ? KPI_CARDS : KPI_CARDS.filter(c => c.type === kpi);
+  let base = statsMember === 'all' ? KPI_CARDS : KPI_CARDS.filter(c => c.who === statsMember);
+  const filtered = kpi === 'all' ? base : base.filter(c => c.type === kpi);
   document.getElementById('kpiTitle').textContent = KPI_LABELS[kpi];
   const tbody = document.getElementById('kpiBody');
-  tbody.innerHTML = filtered.map(c =>
-    `<tr>
-      <td>${c.id}</td>
+  tbody.innerHTML = filtered.map(c => {
+    const num = c.id.replace('#','');
+    return `<tr>
+      <td><a href="https://dev.azure.com/ibsbiosistemico/AGROTRACE/_workitems/edit/${num}" target="_blank" style="color:var(--text);text-decoration:none;transition:color 0.15s" onmouseover="this.style.color='var(--purple)'" onmouseout="this.style.color='var(--text)'">${c.id}</a></td>
       <td>${c.title}</td>
       <td><span class="kpi-badge" style="background:${KPI_BG[c.type]};color:${KPI_COLORS[c.type]}">${KPI_NAMES[c.type]}</span></td>
       <td>${c.who}</td>
-    </tr>`
-  ).join('');
+    </tr>`;
+  }).join('');
   document.getElementById('kpiOverlay').classList.add('open');
 }
 
@@ -2845,7 +2969,49 @@ document.addEventListener('keydown', e => {
     if (!document.fullscreenElement) document.documentElement.requestFullscreen();
     else document.exitFullscreen();
   }
+  if (e.key === 't' || e.key === 'T') toggleTimer();
 });
+
+// ── Timer / Cronômetro ──
+let timerInterval = null;
+let timerStart = null;
+let timerElapsed = 0;
+let timerRunning = false;
+
+function toggleTimer() {
+  if (!timerRunning) {
+    timerStart = Date.now() - timerElapsed;
+    timerInterval = setInterval(updateTimer, 1000);
+    timerRunning = true;
+    document.getElementById('timerIcon').textContent = '⏸';
+    document.getElementById('timerBtn').classList.add('running');
+    document.getElementById('timerBtn').title = 'Clique para pausar (ou pressione T)';
+  } else {
+    clearInterval(timerInterval);
+    timerElapsed = Date.now() - timerStart;
+    timerRunning = false;
+    document.getElementById('timerIcon').textContent = '▶';
+    document.getElementById('timerBtn').classList.remove('running');
+    document.getElementById('timerBtn').title = 'Clique para retomar (ou pressione T)';
+  }
+}
+
+function updateTimer() {
+  timerElapsed = Date.now() - timerStart;
+  const totalSec = Math.floor(timerElapsed / 1000);
+  const min = Math.floor(totalSec / 60);
+  const sec = totalSec % 60;
+  const display = String(min).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+  document.getElementById('timerDisplay').textContent = display;
+
+  const btn = document.getElementById('timerBtn');
+  btn.classList.remove('warning', 'overtime');
+  if (min >= 50) {
+    btn.classList.add('overtime');
+  } else if (min >= 40) {
+    btn.classList.add('warning');
+  }
+}
 </script>
 </body>
 </html>
