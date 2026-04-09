@@ -3021,10 +3021,15 @@ function toggleRemote() {
   }
 }
 
-function connectRemote(port = 3030) {
-  const host = location.hostname || 'localhost';
+function connectRemote(url) {
+  if (!url) {
+    // Auto-detect: if served via http(s), connect to same host; if file://, skip
+    if (location.protocol === 'file:') return;
+    const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    url = `${wsProto}//${location.host}`;
+  }
   try {
-    remoteWs = new WebSocket(`ws://${host}:${port}`);
+    remoteWs = new WebSocket(url);
   } catch {
     showRemoteStatus('Erro ao conectar', false);
     return;
@@ -3060,7 +3065,7 @@ function connectRemote(port = 3030) {
     remoteConnected = false;
     showRemoteStatus('Remote OFF', false);
     // Auto-reconnect after 5s
-    setTimeout(() => { if (!remoteConnected) try { connectRemote(port); } catch(e) {} }, 5000);
+    setTimeout(() => { if (!remoteConnected) try { connectRemote(url); } catch(e) {} }, 5000);
   };
 }
 
@@ -3174,7 +3179,7 @@ function showRemoteStatus(text, on) {
   else el.style.opacity = '1';
 }
 
-// Auto-connect on load (silent — if server is not running, just stays off)
+// Auto-connect on load (silent — if file://, stays off; if served via http(s), connects automatically)
 showRemoteStatus('R: Remote', false);
 try { connectRemote(); } catch(e) {}
 </script>

@@ -391,9 +391,8 @@ document.getElementById('nameInput').addEventListener('keydown', e => {
 });
 
 function connect(name) {
-  const host = location.hostname || 'localhost';
-  const port = location.port || '3030';
-  ws = new WebSocket(`ws://${host}:${port}`);
+  const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  ws = new WebSocket(`${wsProto}//${location.host}`);
 
   ws.onopen = () => {
     ws.send(JSON.stringify({ type: 'controller-join', name }));

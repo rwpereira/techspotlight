@@ -7,11 +7,13 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-// Redirect / to control page
-app.get('/', (req, res) => res.redirect('/control.html'));
+// Serve the entire project (index.html, editions, assets, etc.)
+const projectRoot = path.join(__dirname, '..');
+app.use(express.static(projectRoot));
 
-// Serve control.html
-app.use(express.static(path.join(__dirname)));
+// Serve control.html at /remote/control.html (already covered by static above)
+// Also add a shortcut: /control → /remote/control.html
+app.get('/control', (req, res) => res.redirect('/remote/control.html'));
 
 // State
 let presenter = null;   // ws connection of the presenter (spotlight.html)
@@ -118,7 +120,8 @@ wss.on('connection', (ws) => {
 
 const PORT = process.env.PORT || 3030;
 server.listen(PORT, () => {
-  console.log(`\n  Tech Spotlight Remote Control`);
-  console.log(`  Server:  http://localhost:${PORT}`);
-  console.log(`  Control: http://localhost:${PORT}/control.html\n`);
+  console.log(`\n  Tech Spotlight Server`);
+  console.log(`  Hub:      http://localhost:${PORT}`);
+  console.log(`  Spotlight: http://localhost:${PORT}/edition-02/spotlight.html`);
+  console.log(`  Control:  http://localhost:${PORT}/control\n`);
 });
