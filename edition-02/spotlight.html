@@ -2965,6 +2965,7 @@ document.addEventListener('keydown', e => {
     else document.exitFullscreen();
   }
   if (e.key === 't' || e.key === 'T') toggleTimer();
+  if (e.key === 'r' || e.key === 'R') toggleRemote();
 });
 
 // ── Timer / Cronômetro ──
@@ -3007,6 +3008,175 @@ function updateTimer() {
     btn.classList.add('warning');
   }
 }
+
+// ── WebSocket Remote Control ──
+let remoteWs = null;
+let remoteConnected = false;
+
+function toggleRemote() {
+  if (remoteConnected) {
+    disconnectRemote();
+  } else {
+    connectRemote();
+  }
+}
+
+function connectRemote(port = 3030) {
+  const host = location.hostname || 'localhost';
+  try {
+    remoteWs = new WebSocket(`ws://${host}:${port}`);
+  } catch {
+    showRemoteStatus('Erro ao conectar', false);
+    return;
+  }
+
+  remoteWs.onopen = () => {
+    remoteWs.send(JSON.stringify({
+      type: 'presenter-join',
+      totalSlides: total,
+      currentSlide: cur
+    }));
+    remoteConnected = true;
+    showRemoteStatus('Remote ON', true);
+  };
+
+  remoteWs.onmessage = (e) => {
+    let msg;
+    try { msg = JSON.parse(e.data); } catch { return; }
+    if (msg.type === 'navigate') {
+      if (msg.action === 'next') next();
+      else if (msg.action === 'prev') prev();
+      else if (msg.action === 'goto' && typeof msg.slide === 'number') goTo(msg.slide);
+      broadcastSlide();
+    }
+    if (msg.type === 'action') {
+      handleRemoteAction(msg.action, msg.params || {});
+    }
+  };
+
+  remoteWs.onerror = () => {}; // suppress console errors
+
+  remoteWs.onclose = () => {
+    remoteConnected = false;
+    showRemoteStatus('Remote OFF', false);
+    // Auto-reconnect after 5s
+    setTimeout(() => { if (!remoteConnected) try { connectRemote(port); } catch(e) {} }, 5000);
+  };
+}
+
+function disconnectRemote() {
+  if (remoteWs) {
+    remoteWs.close();
+    remoteWs = null;
+  }
+  remoteConnected = false;
+  showRemoteStatus('Remote OFF', false);
+}
+
+// Map of actions available per slide
+const SLIDE_ACTIONS = {
+  3: [ // ext-integration.ts (Spotlight 1)
+    { id: 'ss-login', label: '📷 Ver Tela de Login', action: 'openScreenshot', params: { cardId: '11765-login', title: 'Tela de Login — Token JWT' } }
+  ],
+  6: [ // overview-bruno.md
+    { id: 'ss-11794', label: '📷 #11794 — Redirect URL', action: 'openScreenshot', params: { cardId: '11794', title: 'Redirecionar usuário para URL original após autenticação' } },
+    { id: 'ss-11927', label: '📷 #11927 — Exportações', action: 'openScreenshot', params: { cardId: '11927', title: 'Melhorias no fluxo de cadastro e sincronização de Exportações' } },
+    { id: 'ss-11933', label: '📷 #11933 — DiskStorage', action: 'openScreenshot', params: { cardId: '11933', title: 'Migrar upload de memoryStorage para diskStorage' } },
+    { id: 'ss-11932', label: '📷 #11932 — Responsividade', action: 'openScreenshot', params: { cardId: '11932', title: 'Perfil do produtor — responsividade' } },
+    { id: 'ss-11796', label: '📷 #11796 — Pergunta Anexo', action: 'openScreenshot', params: { cardId: '11796', title: 'Novo tipo de pergunta: Anexo (upload de documentos)' } },
+    { id: 'ss-11746', label: '📷 #11746 — Imprimir', action: 'openScreenshot', params: { cardId: '11746', title: 'Criar opção Imprimir nas perguntas' } },
+    { id: 'ss-11734', label: '📷 #11734 — Validação', action: 'openScreenshot', params: { cardId: '11734', title: 'Opção Possui Validação no cadastro de perguntas' } }
+  ],
+  9: [ // overview-thielson.md
+    { id: 'ss-11928', label: '📷 #11928 — Filtros', action: 'openScreenshot', params: { cardId: '11928', title: 'Botões limpar busca e refresh de dados + filtro de relatórios' } },
+    { id: 'ss-11870', label: '📷 #11870 — Dashboard', action: 'openScreenshot', params: { cardId: '11870', title: 'Título configurável no dashboard formulário + fix persistência de layout' } },
+    { id: 'ss-11836', label: '📷 #11836 — Labels', action: 'openScreenshot', params: { cardId: '11836', title: 'Labels configuráveis nos botões — aba Comparativos' } },
+    { id: 'ss-11792', label: '📷 #11792 — Volume', action: 'openScreenshot', params: { cardId: '11792', title: 'Campo meta em volume por filial e pais + Filial no volume por produtor' } },
+    { id: 'ss-11773', label: '📷 #11773 — Anexo público', action: 'openScreenshot', params: { cardId: '11773', title: 'Permitir anexo público + Alterar procedure getUrlAnexo' } },
+    { id: 'ss-11798', label: '📷 #11798 — Modal layout', action: 'openScreenshot', params: { cardId: '11798', title: 'Correção de layout do modal Dados da Exportação' } },
+    { id: 'ss-11791', label: '📷 #11791 — ACL', action: 'openScreenshot', params: { cardId: '11791', title: 'Permissões ACL — impedir associação de filiais sem acesso' } }
+  ]
+};
+
+// Always-available actions
+const GLOBAL_ACTIONS = [
+  { id: 'close-modal', label: '✕ Fechar Modal', action: 'closeModals' },
+  { id: 'ss-prev', label: '‹ Img Anterior', action: 'ssNav', params: { dir: -1 } },
+  { id: 'ss-next', label: 'Img Próxima ›', action: 'ssNav', params: { dir: 1 } },
+  { id: 'toggle-timer', label: '⏱ Timer', action: 'toggleTimer' },
+  { id: 'fullscreen', label: '⛶ Fullscreen', action: 'toggleFullscreen' }
+];
+
+function getSlideActions() {
+  return SLIDE_ACTIONS[cur] || [];
+}
+
+function handleRemoteAction(action, params) {
+  switch (action) {
+    case 'openScreenshot':
+      openScreenshot(params.cardId, params.title);
+      break;
+    case 'closeModals':
+      if (document.getElementById('ssOverlay').classList.contains('open')) closeScreenshot();
+      if (document.getElementById('kpiOverlay').classList.contains('open')) closeKpiModal();
+      break;
+    case 'ssNav':
+      if (ssImages.length > 1) ssNav(params.dir);
+      break;
+    case 'toggleTimer':
+      toggleTimer();
+      break;
+    case 'toggleFullscreen':
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+      break;
+    case 'openKpiModal':
+      openKpiModal(params.kpi || 'all');
+      break;
+    case 'filterStats':
+      filterStats(params.member || 'all');
+      break;
+  }
+}
+
+function broadcastSlide() {
+  if (remoteWs && remoteWs.readyState === 1) {
+    remoteWs.send(JSON.stringify({
+      type: 'slide-update',
+      currentSlide: cur,
+      slideLabel: labels[cur] || '',
+      slideActions: getSlideActions()
+    }));
+  }
+}
+
+// Patch goTo to broadcast
+const _origGoTo = goTo;
+goTo = function(n) {
+  _origGoTo(n);
+  broadcastSlide();
+};
+
+function showRemoteStatus(text, on) {
+  let el = document.getElementById('remoteIndicator');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'remoteIndicator';
+    el.style.cssText = 'position:fixed;bottom:32px;right:16px;font-family:JetBrains Mono,monospace;font-size:0.7rem;padding:4px 12px;border-radius:6px;cursor:pointer;z-index:9999;transition:all 0.3s';
+    el.onclick = toggleRemote;
+    document.body.appendChild(el);
+  }
+  el.style.background = on ? 'rgba(52,211,153,0.15)' : 'rgba(248,113,113,0.15)';
+  el.style.color = on ? '#34d399' : '#f87171';
+  el.style.border = on ? '1px solid rgba(52,211,153,0.3)' : '1px solid rgba(248,113,113,0.3)';
+  el.textContent = text;
+  if (!on) setTimeout(() => { if (el && !remoteConnected) el.style.opacity = '0.5'; }, 3000);
+  else el.style.opacity = '1';
+}
+
+// Auto-connect on load (silent — if server is not running, just stays off)
+showRemoteStatus('R: Remote', false);
+try { connectRemote(); } catch(e) {}
 </script>
 </body>
 </html>
