@@ -11,117 +11,196 @@ const wss = new WebSocketServer({ server });
 const projectRoot = path.join(__dirname, '..');
 app.use(express.static(projectRoot));
 
-// Serve control.html at /remote/control.html (already covered by static above)
-// Also add a shortcut: /control → /remote/control.html
+// Shortcut kept for compatibility (mobile fallback)
 app.get('/control', (req, res) => res.redirect('/remote/control.html'));
 
-// State
-let presenter = null;   // ws connection of the presenter (spotlight.html)
-const controllers = new Map(); // ws -> { name }
+// ── Session state ─────────────────────────────────────────────
+// New protocol: each client joins with { role: 'host'|'guest', name }
+// Exactly one hostId (last host wins). controlOwnerId is who actually
+// drives navigation/actions right now. Host can always reclaim via
+// control-handoff. If controlOwnerId disconnects, control returns to
+// the host (or null if no host is connected).
+let nextId = 1;
+const clients = new Map(); // ws -> { id, name, role }
+let hostId = null;
+let controlOwnerId = null;
 let currentSlide = 0;
 let totalSlides = 0;
+let slideLabel = '';
+let slideActions = [];
 
-function broadcast(msg) {
+function clientList() {
+  return [...clients.values()].map(c => ({ id: c.id, name: c.name, role: c.role }));
+}
+
+function broadcast(msg, excludeWs = null) {
   const data = JSON.stringify(msg);
   wss.clients.forEach(c => {
-    if (c.readyState === 1) c.send(data);
+    if (c !== excludeWs && c.readyState === 1) c.send(data);
   });
 }
 
-function sendControllerList() {
-  const names = [...controllers.values()].map(c => c.name);
-  broadcast({ type: 'controllers', names });
+function sendTo(ws, msg) {
+  if (ws.readyState === 1) ws.send(JSON.stringify(msg));
+}
+
+function sessionPayload(extras = {}) {
+  return {
+    type: 'session',
+    hostId,
+    controlOwnerId,
+    clients: clientList(),
+    currentSlide,
+    totalSlides,
+    slideLabel,
+    slideActions,
+    ...extras
+  };
+}
+
+function broadcastSession() {
+  broadcast(sessionPayload());
+}
+
+function findWsById(id) {
+  for (const [ws, c] of clients) if (c.id === id) return ws;
+  return null;
+}
+
+function findWsByName(name) {
+  const target = String(name || '').toLowerCase();
+  for (const [ws, c] of clients) if (c.name.toLowerCase() === target) return ws;
+  return null;
 }
 
 wss.on('connection', (ws) => {
-  console.log('Nova conexao');
+  const id = nextId++;
+  console.log(`[${id}] Nova conexao`);
 
   ws.on('message', (raw) => {
     let msg;
     try { msg = JSON.parse(raw); } catch { return; }
 
     switch (msg.type) {
-      // Presenter registers
-      case 'presenter-join':
-        presenter = ws;
-        totalSlides = msg.totalSlides || 0;
-        currentSlide = msg.currentSlide || 0;
-        console.log(`Presenter conectado (${totalSlides} slides)`);
-        ws.send(JSON.stringify({ type: 'role', role: 'presenter' }));
-        sendControllerList();
-        break;
 
-      // Controller registers
-      case 'controller-join':
-        controllers.set(ws, { name: msg.name || 'Anonimo' });
-        console.log(`Controller conectado: ${msg.name}`);
-        ws.send(JSON.stringify({
-          type: 'role', role: 'controller',
-          currentSlide, totalSlides
-        }));
-        sendControllerList();
-        break;
+      // ── Handshake ──────────────────────────────────────────
+      case 'join': {
+        const role = msg.role === 'guest' ? 'guest' : 'host';
+        const name = String(msg.name || (role === 'host' ? 'Host' : 'Guest')).slice(0, 40);
+        clients.set(ws, { id, name, role });
 
-      // Navigation from controller
-      case 'navigate':
-        if (presenter && presenter.readyState === 1) {
-          presenter.send(JSON.stringify({
-            type: 'navigate',
-            action: msg.action,
-            slide: msg.slide,
-            from: controllers.get(ws)?.name || '?'
-          }));
+        if (role === 'host') {
+          // Host always reclaims control on (re)connect.
+          hostId = id;
+          controlOwnerId = id;
+          if (typeof msg.totalSlides === 'number') totalSlides = msg.totalSlides;
+          if (typeof msg.currentSlide === 'number') currentSlide = msg.currentSlide;
+          console.log(`[${id}] HOST: ${name} (slides=${totalSlides})`);
+        } else {
+          console.log(`[${id}] GUEST: ${name}`);
+          // If nobody has control at all (no host yet), give it to this guest
+          // as a temporary fallback so the show keeps moving.
+          if (controlOwnerId == null) controlOwnerId = id;
         }
-        break;
 
-      // Action from controller (open screenshot, modal, etc.)
-      case 'action':
-        console.log(`Action: ${msg.action} de ${controllers.get(ws)?.name || '?'} | presenter=${!!presenter}`);
-        if (presenter && presenter.readyState === 1) {
-          presenter.send(JSON.stringify({
-            type: 'action',
-            action: msg.action,
-            params: msg.params || {},
-            from: controllers.get(ws)?.name || '?'
-          }));
+        sendTo(ws, sessionPayload({ myId: id }));
+        broadcastSession();
+        break;
+      }
+
+      // ── Navigation / Action (only current control owner) ──
+      case 'navigate': {
+        const sender = clients.get(ws);
+        if (!sender || sender.id !== controlOwnerId) return;
+        broadcast({
+          type: 'navigate',
+          action: msg.action,
+          slide: msg.slide,
+          from: sender.name,
+          fromId: sender.id
+        }, ws);
+        break;
+      }
+
+      case 'action': {
+        const sender = clients.get(ws);
+        if (!sender || sender.id !== controlOwnerId) return;
+        broadcast({
+          type: 'action',
+          action: msg.action,
+          params: msg.params || {},
+          from: sender.name,
+          fromId: sender.id
+        }, ws);
+        break;
+      }
+
+      case 'slide-update': {
+        const sender = clients.get(ws);
+        if (!sender || sender.id !== controlOwnerId) return;
+        if (typeof msg.currentSlide === 'number') currentSlide = msg.currentSlide;
+        if (typeof msg.slideLabel === 'string') slideLabel = msg.slideLabel;
+        if (Array.isArray(msg.slideActions)) slideActions = msg.slideActions;
+        broadcast({
+          type: 'slide-update',
+          currentSlide,
+          slideLabel,
+          slideActions,
+          fromId: sender.id
+        }, ws);
+        break;
+      }
+
+      // ── Control delegation (host only) ────────────────────
+      case 'control-handoff': {
+        const sender = clients.get(ws);
+        if (!sender || sender.id !== hostId) {
+          sendTo(ws, { type: 'error', error: 'Somente o host pode delegar controle' });
+          return;
         }
-        break;
+        let targetWs = null;
+        if (typeof msg.targetId === 'number') targetWs = findWsById(msg.targetId);
+        else if (msg.targetName) targetWs = findWsByName(msg.targetName);
 
-      // Presenter reports slide change (sync all controllers)
-      case 'slide-update':
-        currentSlide = msg.currentSlide;
-        wss.clients.forEach(c => {
-          if (c !== ws && c.readyState === 1) {
-            c.send(JSON.stringify({
-              type: 'slide-update',
-              currentSlide: msg.currentSlide,
-              slideLabel: msg.slideLabel || '',
-              slideActions: msg.slideActions || []
-            }));
-          }
-        });
+        if (!targetWs) {
+          sendTo(ws, { type: 'error', error: `Alvo nao encontrado: ${msg.targetName || msg.targetId}` });
+          return;
+        }
+        const target = clients.get(targetWs);
+        controlOwnerId = target.id;
+        console.log(`[${sender.id}] HANDOFF -> [${target.id}] ${target.name}`);
+        broadcastSession();
         break;
+      }
     }
   });
 
   ws.on('close', () => {
-    if (ws === presenter) {
-      presenter = null;
-      console.log('Presenter desconectado');
-      broadcast({ type: 'presenter-disconnected' });
+    const c = clients.get(ws);
+    if (!c) {
+      console.log(`[${id}] Desconectado (sem sessao)`);
+      return;
     }
-    if (controllers.has(ws)) {
-      console.log(`Controller desconectado: ${controllers.get(ws).name}`);
-      controllers.delete(ws);
-      sendControllerList();
+    console.log(`[${id}] Desconectado: ${c.name} (${c.role})`);
+    clients.delete(ws);
+
+    if (c.id === hostId) {
+      hostId = null;
+      if (controlOwnerId === c.id) controlOwnerId = null;
+    } else if (c.id === controlOwnerId) {
+      // Guest with control dropped — return control to the host
+      controlOwnerId = hostId;
     }
+
+    broadcastSession();
   });
 });
 
 const PORT = process.env.PORT || 3030;
 server.listen(PORT, () => {
   console.log(`\n  Tech Spotlight Server`);
-  console.log(`  Hub:      http://localhost:${PORT}`);
-  console.log(`  Spotlight: http://localhost:${PORT}/edition-02/spotlight.html`);
-  console.log(`  Control:  http://localhost:${PORT}/control\n`);
+  console.log(`  Hub:       http://localhost:${PORT}`);
+  console.log(`  Spotlight: http://localhost:${PORT}/edition-03/spotlight.html`);
+  console.log(`  Host:      http://localhost:${PORT}/edition-03/spotlight.html?role=host&name=Ronaldo`);
+  console.log(`  Guest:     http://localhost:${PORT}/edition-03/spotlight.html?role=guest&name=Bruno\n`);
 });

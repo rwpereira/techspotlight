@@ -4,7 +4,8 @@
       "Bash(unzip -o /c/tmp/tech-spotlight-web.skill -d /tmp/skill-extract)",
       "Bash(cp:*)",
       "Bash(git mv:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(node --check server.js)"
     ]
   }
 }

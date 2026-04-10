@@ -3009,21 +3009,48 @@ function updateTimer() {
   }
 }
 
-// ── WebSocket Remote Control ──
+// ── WebSocket Remote Control (host/guest com delegação) ──
+// Mesmo protocolo da edition-03: host tem prioridade, pode delegar
+// controle via teclas 4=Ronaldo, 5=Bruno, 6=Thielson.
+
+const urlParams = new URLSearchParams(location.search);
+const myRole = (urlParams.get('role') || 'host').toLowerCase() === 'guest' ? 'guest' : 'host';
+const myName = urlParams.get('name') || (myRole === 'host' ? 'Ronaldo' : 'Guest');
+
+const HANDOFF_KEYS = {
+  '4': 'Ronaldo',
+  '5': 'Bruno',
+  '6': 'Thielson'
+};
+
 let remoteWs = null;
 let remoteConnected = false;
+let applyingFromRemote = false;
+let myId = null;
+let hostId = null;
+let controlOwnerId = null;
+let peers = [];
+
+function iHaveControl() {
+  return myId != null && myId === controlOwnerId;
+}
+function iAmHost() {
+  return myId != null && myId === hostId;
+}
+function canActLocally() {
+  if (applyingFromRemote) return true;
+  if (!remoteConnected) return true;
+  if (controlOwnerId == null) return true;
+  return iHaveControl();
+}
 
 function toggleRemote() {
-  if (remoteConnected) {
-    disconnectRemote();
-  } else {
-    connectRemote();
-  }
+  if (remoteConnected) disconnectRemote();
+  else connectRemote();
 }
 
 function connectRemote(url) {
   if (!url) {
-    // Auto-detect: if served via http(s), connect to same host; if file://, skip
     if (location.protocol === 'file:') return;
     const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
     url = `${wsProto}//${location.host}`;
@@ -3031,51 +3058,85 @@ function connectRemote(url) {
   try {
     remoteWs = new WebSocket(url);
   } catch {
-    showRemoteStatus('Erro ao conectar', false);
+    updatePeersUI();
     return;
   }
 
   remoteWs.onopen = () => {
     remoteWs.send(JSON.stringify({
-      type: 'presenter-join',
+      type: 'join',
+      role: myRole,
+      name: myName,
       totalSlides: total,
       currentSlide: cur
     }));
     remoteConnected = true;
-    showRemoteStatus('Remote ON', true);
+    updatePeersUI();
   };
 
   remoteWs.onmessage = (e) => {
     let msg;
     try { msg = JSON.parse(e.data); } catch { return; }
-    if (msg.type === 'navigate') {
-      if (msg.action === 'next') next();
-      else if (msg.action === 'prev') prev();
-      else if (msg.action === 'goto' && typeof msg.slide === 'number') goTo(msg.slide);
-      broadcastSlide();
+
+    if (msg.type === 'session') {
+      if (typeof msg.myId === 'number') myId = msg.myId;
+      hostId = msg.hostId;
+      controlOwnerId = msg.controlOwnerId;
+      peers = Array.isArray(msg.clients) ? msg.clients : [];
+      if (myRole === 'guest' && typeof msg.currentSlide === 'number' && msg.currentSlide !== cur) {
+        applyingFromRemote = true;
+        try { goTo(msg.currentSlide); } finally { applyingFromRemote = false; }
+      }
+      updatePeersUI();
+      return;
     }
+
+    if (msg.type === 'slide-update') {
+      if (typeof msg.currentSlide === 'number' && msg.currentSlide !== cur) {
+        applyingFromRemote = true;
+        try { goTo(msg.currentSlide); } finally { applyingFromRemote = false; }
+      }
+      return;
+    }
+
+    if (msg.type === 'navigate') {
+      applyingFromRemote = true;
+      try {
+        if (msg.action === 'next') next();
+        else if (msg.action === 'prev') prev();
+        else if (msg.action === 'goto' && typeof msg.slide === 'number') goTo(msg.slide);
+      } finally { applyingFromRemote = false; }
+      return;
+    }
+
     if (msg.type === 'action') {
-      handleRemoteAction(msg.action, msg.params || {});
+      applyingFromRemote = true;
+      try { handleRemoteAction(msg.action, msg.params || {}); }
+      finally { applyingFromRemote = false; }
+      return;
+    }
+
+    if (msg.type === 'error') {
+      flashPeersStatus(msg.error || 'erro');
+      return;
     }
   };
 
-  remoteWs.onerror = () => {}; // suppress console errors
+  remoteWs.onerror = () => {};
 
   remoteWs.onclose = () => {
     remoteConnected = false;
-    showRemoteStatus('Remote OFF', false);
-    // Auto-reconnect after 5s
+    myId = null; hostId = null; controlOwnerId = null; peers = [];
+    updatePeersUI();
     setTimeout(() => { if (!remoteConnected) try { connectRemote(url); } catch(e) {} }, 5000);
   };
 }
 
 function disconnectRemote() {
-  if (remoteWs) {
-    remoteWs.close();
-    remoteWs = null;
-  }
+  if (remoteWs) { remoteWs.close(); remoteWs = null; }
   remoteConnected = false;
-  showRemoteStatus('Remote OFF', false);
+  myId = null; hostId = null; controlOwnerId = null; peers = [];
+  updatePeersUI();
 }
 
 // Map of actions available per slide
@@ -3131,12 +3192,11 @@ function handleRemoteAction(action, params) {
     case 'toggleTimer':
       toggleTimer();
       break;
-    case 'toggleFullscreen':
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-      else document.exitFullscreen();
-      break;
     case 'openKpiModal':
       openKpiModal(params.kpi || 'all');
+      break;
+    case 'closeKpiModal':
+      closeKpiModal();
       break;
     case 'filterStats':
       filterStats(params.member || 'all');
@@ -3144,43 +3204,166 @@ function handleRemoteAction(action, params) {
   }
 }
 
-function broadcastSlide() {
-  if (remoteWs && remoteWs.readyState === 1) {
-    remoteWs.send(JSON.stringify({
-      type: 'slide-update',
-      currentSlide: cur,
-      slideLabel: labels[cur] || '',
-      slideActions: getSlideActions()
-    }));
-  }
+function emitSlideUpdate() {
+  if (!remoteWs || remoteWs.readyState !== 1) return;
+  if (applyingFromRemote) return;
+  if (!iHaveControl()) return;
+  remoteWs.send(JSON.stringify({
+    type: 'slide-update',
+    currentSlide: cur,
+    slideLabel: labels[cur] || '',
+    slideActions: getSlideActions()
+  }));
 }
 
-// Patch goTo to broadcast
+function emitAction(action, params) {
+  if (!remoteWs || remoteWs.readyState !== 1) return;
+  if (applyingFromRemote) return;
+  if (!iHaveControl()) return;
+  remoteWs.send(JSON.stringify({
+    type: 'action',
+    action,
+    params: params || {}
+  }));
+}
+
+// ── Wrap das funções locais para aplicar regras de controle + broadcast ──
 const _origGoTo = goTo;
 goTo = function(n) {
+  if (!canActLocally()) { flashPeersStatus('sem controle — aguarde handoff'); return; }
   _origGoTo(n);
-  broadcastSlide();
+  emitSlideUpdate();
 };
 
-function showRemoteStatus(text, on) {
-  let el = document.getElementById('remoteIndicator');
+const _origOpenScreenshot = openScreenshot;
+openScreenshot = function(cardId, title) {
+  if (!canActLocally()) { flashPeersStatus('sem controle'); return; }
+  _origOpenScreenshot(cardId, title);
+  emitAction('openScreenshot', { cardId, title });
+};
+
+const _origCloseScreenshot = closeScreenshot;
+closeScreenshot = function() {
+  if (!canActLocally()) return;
+  _origCloseScreenshot();
+  emitAction('closeModals');
+};
+
+const _origSsNav = ssNav;
+ssNav = function(dir) {
+  if (!canActLocally()) return;
+  _origSsNav(dir);
+  emitAction('ssNav', { dir });
+};
+
+const _origToggleTimer = toggleTimer;
+toggleTimer = function() {
+  _origToggleTimer();
+  emitAction('toggleTimer');
+};
+
+const _origOpenKpiModal = openKpiModal;
+openKpiModal = function(kpi) {
+  if (!canActLocally()) { flashPeersStatus('sem controle'); return; }
+  _origOpenKpiModal(kpi);
+  emitAction('openKpiModal', { kpi });
+};
+
+const _origCloseKpiModal = closeKpiModal;
+closeKpiModal = function() {
+  if (!canActLocally()) return;
+  _origCloseKpiModal();
+  emitAction('closeModals');
+};
+
+const _origFilterStats = filterStats;
+filterStats = function(member) {
+  if (!canActLocally()) { flashPeersStatus('sem controle'); return; }
+  _origFilterStats(member);
+  emitAction('filterStats', { member });
+};
+
+// ── Teclas de delegação (apenas host): 4=Ronaldo, 5=Bruno, 6=Thielson ──
+document.addEventListener('keydown', e => {
+  if (!iAmHost()) return;
+  if (document.getElementById('ssOverlay')?.classList.contains('open')) return;
+  if (document.getElementById('kpiOverlay')?.classList.contains('open')) return;
+  if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+  const targetName = HANDOFF_KEYS[e.key];
+  if (!targetName) return;
+  if (!remoteWs || remoteWs.readyState !== 1) return;
+  const target = peers.find(p => p.name.toLowerCase() === targetName.toLowerCase());
+  if (!target) {
+    flashPeersStatus(`${targetName} nao esta conectado`);
+    e.preventDefault();
+    return;
+  }
+  if (target.id === controlOwnerId) {
+    flashPeersStatus(`${targetName} ja esta no controle`);
+    e.preventDefault();
+    return;
+  }
+  remoteWs.send(JSON.stringify({
+    type: 'control-handoff',
+    targetId: target.id,
+    targetName
+  }));
+  flashPeersStatus(`controle → ${targetName}`);
+  e.preventDefault();
+});
+
+// ── UI: barra de peers/controle ──
+function updatePeersUI() {
+  let el = document.getElementById('peersBar');
   if (!el) {
     el = document.createElement('div');
-    el.id = 'remoteIndicator';
-    el.style.cssText = 'position:fixed;bottom:32px;right:16px;font-family:JetBrains Mono,monospace;font-size:0.7rem;padding:4px 12px;border-radius:6px;cursor:pointer;z-index:9999;transition:all 0.3s';
+    el.id = 'peersBar';
+    el.style.cssText = 'position:fixed;bottom:32px;right:16px;font-family:JetBrains Mono,monospace;font-size:0.7rem;padding:6px 12px;border-radius:6px;z-index:9999;background:rgba(30,30,30,0.92);border:1px solid #3e3e42;color:#cccccc;display:flex;gap:10px;align-items:center;cursor:pointer;transition:opacity 0.3s';
     el.onclick = toggleRemote;
+    el.title = 'Clique para reconectar (ou pressione R)';
     document.body.appendChild(el);
   }
-  el.style.background = on ? 'rgba(52,211,153,0.15)' : 'rgba(248,113,113,0.15)';
-  el.style.color = on ? '#34d399' : '#f87171';
-  el.style.border = on ? '1px solid rgba(52,211,153,0.3)' : '1px solid rgba(248,113,113,0.3)';
-  el.textContent = text;
-  if (!on) setTimeout(() => { if (el && !remoteConnected) el.style.opacity = '0.5'; }, 3000);
-  else el.style.opacity = '1';
+  if (!remoteConnected) {
+    el.innerHTML = `<span style="color:#f87171">● offline</span> <span style="opacity:0.6">${myRole}:${myName}</span>`;
+    return;
+  }
+  const parts = [];
+  parts.push(`<span style="color:#34d399">●</span> <span style="opacity:0.6">você:</span> <span>${myName}</span>`);
+  if (peers.length) {
+    parts.push(`<span style="opacity:0.3">│</span>`);
+    const tags = peers.map(p => {
+      const isHost = p.id === hostId;
+      const hasControl = p.id === controlOwnerId;
+      const isMe = p.id === myId;
+      let color = '#9ca3af';
+      if (hasControl) color = '#fbbf24';
+      else if (isMe) color = '#60a5fa';
+      const prefix = isHost ? '★' : '';
+      const suffix = hasControl ? '◉' : '';
+      return `<span style="color:${color}">${prefix}${p.name}${suffix}</span>`;
+    }).join(' ');
+    parts.push(tags);
+  }
+  if (iAmHost()) {
+    parts.push('<span style="opacity:0.3">│</span>', '<span style="opacity:0.5">[4/5/6]</span>');
+  } else if (!iHaveControl()) {
+    parts.push('<span style="opacity:0.3">│</span>', '<span style="opacity:0.5">modo view</span>');
+  }
+  el.innerHTML = parts.join(' ');
+  el.style.opacity = '1';
 }
 
-// Auto-connect on load (silent — if file://, stays off; if served via http(s), connects automatically)
-showRemoteStatus('R: Remote', false);
+let _peersFlashTimer = null;
+function flashPeersStatus(text) {
+  const el = document.getElementById('peersBar');
+  if (!el) return;
+  el.innerHTML = `<span style="color:#fbbf24">⚠ ${text}</span>`;
+  if (_peersFlashTimer) clearTimeout(_peersFlashTimer);
+  _peersFlashTimer = setTimeout(() => updatePeersUI(), 2000);
+}
+
+// Auto-connect on load
+updatePeersUI();
 try { connectRemote(); } catch(e) {}
 </script>
 </body>
