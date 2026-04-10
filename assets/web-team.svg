@@ -1,0 +1,8 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <title>Web Engineering Team Icon</title>
+  <polygon points="100,14 172,55 172,145 100,186 28,145 28,55" fill="#7F77DD"/>
+  <polygon points="100,28 158,62 158,138 100,172 42,138 42,62" fill="#26215C"/>
+  <text x="100" y="118" text-anchor="middle"
+    font-family="'SF Mono','Fira Code','Courier New',monospace"
+    fill="#AFA9EC" font-size="48" font-weight="700" letter-spacing="-3">&lt;/&gt;</text>
+</svg>
