@@ -11,9 +11,6 @@ const wss = new WebSocketServer({ server });
 const projectRoot = path.join(__dirname, '..');
 app.use(express.static(projectRoot));
 
-// Shortcut kept for compatibility (mobile fallback)
-app.get('/control', (req, res) => res.redirect('/remote/control.html'));
-
 // ── Session state ─────────────────────────────────────────────
 // New protocol: each client joins with { role: 'host'|'guest', name }
 // Exactly one hostId (last host wins). controlOwnerId is who actually
