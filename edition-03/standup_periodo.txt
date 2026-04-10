@@ -1,0 +1,222 @@
+================================================================================
+TECH SPOTLIGHT #03 — STANDUPS DO PERIODO
+Periodo: 02/04 - 23/04/2026
+Apresentacao: 24/04/2026
+================================================================================
+
+Standup (06/04/2026)
+(Start of week meeting)
+--------------------------------------------------------------------------------
+
+RONALDO
+agrotrace-v3
+
+Done:
+- #11997 - Nao mostra a Atividade no cadastro de propriedade
+    - Funcionalidades Principais Implementadas:
+        - A funcionalidade de carregamento de atividades no formulario de propriedade foi implementada.
+        - A logica para popular o formulario com atividades recebidas da API foi adicionada em propriedade-form.component.ts, criando dinamicamente campos no FormArray.
+        - O padding do container de atividades foi ajustado em propriedade-atividades-tab.component.html para melhor alinhamento visual.
+
+- #11899 - Verificar usuario tentando salvar propriedade mas o botao nao libera
+    - Correcoes Implementadas:
+        - Trabalho na correcao da logica de validacao do formulario para resolver o problema do botao de salvar que nao estava sendo habilitado.
+
+Calls:
+- Com Carlos, sobre ajustes na API para trabalhar com registros desativados de uma forma mais eficiente
+- Com Luciano, restauracao de respostas do formulario dinamico que foi modificado a estrutura
+- Com Thielson, alinhando atividades
+- Com Thielson e Bruno, investigando problemas com rate limite do resend
+
+
+THIELSON
+agrotrace-v3
+
+Done:
+- #11762 - Importacao e Exportacao do Protocolo
+      - Agora e possivel editar respostas automaticas junto da importacao de protocolo
+- #12020 - [FIX] Respeitar rate limit do Resend no envio em massa de e-mails
+      - Ajustado envio de email em lote para nao estourar o rate limit do resend
+- #12007 - [FEAT] Refletir labels configuraveis dos Comparativos na coluna Indicador da tabela de pontuacao
+      - Adicionado label configuravel na tabela de ranking na home
+- #12006 - [FIX] Accordion de relatorios nao expande automaticamente ao filtrar por texto
+      - Ajustado filtro para expandir accordion ao digitar texto
+
+Calls:
+- Com Ronaldo alinhando atividades
+- Com Ronaldo e Bruno investigando problemas com rate limite do resend
+
+
+BRUNO
+Done:
+- #11494 - Landing Pages Dinamicas por Projeto + Blog
+    - Deploy do Blog e Landing Page
+        - Criei pipelines e manifests Kubernetes para dev, homologacao e producao (infra/deploy/lp-blog/)
+        - Adicionei configmaps por ambiente e configurei CI/CD com Azure Pipelines
+    - Sistema de Blog
+        - Implementei logica para priorizar posts com destaque=true como artigo em destaque no topo da listagem
+        - Atualizei ordenacao da API para retornar posts em destaque primeiro
+        - Refatorei fallback de post em destaque para selecionar pelo maior ID
+    - Rodape Dinamico
+        - Refatorei footer para separar paineis IBS e do projeto, com controle de exibicao condicional
+        - Adicionei campos dinamicos: siteOficial, telefoneContato, ondeEstamos, links de redes sociais
+    - Secao de Aplicativos
+        - Criei componente AppsSection com mockup dual de smartphones e badges das lojas
+        - Implementei sombras direcionais e responsividade para os telefones
+    - Configuracao do Projeto
+        - Atualizei para Node 24, removi Prettier em favor do Biome, adicionei suporte TypeScript para Astro
+
+Calls:
+- Com Ronaldo e Thielson sobre problemas de ratelimit do Resend no envio de emails
+- Com Matheus sobre implementacao de criacao de landing page
+- Com Iohan sobre deploy da landing page
+
+
+================================================================================
+
+Standup (07/04/2026)
+[Ronaldo, Bruno] Assistencia Tecnica - App
+--------------------------------------------------------------------------------
+
+RONALDO
+agrotrace-v3
+
+Done:
+- #12037 - Anexo de resposta com metadata nao abre
+    - Manipulacao de Metadados
+    - Implementacao de servico para manipulacao de URLs de metadados utilizando SAS do Azure Blob, com atualizacoes em que-resposta.module.ts e que-resposta.service.ts.
+
+CHECKMILK
+
+Done:
+- #12033 - Erro para gerar relatorio
+    - Relatorio Produtor - Diagnostico
+        - Refatorei o servico src/relatorio/produtor/produtor.service.ts para corrigir falha na geracao
+        - Melhorei o tratamento de erros e a estabilidade do processo
+
+Calls:
+- Com Thielson, investigando problemas com respostas apos reestruturacao de form-estrutura de um formulario
+- Com Elias, sobre duvidas na funcionalidade do grupo filial
+- Com Thielson, investigando problemas com filtro de perguntas inativas nas sessao de respostas automaticas
+- Com Matheus, sobre problema na API do Checkmilk
+- Com Iohan, sobre Envios de links e-mail (Minerva)
+- Com Thayse, sobre erro para gerar relatorio de DG no projeto Unimar
+- Com Gustavo, Duvidas em resultados da home
+- Com Luciano, sobre a reestruturacao do Formulario Dinamico no Sicredi
+
+
+THIELSON
+agrotrace-v3
+
+Done:
+- #12040 - migracao de respostas do formulario dinamico apos reestruturacao de perguntas multiselect em agrupadores
+      - Criado script para migrar respostas apos reestruturacao no cadastro de form-estruturas
+
+In Progress:
+- #12029 - [FEAT] Respostas Automaticas: contador por item, otimizacao de chamadas e filtro de perguntas inativas
+      - otimizando filtro de perguntas inativas
+
+Calls:
+- Com Ronaldo investigando problemas com respostas apos reestruturacao de form-estrutura de um formulario
+- Com Ronaldo investigando problemas com filtro de perguntas inativas nas sessao de respostas automaticas
+
+
+BRUNO
+Reuniao para discutir novo projeto de assistencia ao produtor
+
+agro-assistant
+
+Done:
+- Setup inicial do projeto com servico RAG, API e aplicacao web
+   - Servico RAG
+      - Criei o servico Python em apps/rag/ com FastAPI para recuperacao de conhecimento agricola
+      - Adicionei Docling, pgvector, sentence-transformers e pydantic-ai para ingestao, embeddings e consulta de documentos
+
+   - API e autenticacao
+      - Iniciei a API em apps/server/ com NestJS, incluindo autenticacao, permissoes e estrutura de acesso por papeis
+      - Modelei a persistencia com Drizzle ORM e schema inicial para usuarios, roles e knowledge sources
+
+   - Aplicacao web
+      - Criei a aplicacao React em apps/web/ com Vite, TanStack Router, Tailwind CSS e componentes shadcn/ui
+      - Estruturei a base da interface para integracao com a API e com o fluxo de consulta do servico RAG
+
+   - Infraestrutura e monorepo
+      - Configurei o monorepo com Turbo, TypeScript compartilhado e linting com Biome
+      - Adicionei docker-compose com PostgreSQL, Redis e MinIO para banco, cache e armazenamento de arquivos
+      - Inclui documentacao inicial, PRD e scripts de build para geracao de PDF
+
+Calls:
+- Com time web alinhamentos sobre a estrutura inicial do projeto e definicao da base de arquitetura
+
+
+================================================================================
+
+Standup (08/04/2026)
+(Planing Web)
+--------------------------------------------------------------------------------
+
+RONALDO
+
+In Progress:
+- #12062 - [FEAT] Dashboard Carbono - painel analitico com temas prioritarios, KPIs, graficos e drill-down por tema
+    - Criado consulta para extracao dos dados de forma performatica
+    - Iniciado a construcao do dashboard
+    - Validando conteudo
+
+Calls:
+- Com Ricardo, demanda de KPIs do Carbono
+- Com Gustavo, liberar 2FA do email
+- Com Thielson, validando solucoes para as tasks trabalhadas hoje
+- Com Bruno e Thielson, overview da evolucao do Agro Assistant
+- Com Iohan, sobre erros pra subir api agrotrace - migrations
+- Com Gustavo, Ajuste em dashboard de form dinamico
+
+
+THIELSON
+agrotrace-v3
+
+Done:
+- #12029 - [FEAT] Respostas Automaticas: contador por item, otimizacao de chamadas e filtro de perguntas inativas
+      - otimizado filtro de perguntas inativas
+      - Adicionado contador pra facilitar a visualizacao da qtd de respostas automaticas configuradas
+      - Otimazado chamas dos itens de lista das perguntas selecionadas para resposta automaticas, antes ao editar um pergunta que tinha varias perguntas com respostas automaticas configuradas era realizado uma chamada ao back para cada. Algunas com mais de 100 perguntas configuradas. Agora so e realizada uma chamada inicial para trazer todos os itens iniciais ao editar, e depois sao realizadas chamadas individuais se e adicionada uma nova ou editada uma antiga
+- #12058 - Corrigido um problema na procedure que estava causando erro ao buscar dashboard formulario
+
+Calls:
+- Com Ronaldo apresentando e validando solucoes para as tasks trabalhadas hoje
+
+
+BRUNO
+agrotrace-v3
+
+Done:
+- #11734 - Criar opcao "Possui Validacao"
+- Validacao de Pergunta
+     - Refatoracao do formulario para validar apenas tipos suportados, com getter e metodo reutilizavel.
+     - Atualizacao da UI de validacao livre, migrando estilos inline para SCSS e melhorando layout e suporte a negacao de regras.
+- Configuracao de Deploy
+     - Padronizacao das aspas no ConfigMap dev (de simples para duplas) (infra/deploy/api/manifests/dev/configmap.yaml).
+
+agro-assistant
+
+Done:
+- Implementacao do modulo de chat com Mastra AI
+   - Sistema de Chat
+       - Adicionado chat integrado ao Mastra AI para consultas agricolas.
+       - Implementado agente que classifica consultas, busca via RAG, faz auto-reflexao e retorna respostas estruturadas.
+       - Incluidas ferramentas de classificacao, busca RAG e auto-reflexao.
+       - Ajustado RAG para modelos Gemini + variaveis de ambiente do chat.
+       - Removido singleton do Mastra, adotando arquitetura baseada em servicos.
+       - Adicionada documentacao de habilidades e configuracao do MCP.
+- Desenvolvimento da API de fontes de conhecimento
+  - Fontes de Conhecimento
+       - Criado modulo com casos de uso: upload URL, registro, status, listagem, retry e versionamento.
+       - Adicionado KnowledgeSourcesController com endpoints correspondentes.
+       - Implementado DrizzleKnowledgeSourceRepository com operacoes transacionais.
+       - Criado RagHttpClient para comunicacao com o servico RAG.
+
+Calls:
+- Com Matheus sobre pergunta referenciada
+- Com Elias sobre validacao de pergunta
+- Com Iohan sobre problemas no deploy (env vars + migrations)
+- Com Ronaldo e Thielson apresentando evolucao do agro assistant
