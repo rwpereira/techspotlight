@@ -1759,12 +1759,12 @@
             <span class="sidebar-icon">📸</span> overview-elias.md
           </div>
 
-          <div class="sidebar-divider"></div>
-          <div class="sidebar-header">Lightning</div>
+          <!-- <div class="sidebar-divider"></div> -->
+          <!-- <div class="sidebar-header">Lightning</div>
 
           <div class="sidebar-item" onclick="goTo(7)" id="si-7">
             <span class="sidebar-icon">⚡</span> llm-self-hosted.agent.ts
-          </div>
+          </div> -->
 
           <div class="sidebar-divider"></div>
           <div class="sidebar-header">Wrap-up</div>
@@ -2471,7 +2471,7 @@
                     >
                     <span
                       >POC inicial com
-                      <strong style="color: var(--text)">GLM-OCR</strong> (~1s
+                      <strong style="color: var(--text)">GLM-OCR</strong> (~4s
                       por imagem) e benchmark entre modelos → escolha do
                       <strong style="color: var(--text)">gemma3:4b</strong>.</span
                     >
@@ -2503,11 +2503,6 @@
                       style="color: var(--teal); font-family: var(--font-mono)"
                       >→</span
                     >
-                    <span
-                      >Integração no app, validação no ambiente DEV e
-                      notificações via
-                      <strong style="color: var(--text)">OneSignal</strong>.</span
-                    >
                   </div>
                 </div>
               </div>
@@ -2519,7 +2514,7 @@
                 <div
                   style="font-size: 16px; color: var(--text2); line-height: 1.7"
                 >
-                  LLM self-hosted resolvendo NFs em ~1s/imagem,
+                  LLM self-hosted resolvendo NFs em ~4s/imagem,
                   <strong style="color: var(--text)"
                     >reduzindo a dependência de contas externas</strong
                   >
@@ -2540,8 +2535,9 @@
                     >// API própria abstrai o Ollama (gemma3:4b)</span
                   ><br />
                   <span class="kw">async</span>
-                  <span class="fn">extrairNF</span>(<span class="prop">img</span>:
-                  <span class="prop">Buffer</span>) {<br />
+                  <span class="fn">ocrExtract</span>(<span class="prop">img</span>:
+                  <span class="prop">Buffer</span>, <span class="prop">prompt</span>:
+                  <span class="prop">text</span>) {<br />
                   &nbsp;&nbsp;<span class="kw">const</span>
                   <span class="prop">res</span> =
                   <span class="kw">await</span>
@@ -2556,8 +2552,7 @@
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">images</span>:
                   [<span class="prop">img</span>.<span class="fn">toString</span
                   >(<span class="str">"base64"</span>)],<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">prompt</span>:
-                  <span class="prop">NF_PROMPT</span>,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">prompt</span>,<br />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="prop">format</span>:
                   <span class="str">"json"</span><br />
                   &nbsp;&nbsp;&nbsp;&nbsp;})<br />
@@ -2568,7 +2563,7 @@
                   >(<span class="prop">res</span>.<span class="prop">response</span>)<br />
                   }<br />
                   <span class="cmt"
-                    >// rate-limit + fila → ~1s/imagem, on-premise</span
+                    >// rate-limit + fila → ~4s/imagem, on-premise</span
                   >
                 </div>
               </div>
@@ -3004,7 +2999,7 @@
                   &nbsp;&nbsp;<span class="kw">const</span>
                   <span class="prop">out</span> =
                   <span class="kw">await</span>
-                  <span class="fn">extrairNF</span>(<span class="prop">req</span>.<span
+                  <span class="fn">ocrExtract</span>(<span class="prop">req</span>.<span
                     class="prop"
                     >file</span
                   >.<span class="prop">buffer</span>)<br />
@@ -3017,7 +3012,7 @@
                   &nbsp;&nbsp;<span class="prop">res</span>.<span class="fn"
                     >json</span
                   >(<span class="prop">out</span>)
-                  <span class="cmt">// ~1s/imagem</span><br />
+                  <span class="cmt">// ~4s/imagem</span><br />
                   })
                 </div>
               </div>
@@ -3059,7 +3054,7 @@
                     quando a NF é processada
                   </div>
                   <div>
-                    <strong style="color: var(--text)">~1s / imagem</strong><br />latência
+                    <strong style="color: var(--text)">~4s / imagem</strong><br />latência
                     medida na POC e no DEV
                   </div>
                 </div>
@@ -3430,7 +3425,7 @@
                     color: var(--amber);
                   "
                   >gemma3:4b</code
-                >) resolvendo OCR de NFs em ~1s/imagem com API própria, fila e
+                >) resolvendo OCR de NFs em ~4s/imagem com API própria, fila e
                 rate-limit — <strong style="color: var(--text)">reduzindo a
                 dependência de IA externa</strong> no CheckWork.
               </div>
@@ -3490,15 +3485,16 @@
           <div class="slide-heading">Próximas <span>prioridades</span></div>
 
           <div style="display: flex; flex-direction: column; gap: 0; flex: 1">
+
             <div class="todo-item">
               <div class="todo-check"></div>
               <div class="todo-content">
                 <div class="todo-title">
-                  Módulo PEC na visão do produtor
+                  Relatórios CheckMilk com Jasper
                 </div>
                 <div class="todo-desc">
-                  Levar o módulo PEC para a visão do produtor — continuação dos
-                  ajustes pós-reunião e da fase de testes (#12610 / #12616).
+                  Relatórios do CheckMilk usando Jasper — geração e
+                  exportação de relatórios (#12645).
                 </div>
               </div>
               <div class="flex-row">
@@ -3514,11 +3510,12 @@
               <div class="todo-check"></div>
               <div class="todo-content">
                 <div class="todo-title">
-                  Financeiro / Relatórios CheckMilk com Jasper
+                  Curva de Lactação
                 </div>
                 <div class="todo-desc">
-                  Relatórios financeiros do CheckMilk usando Jasper — geração e
-                  exportação de relatórios (#12645).
+                  Visão otimizada para exibir a curva de Lactação
+                  dos animais, oferecendo uma forma interativa do
+                  produtor acompanhar seu rebanho.
                 </div>
               </div>
               <div class="flex-row">
@@ -3529,6 +3526,7 @@
                 >
               </div>
             </div>
+            
 
             <div class="todo-item">
               <div class="todo-check"></div>
@@ -3546,6 +3544,27 @@
                   class="todo-who"
                   style="background: var(--teal-bg); color: var(--teal)"
                   >@matheus</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Campo Vivo
+                </div>
+                <div class="todo-desc">
+                  Construção da ferramenta Campo Vivo, identificando processos
+                  e modelando ferramenta para que atenda aos requisitos identificados
+                  durante as reuniões de alinhamento.
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--purple-bg); color: var(--purple)"
+                  >@carlos</span
                 >
               </div>
             </div>
@@ -3600,6 +3619,26 @@
                   Acompanhar os pipelines de build dos projetos terceiros que
                   usam a base do Agrotrace e a publicação das versões ramificadas
                   (#12580 / #12578).
+                </div>
+              </div>
+              <div class="flex-row">
+                <span
+                  class="todo-who"
+                  style="background: var(--blue-bg); color: var(--blue)"
+                  >@elias</span
+                >
+              </div>
+            </div>
+
+            <div class="todo-item">
+              <div class="todo-check"></div>
+              <div class="todo-content">
+                <div class="todo-title">
+                  Módulo PEC na visão do produtor
+                </div>
+                <div class="todo-desc">
+                  Levar o módulo PEC para a visão do produtor — continuação dos
+                  ajustes pós-reunião e da fase de testes (#12610 / #12616).
                 </div>
               </div>
               <div class="flex-row">

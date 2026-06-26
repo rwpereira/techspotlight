@@ -44,7 +44,7 @@ externos de IA — sujeito a custo, *rate-limits* e dependência de terceiros, e
 contas de fallback. Buscou-se uma solução de **OCR baseada em IA rodando on-premise**.
 
 **Solução**
-- POC inicial com **GLM-OCR** (~1s para resolver imagens).
+- POC inicial com **GLM-OCR** (~4s para resolver imagens).
 - Benchmark entre modelos → escolha do **`gemma3:4b`**.
 - Serviço **self-hosted via Ollama**, com API própria abstraindo a chamada e fazendo
   o *parse* da resposta no formato do input.
@@ -52,7 +52,7 @@ contas de fallback. Buscou-se uma solução de **OCR baseada em IA rodando on-pr
 - Integração no app, validação no ambiente DEV e notificações via **OneSignal**.
 
 **Resultado**
-- LLM self-hosted resolvendo NFs em ~1s/imagem, **reduzindo a dependência de contas
+- LLM self-hosted resolvendo NFs em ~4s/imagem, **reduzindo a dependência de contas
   externas** de IA.
 - Serviço exposto e validado, com benchmark, em uso no CheckWork.
 

@@ -10,7 +10,8 @@
       "Bash(grep -niA3 -E \"destaque|highlight|spotlight de|slide\" .kiro/skills/generate-spotlight/SPOTLIGHT-GUIDE.md)",
       "Bash(open \"/Users/carlosdalollio/repos/techspotlight/edition-05/spotlight.html\")",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }

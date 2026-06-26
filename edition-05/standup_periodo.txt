@@ -273,7 +273,7 @@
 
 **CheckWork**
 - [Carlos] In Progress: #12561 - Usar outra LLM para resolver NFs:
-  - POC criada com o GLM-OCR. ~1s para resolver imagens.
+  - POC criada com o GLM-OCR. ~4s para resolver imagens.
   - Criando API para expor serviço, abstraindo a chamada do Ollama.
   - Fazendo parse da resposta adotando modelo do input.
 
