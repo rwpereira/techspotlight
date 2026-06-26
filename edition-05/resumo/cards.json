@@ -1,0 +1,278 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#12561",
+        "type": "feat",
+        "title": "Usar outra LLM para resolver NFs",
+        "desc": "LLM self-hosted (Ollama + gemma3:4b) para OCR/extração de dados de Notas Fiscais no CheckWork, com API própria, rate-limit e fila — reduzindo dependência de contas externas de IA."
+      },
+      {
+        "id": "#12660",
+        "type": "feat",
+        "title": "Envio dos documentos necessários para fechamento do RA",
+        "desc": "Envio automático dos documentos necessários para o fechamento do Relatório de Atendimento (RA)."
+      },
+      {
+        "id": "#12609",
+        "type": "feat",
+        "title": "Trocar os RDs de projeto",
+        "desc": "Troca dos projetos vinculados aos RDs do consultor Kleber Petan."
+      },
+      {
+        "id": "#12608",
+        "type": "feat",
+        "title": "Ajustar erro de CORS na publicação do ambiente DEV",
+        "desc": "Correção de erro de CORS na publicação do ambiente DEV."
+      },
+      {
+        "id": "#12545",
+        "type": "fix",
+        "title": "Ajustar nova API Key para o CheckWork extrair infos das NFs",
+        "desc": "Ajuste da nova API Key usada pelo CheckWork para extrair informações das Notas Fiscais."
+      },
+      {
+        "id": "#12444",
+        "type": "feat",
+        "title": "Perguntas opcionais aparecem com um zero no titulo - Form dinamico",
+        "desc": "Correção de exibição de um zero indevido no título de perguntas opcionais do formulário dinâmico."
+      },
+      {
+        "id": "#12343",
+        "type": "feat",
+        "title": "Validações sobre o RA (Cerveira)",
+        "desc": "Validações do fluxo do RA (Cerveira): conferência pelo coordenador e lançamento pelo financeiro com regras de prazo e deadline (dia 08)."
+      },
+      {
+        "id": "#12175",
+        "type": "feat",
+        "title": "Publicar novo layout no ambiente DEV",
+        "desc": "Publicação do novo layout no ambiente DEV."
+      }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#12624",
+        "type": "feat",
+        "title": "Suporte a blocos repetíveis no formulário dinâmico",
+        "desc": "Suporte a blocos/respostas repetíveis no formulário dinâmico do Agrotrace: novas entidades e migrações, rotas de sincronização e CRUD completo das respostas com sync bidirecional."
+      },
+      {
+        "id": "#12580",
+        "type": "ref",
+        "title": "Corrigir pipelines responsáveis por realizar o build da versão.",
+        "desc": "Correção dos pipelines de build dos projetos terceiros que utilizam a base do Agrotrace."
+      },
+      {
+        "id": "#12578",
+        "type": "feat",
+        "title": "Publicação das versões atualizadas",
+        "desc": "Publicação das versões ramificadas do Agrotrace (PEC, Agroplus, 3S, entre outras)."
+      },
+      {
+        "id": "#12562",
+        "type": "ref",
+        "title": "Melhorias no registro de dispositivo do usuário - MOBILE",
+        "desc": "Melhorias no cadastro e atualização do registro de dispositivo do usuário no mobile."
+      },
+      {
+        "id": "#12506",
+        "type": "fix",
+        "title": "Login no APP",
+        "desc": "Correção de bug que impedia novo login no app Android após fechá-lo, em programas com loginAutenticado habilitado e sem código de segurança/biometria no dispositivo."
+      },
+      {
+        "id": "#12459",
+        "type": "fix",
+        "title": "Perfis no Mobile",
+        "desc": "Correção de regressão nos perfis do mobile: respostas com valor 0 sumindo do input, perguntas respondidas não marcadas e perda de performance ao salvar."
+      },
+      {
+        "id": "#12442",
+        "type": "fix",
+        "title": "Sanidade Citros - Ajuste no tratamento de anexos vinculados a múltiplas perguntas",
+        "desc": "Correção no tratamento de anexos vinculados a múltiplas perguntas no formulário Sanidade Citros (anexo único para SIM/NÃO de ~15 perguntas)."
+      },
+      {
+        "id": "#12431",
+        "type": "fix",
+        "title": "Nome da Assinatura do Form",
+        "desc": "Correção na assinatura do formulário: ao imprimir saía o nome do Produtor mesmo com outro nome configurado no registro — Sanidade do Citros."
+      },
+      {
+        "id": "#12417",
+        "type": "fix",
+        "title": "Itens pendentes de envio devido a problema no anexo",
+        "desc": "Correção de itens travados na fila de envio causados por duplicação de RATs/anexos para técnicos do JBS."
+      },
+      {
+        "id": "#12356",
+        "type": "feat",
+        "title": "ChatBot WhatsApp",
+        "desc": "Melhorias no chatbot do WhatsApp após a demonstração da primeira versão."
+      },
+      {
+        "id": "#12229",
+        "type": "feat",
+        "title": "Incluir apelidos de itens de lista no aocmpanhamento",
+        "desc": "Inclusão dos apelidos de itens de lista também no Acompanhamento, replicando o comportamento já existente no Diagnóstico."
+      }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#12668",
+        "type": "ref",
+        "title": "R. Acompanhamento PQFL",
+        "desc": "Relatório de acompanhamento PQFL no Agrotrace."
+      },
+      {
+        "id": "#12605",
+        "type": "feat",
+        "title": "Ajustes PEC pós reunião",
+        "desc": "Ajustes no módulo PEC realizados após reunião de alinhamento."
+      },
+      {
+        "id": "#12597",
+        "type": "feat",
+        "title": "Merge da branch PEC com a Sprint",
+        "desc": "Merge da branch PEC com a branch da Sprint."
+      },
+      {
+        "id": "#12582",
+        "type": "feat",
+        "title": "Remover nome do consultor do RAT - p2",
+        "desc": "Remoção do nome do consultor também do cabeçalho do RAT, reaproveitando o registro labelNomeTecnicoRat (parte 2)."
+      },
+      {
+        "id": "#12567",
+        "type": "feat",
+        "title": "Acompanhamento e resolução de Bugs no teste do PEC",
+        "desc": "Acompanhamento e resolução de bugs durante a fase de testes do PEC."
+      },
+      {
+        "id": "#12566",
+        "type": "feat",
+        "title": "Configuração do OpenSpec no Agrotrace",
+        "desc": "Configuração do framework OpenSpec no Agrotrace para gerenciar o desenvolvimento Spec-Driven."
+      },
+      {
+        "id": "#12556",
+        "type": "feat",
+        "title": "Cadastrar e configurar descrição de atendimento PEC",
+        "desc": "Cadastro e configuração da descrição de atendimento do PEC."
+      },
+      {
+        "id": "#12555",
+        "type": "feat",
+        "title": "Adicionar tela de historico do animal",
+        "desc": "Nova tela de histórico do animal."
+      },
+      {
+        "id": "#12528",
+        "type": "ref",
+        "title": "Criar Frontend",
+        "desc": "Desenvolvimento do frontend da funcionalidade."
+      },
+      {
+        "id": "#12527",
+        "type": "ref",
+        "title": "Criar todo o Backend",
+        "desc": "Desenvolvimento completo do backend da funcionalidade."
+      },
+      {
+        "id": "#12483",
+        "type": "feat",
+        "title": "Adicionar fluxo de criação de atendimento D8",
+        "desc": "Fluxo de criação de atendimento D8."
+      },
+      {
+        "id": "#12482",
+        "type": "feat",
+        "title": "Adicionar regras PEC via registro",
+        "desc": "Adição de regras do PEC via registro para parto (retorno ao rebanho), pesagem (lote, cadastro integral/individual/ambos) e protocolo (D8 etc.)."
+      },
+      {
+        "id": "#12469",
+        "type": "feat",
+        "title": "Criar tela de qualidade do leite",
+        "desc": "Nova tela de qualidade do leite."
+      },
+      {
+        "id": "#12460",
+        "type": "feat",
+        "title": "Filtros Questionário - Expocacer",
+        "desc": "Reorganização dos filtros do questionário (subprotocolos x agrupador externo) para eliminar a impressão de duplicidade — Expocacer."
+      },
+      {
+        "id": "#12458",
+        "type": "feat",
+        "title": "Filtro de perguntas pendentes - Form Dinâmico",
+        "desc": "Filtro de perguntas pendentes no formulário dinâmico para facilitar a localização de pendências, similar ao dos questionários de DG."
+      },
+      {
+        "id": "#12450",
+        "type": "feat",
+        "title": "Melhoria na função IMPRIMIR do form dinâmico",
+        "desc": "Melhoria na função IMPRIMIR do formulário dinâmico para tratar perguntas-chave/gatilho com IMPRIMIR desmarcado — Sanidade Citros."
+      },
+      {
+        "id": "#12443",
+        "type": "feat",
+        "title": "[IATF] Protocolo",
+        "desc": "Configuração do tempo de retirada dos implantes no processo de IATF, permitindo dois tempos distintos por projeto (sêmen comum x sexado)."
+      },
+      {
+        "id": "#12439",
+        "type": "feat",
+        "title": "Adicionar descrição do RAT automatico",
+        "desc": "Adição da descrição automática do RAT."
+      },
+      {
+        "id": "#12416",
+        "type": "feat",
+        "title": "Remover nome do consultor do RAT",
+        "desc": "Substituição do nome do técnico no campo Assinatura do RAT por uma label padrão configurável por projeto, ocultando o documento do técnico quando ativada."
+      },
+      {
+        "id": "#12382",
+        "type": "feat",
+        "title": "Melhoria tipo pergunta FormDinâmico",
+        "desc": "Suporte a ponto flutuante (casas decimais) no tipo de pergunta Número do formulário dinâmico."
+      },
+      {
+        "id": "#12371",
+        "type": "feat",
+        "title": "Adicionar Download e Upload de dados PEC",
+        "desc": "Funcionalidade de download e upload de dados do PEC."
+      },
+      {
+        "id": "#12352",
+        "type": "feat",
+        "title": "Adicionar outros STATUS - APP Mobile",
+        "desc": "Novos status de atendimento no app mobile (desistência, não executado etc.) a partir da tabela status_atendimento, com campo de justificativa usando a entidade motivo_status."
+      },
+      {
+        "id": "#12235",
+        "type": "feat",
+        "title": "Modo Supervisor",
+        "desc": "Modo Supervisor: técnico designado para avaliar criticamente os Relatórios de Atendimento da equipe, identificando pontos fortes, melhorias e inconsistências."
+      }
+    ]
+  }
+}

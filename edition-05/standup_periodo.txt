@@ -1,0 +1,506 @@
+**[Mobile] Standup 25/05/2026**
+📆 Briefing inicial
+📆 Reunião Mobile
+📆 [Elias] Ater Digital - Follow Up 
+
+**Agrotrace**
+- [Matheus] In Progress: #12439 - Adicionar descrição do RAT automatico
+  - Adicionado entidades novas para melhoria ✅
+  - Adicionado replace de variavel com dado vindo de SQL dinamica ✅
+  - Adicionado input de HTML para mostrar texto formatado ✅
+  - Testando todas as variaveis ja existentes com SQL
+- [Elias] Done: #12431 - Nome da assinatura no formulário dinâmico
+  - Adicionado suporte a coletar nome da assinatura de perguntas encadeadas/referenciadas.
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp.
+
+**CheckWork**
+- [Carlos] In Progress: #12343 - Validações sobre o RA (Cerveira)
+  - Atualizando formulário de edião do usuário no Mobile para adicionar campos faltantes e necessários.
+
+☎️ [Carlos] Com Ricardo sobre análise de mercado do PEC.
+☎️ [Carlos] Com Matheus sobre o RAT no PEC.
+☎️ [Carlos] Com Elias sobre demandas no Agrotrace.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Thayse sobre melhorias no formulário dinâmico no app do Agrotrace.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+☎️ [Matheus] Com Carlos, sobre feat de RAT automatico do PEC, Agrotrace.
+
+**[Mobile] Standup 26/05/2026**
+📆 [Carlos] Syncup CheckMilk - Matheus M e Isabelle A.
+📆 [Elias] Ater Digital - Follow Up  (25 min)
+
+**Agrotrace**
+- [Matheus] In Progress: #12352 - Adicionar outros STATUS - APP Mobile
+- [Matheus] Stand By: #12439 - Adicionar descrição do RAT automatico
+- [Carlos] Done: #12444 - Perguntas opcionais aparecem com um zero no titulo - Form dinamico
+  - Ajustado rendering condicional no componente.
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp.
+  - Adicionado funcionalidade de exibir previsão do tempo de cada propriedade do produtor;
+  - Adicionado exibição dos agendamentos do dia atual na mensagem de menu principal do chatbot.
+  - Estudando estratégia para melhorar a exibição dos dados da previsão do tempo de acordo com a cultura e solo da propriedade (Aplicar agente de IA por trás para analisar os dados e resumir a resposta)
+
+**CheckWork**
+- [Carlos] Done: #12343 - Validações sobre o RA (Cerveira)
+  - Adicionado componentes restantes.
+  - Iniciando testes
+
+☎️ [Carlos] Com Matheus sobre protocolos no PEC.
+☎️ [Carlos] Com Thayse sobre dificuldade na replicação de RATs no Agrotrace.
+☎️ [Carlos] Com Gustavo sobre ajuste na exibição de perguntas do form dinâmico.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Matheus para ajuda com dúvida no app do Agrotrace.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+☎️ [Matheus] Com Carlos, sobre adição de configuração no protocolo do PEC, Agrotrace.
+
+**[Mobile] Standup 27/05/2026**
+📅 [Carlos] PecTrace - Upskilling
+
+**Agrotrace**
+- [Elias] In Progress: #12417 - Itens pendentes de envio devido a problema no anexo.
+  - Investigando problema para encontrar maneirar de reproduzir e solucionar.
+- [Matheus] In Progress #12450 - Melhoria na função IMPRIMIR do form dinâmico
+- [Elias] Done: #12442 - Ajuste no tratamento de anexos vinculados a múltiplas perguntas
+  - Corrigido dificuldade de exibição dos anexos nas perguntas do tipo anexo do formulário dinâmico.
+- [Elias] Done: #12229 - Incluir apelidos de itens de lista no acompanhamento.
+  - Alterado nome do item de lista para apelido do item de lista na tela de acompanhamento do técnico.
+- [Elias] Done: #12259 - Corrigir dificuldade no questionário de perfis.
+  - Adicionado correção para exibir valor '0' no campo de resposta da pergunta.
+- [Matheus] Done #12352 - Adicionar outros STATUS - APP Mobile
+- [Matheus] Done #12439 - Adicionar descrição do RAT automatico
+- [Matheus] Done #12458 - Filtro de perguntas pendentes - Form Dinâmico
+
+**CheckWork**
+- [Carlos] In Progress: #12175 - Publicar novo layout no ambiente DEV
+  - Ajustando projeto após ajustes do RA para permitir a análise de documentos necessários para fechamento do RA.
+
+☎️ [Carlos] Com Gustavo sobre dificuldade encontrada no Agrotrace - JBS.
+☎️ [Carlos] Com Thayse sobre task de ajuste no filtro do Questionário.
+☎️ [Carlos] Com Brenda sobre design do filtro do Questionário no APP.
+☎️ [Carlos] Com Ronaldo sobre integração entre o CheckWork e Agrotrace para consumo dos atendimetnos/projetos/usuários.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Thayse sobre duvida no envio de dados do app do Agrotrace.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC.
+
+**[Mobile] Standup 28/05/2026**
+📆 [Elias] Ater Digital - Follow Up  (25 min)
+
+**Agrotrace**
+- [Matheus] In Progress: #12483 - Adicionar fluxo de criação de atendimento D8
+- [Elias] Done: #12417 - Itens pendentes de envio devido a problema no anexo.
+  - Encontrado motivo do problema e implementado solução robusta.
+- [Matheus] Done: #12443 - Adicionar regra de semen sexado no IATF Protocolo
+- [Matheus] Done: #12482 - Adicionar regras PEC via registro
+- [Matheus] Done: #12450 - Melhoria na função IMPRIMIR do form dinâmico
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp.
+  - Implementando funcionalidade de alertas
+
+**CheckWork**
+- [Carlos] In Progress: #12175 - Publicar novo layout no ambiente DEV
+  - Resolcido issues do Modal de validação dos documentos do RA.
+  - Criando fluxo para recusa e reaproveitamento de documentos. 
+
+☎️ [Carlos] Com Thayse sobre PRs abertos no Agrotrace.
+☎️ [Carlos] Com Matheus sobre módulo PEC no Agrotrace.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC, Agrotrace.
+☎️ [Matheus] Com Carlos, sobre regras para adicionar no registro para o PEC, Agrotrace.
+
+**[Mobile] Standup 29/05/2026**
+📆 Web Spotilight
+
+**Agrotrace**
+- [Elias] Done: #12385 - Controlar avanço automático de perguntas do questionário diagnóstico.
+  - Adicionado funcionalidade para controlar o avanço automático para a próxima pergunta via registro certificadora.
+- [Matheus] Done: #12483 - Adicionar fluxo de criação de atendimento D8.
+- [Matheus] Revisado, testado e criado APK para testes do módulo PEC.
+
+**Ater Digital**
+- [Elias] In Progress: #12356 - Melhorias no ChatBot do WhatsApp.
+  - Adicionado funcionalidade de cadastro de alertas climáticos semanais.
+
+**CheckWork**
+- [Carlos] Instalando ambiente no Macbook
+
+**Geral**
+- [Carlos] Resolvendo issue com o Macbook / Orçamentos
+
+☎️ [Carlos] Com Ricardo sobre features do PEC.
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Matheus] Com Thielson, sobre fluxo do PEC, Agrotrace.
+
+**[Mobile] Standup 01/06/2026**
+📅 Briefing inicial
+📆 [Elias] Apresentação Ater Digital
+
+**Agrotrace**
+- [Elias] In Progress: #12227 - Permitir referência a outras perguntas para regra de validação no formulário dinâmico.
+- [Matheus] Acompanhando, revisando PEC no Agrotrace. Ajustando Bugs encontrados.
+- [Matheus] Done: #12460 -  Redesign dos filtros de Protocolos e Agrupadores no Questionário de Diagnóstico
+
+**Ater Digital**
+- [Elias] Done: #12356 - Melhorias no ChatBot do WhatsApp.
+
+**CheckWork**
+- [Carlos] Buildando projetos e recuperando ponto de parada.
+
+**Geral**
+- [Carlos] Resolvendo issue com o Macbook
+
+☎️ [Carlos] Com Matheus sobre novas tarefas no Agrotrace.
+☎️ [Carlos] Com Thayse para tentar identificar dificuldade com o GLPI (http2)
+☎️ [Elias] Com Bruno para ajuda com melhorias no ChatBot.
+☎️ [Elias] Com Thayse sobre feedback de testes.
+☎️ [Elias] Com Gustavo sobre feedback de testes.
+☎️ [Elias] Com Thielson para tirar dúvida sobre implementação.
+☎️ [Matheus] Com Carlos sobre tasks no Agrotrace.
+☎️ [Matheus] Com Thayse, sobre testes no PEC e Agrotrace.
+
+**[Mobile] Standup 02/06/2026**
+📆 Mobile Meeting
+📆 Planning Mobile
+
+**Agrotrace**
+- [Matheus] In Progress #12235 -  Modo Supervisor
+- [Matheus] Acompanhando, revisando PEC no Agrotrace. Ajustando Bugs encontrados.
+- [Elias] Done: #12227 - Permitir referência a outras perguntas para regra de validação no formulário dinâmico.
+- [Elias] Done: #12506 - Dificuldade no login offline do app.
+- [Carlos] Mitigando dificuldade de login reportada 
+
+**CheckWork**
+- [Carlos] In Progress: #12175 - Publicar novo layout no ambiente DEV:
+  - Ajustando variáveis de ambiente.
+
+☎️ [Carlos] Com Gustavo sobre dificuldade no login do Agrotrace.
+☎️ [Carlos] Com Iohan sobre demora encontrada no APP do CheckWork
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas pendentes.
+☎️ [Elias] Com Bruno para ajudar com dúvida sobre N8N.
+☎️ [Matheus] Com Carlos sobre tasks no Agrotrace.
+☎️ [Matheus] Com Thayse, sobre testes no PEC e Agrotrace.
+
+**[Mobile] Standup 03/06/2026**
+**Agrotrace**
+- [Elias] In Progress: #12500 - Definição de Croqui para preenchimento.
+  - Criado registro certificadora para controlar quais opções serão exibidas;
+  - Implementando função de exibir somente as opções configuradas no registro certificadora.
+- [Matheus] In Progress: #12235 -  Modo Supervisor
+  - Done #12527 -  Criar todo o Backend com Rabbit MQ e analise da IA.
+  - In Progress #12528 -  Criar Frontend
+
+**CheckWork**
+- [Carlos] In Progress: #12175 - Publicar novo layout no ambiente DEV.
+  - Ajustado branch de dev (Front+API) - Resolvido issues.
+
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+☎️ [Matheus] Com Iohan, sobre fechamento da Sprint do Agrotrace Mobile.
+
+**[Mobile] Standup 05/06/2026**
+
+**Agrotrace**
+- [Matheus] In Progress #12235 -  Modo Supervisor
+  - In Progress #12528 -  Criar Frontend
+     - Adicionado lista para visualização de itens pendentes e analisados ✅ 
+     - Adicionando visualização do resultado da analise
+- [Elias] Done: #12500 - Definição de Croqui para preenchimento.
+  - Implementado função de exibir somente as opções configuradas no registro certificadora.
+
+**CheckWork**
+- [Carlos] Done: #12175 - Publicar novo layout no ambiente DEV.
+  - Ajustado branch de dev (Front+API) - Resolvido issues.
+
+☎️ [Elias] Com Bruno para tirar dúvida sobre N8N
+☎️ [Elias] Com Carlos para tirar dúvida sobre tarefa em execução.
+
+**[Mobile] Standup 08/06/2026**
+📅 Briefing Inicial
+📅 Reunião Mobile
+📅 [Carlos] - [DEV] DEPLOY CHECKWORK com Lucas.
+
+**Agrotrace**
+- [Elias] In Progress: #12538 - Melhorias no módulo de materiais.
+  - Implementando mudança na entidade e criando migração na API.
+- [Matheus] In Progress: #12497 - Perguntas referenciadas Filtrar pendentes - Form Dinâmico
+- [Matheus] StandBy: #12235 -  Modo Supervisor
+  - Done #12528 -  Criar Frontend
+  - Aguardando volta da API do Gemini para testes finais.
+- [Elias] Done: #12537 - Enviar nova versão para as lojas.
+  - Enviado uma nova versão contendo as atualizações mais recentes da sprint para as lojas Android e iOS.
+
+**CheckWork**
+- [Carlos] Done: #12545 - Ajustar nova API Key para o CheckWork extrair infos das NFs.
+
+☎️ [Carlos] Com Ronaldo para definir plano de ação da task de Materiais.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+☎️ [Elias] Com Ronaldo sobre dúvida no repositório do agrotrace api/web
+☎️ [Matheus] Com Gustavo, sobre testes do PEC no Agrotrace.
+☎️ [Matheus] Com Ricardo, sobre pagamento da API do Gemini.
+
+**[Mobile] Standup 09/06/2026**
+📅 [Carlos] Syncup CheckMilk
+
+**Agrotrace**
+- [Elias] In Progress: #12538 - Melhorias no módulo de materiais.
+  - Finalizado implementação de melhoria na API/Web.
+  - Realizando testes finais na API/Web para iniciar a implementação no aplicativo.
+- [Matheus] Acompanhando testes no PEC e cadastrando variaveis para descrição de atendimentos PEC.
+- [Matheus] Done: #12497 - Perguntas referenciadas Filtrar pendentes - Form Dinâmico
+- [Matheus] Done: #12235 -  Modo Supervisor
+
+**CheckWork**
+- [Carlos] Ajuste de novas contas de IA para fallback 
+- [Carlos] Buscando soluções de OCR baseadas em IA para rodarem on-premise 
+
+☎️ [Elias] Com Ronaldo para ajuda com o repositório do agro-v3.
+☎️ [Elias] Com Bruno para ajuda em rodar a api/web na maquina local.
+☎️ [Matheus] Com Gustavo, Carlos e bruno, sobre testes do PEC no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre funcionamento da feat de Descrição de Atendimento PEC no Agrotrace.
+
+**[Mobile] Standup 10/06/2026**
+
+**Agrotrace**
+- [Elias] In Progress: #12538 - Melhorias no módulo de materiais.
+  - Corrigido inconsistências encontradas durante os testes na implementação da funcionalidade para API/Web.
+  - Entregado a primeira versão da implementação na API/Web.
+  - Implementando melhorias no aplicativo para atualizar os dados do dispositivo do usuário através do endpoint  POST `/dispositivo`.
+- [Matheus] Acompanhando testes no PEC e ajustando erros encontrados.
+- [Matheus] Done #12555 - Adicionar tela de historico do animal
+- [Matheus] Done #12556 -  Cadastrar e configurar descrição de atendimento PEC
+
+**CheckWork**
+- [Carlos] In Progress: #12561 - Usar outra LLM para resolver NFs:
+  - POC criada com o GLM-OCR. ~1s para resolver imagens.
+  - Criando API para expor serviço, abstraindo a chamada do Ollama.
+  - Fazendo parse da resposta adotando modelo do input.
+
+**Geral**
+- [Carlos] Resetado Roteador Sercomtel para ganhar acesso e permitir novas configurações. 
+
+☎️ [Elias] Com Ronaldo sobre o abertura de PRs no repositório agrotrace-v3.
+☎️ [Matheus] Com Gustavo,, sobre testes do PEC no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre funcionamento da feat de Descrição de Atendimento PEC no Agrotrace.
+
+**[Mobile] Standup 11/06/2026**
+
+**Agrotrace**:
+- [Matheus] In Progress: #12567 -  Acompanhamento e resolução de Bugs no teste do PEC
+- [Matheus] Done: #12566 - Configuração do OpenSpec no Agrotrace
+- [Elias] Done: #12538 - Melhorias no módulo de materiais.
+  - Done: #12562 - Melhorias no registro de dispositivo do usuário - MOBILE
+    - Adicionado melhorias no registro de informações do dispositivo do usuário;
+    - Atualizado versão da biblioteca react-native-onesignal para suporte a push notifications;Atendimento PEC no Agrotrace.
+**CheckWork**
+- [Carlos] In Progress: #12561 - Usar outra LLM para resolver NFs:
+  - Teste com outros modelos: Escolhido o `gemma3:4b`
+  - Configurado `rate-limit` e queue para lidar com volumes maiores de requisições.
+  - Expondo serviço para teste e uso no CheckWork
+
+☎️ [Matheus] Com Gustavo, sobre testes do PEC no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre funcionamento da feat de Descrição de Atendimento PEC no Agrotrace.
+
+**[Mobile] Standup 15/06/2026:**
+📆 Briefing inicial
+📆 Alinhamento CheckMilk - Matheus M.
+📆 Reunião Mobile
+
+**Agrotrace**
+- [Carlos] In Progress: #12588 - Criar PRD e Design ferramenta Nutricional.
+- [Elias] In Progress: #12578 - Publicar versão atualizada para projetos terceiros do Agrotrace.
+  - In Progress: #12580 - Corrigir pipelines responsáveis por realizar o build da versão.
+    - Atualizado o package manager dos pipelines para `pnpm`;
+    - Corrigido dificuldade na instalação de correções de pacotes `patch-package`;
+    - Atualizado versão do macOS para `26` em todos os pipelines de iOS;
+    - Trabalhando na correção de dificuldade que impede a instalação de Pods.
+- [Matheus] In Progress #12567 -  Acompanhamento e resolução de Bugs no teste do PEC
+- [Matheus] In Progress #12579 -  Criar atendimentos automaticamente
+- [Elias] Done: #12583 - Melhoria no cadastro/edição de dispositivos - API
+  - Adicionado melhoria na rota `/dispositivo` para atualizar os dados do dispositivo quando o IMEI já existir.
+- [Matheus] Done #12582 - Remover nome do consultor do RAT - p2
+
+☎️ [Matheus] Com Gustavo e Thayse, sobre testes do PEC no Agrotrace.
+☎️ [Matheus] Com Thielson, sobre rota de pec-animal no Agrotrace.
+
+**[Mobile] Standup 16/06/2026**
+📆 [Carlos] Syncup CheckMilk - Isabelle A.
+📆 [Matheus & Elias] Reunião do Plano Unimed
+📆 Planning Mobile
+
+**Agrotrace**
+- [Carlos] In Progress: #12588 - Criar PRD e Design ferramenta Nutricional:
+  - Criação do documento de aprovação técnica para validação das caracterêsticas básicas da ferramenta.
+- [Elias] In Progress: #12578 - Publicar versão atualizada para projetos terceiros do Agrotrace.
+  - In Progress: #12580 - Corrigir pipelines responsáveis por realizar o build da versão.
+    - Corrigido dificuldade de instalação dos Pods.
+    - Trabalhando na correção do build pelo xCode 26.1.
+- [Matheus] In Progress #12597 - Merge da branch PEC com a Sprint
+- [Matheus] Done #12567 -  Acompanhamento e resolução de Bugs no teste do PEC
+- [Matheus] Done #12579 -  Criar atendimentos automaticamente
+
+☎️ [Carlos] Com Isabelle sobre ferramenta de apoio nutricional.
+☎️ [Carlos] Com Lucas para ajustar DNS do Wireguard.
+☎️ [Elias] Com Gustavo para ajudar com dúvida sobre materiais para produtores.
+☎️ [Elias] Com Matheus para ajuda com o build dos pipelines.
+☎️ [Matheus] Com Gustavo, sobre testes do PEC no Agrotrace.
+☎️ [Matheus] Com Elias, sobre pipeline IOS do Agrotrace Mobile.
+
+**[Mobile] Standup 17/06/2026**
+📆 [Carlos / Matheus] Reunião PEC - Matheus M., Isabelle, Sartori
+
+**Agrotrace**
+- [Matheus] In Progress: #12605 -  Ajustes PEC pós reunião
+- [Elias] Done: #12578 - Publicar versão atualizada para projetos terceiros do Agrotrace.
+  - Criado novos certificados Apple para todos os projetos (antigos expiraram);
+  - Enviado nova versão para lojas do Android e iOS de todos os projetos.
+- [Matheus] Done: #12597 - Merge da branch PEC com a Sprint
+
+**CheckWork**
+- [Carlos] In Progress: # 12561 - Usar outra LLM para resolver NFs:
+  - Alinhando o novo serviço para usar no ambiente de DEV.
+- [Carlos] Done: #12608 - Ajustar erro de CORS na publicação do ambiente DEV
+- [Carlos] Done: #12609 - Trocar os RDs de projeto
+
+☎️ [Carlos] Com Liliane sobre RDs do Kleber Petan.
+☎️ [Carlos] Com Brenda sobre layout da feature #12461
+☎️ [Elias] Com Thayse para ajudar com dúvida sobre o app do Agrotrace.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+☎️ [Matheus] Com Thielson, sobre financeiro PEC no Agrotrace.
+☎️ [Matheus] Com Thayse, sobre analise de IA nos atendimentos, Agrotrace.
+
+**[Mobile] Standup 18/06/2026**
+📆 [Carlos/Matheus] Reunião PEC - Matheus M e Isabelle
+
+**Agrotrace**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - In Progress: #12616 - Adicionar tela de listagem de animais
+- [Matheus] In Progress #12622 - Melhorar financeiro no Agrotrace
+  - Problemas com Build de versão ✅ 
+- [Matheus] Done #12605 -  Ajustes PEC pós reunião
+- [Carlos] Abertura de tarefas.
+
+☎️ [Carlos] Com Sartori para alinhar recursos de lote e aplicações no segmento de Corte.
+☎️ [Carlos] Com Matheus sobre o módulo financeiro.
+☎️ [Carlos] Com Elias sobre novas tarefas no módulo produtor.
+☎️ [Carlos] Com Lucas sobre ambiente de DEV.
+☎️ [Carlos] Com Ronaldo e Thielson sobre recursos no Agrotrace.
+☎️ [Elias] Com Matheus para ajuda com build do app Agrotrace.
+☎️ [Elias] Com Lucas para ajuda sobre VPN wire guard.
+☎️ [Matheus] Com Elias, sobre problema de build do App, Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre teste final do PEC, Agrotrace.
+
+**[Mobile] Standup 19/06/2026**
+📆 Spotilight DevOps+Design
+
+**Agrotrace**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - In Progress: #12616 - Adicionar tela de listagem de animais.
+    - Implementado tela de listagem dos animais;
+    - Implementado nova rota no módulo do produtor;
+    - Implementado nova opção no menu de dashboard do produtor;
+    - Adicionando melhorias de performance no componente de lista (paginação estilo scroll infinito)
+- [Matheus] In Progress: #12625 -  Validar se formulários compartilhados está funcionando no APP
+  - Validando com o Ronaldo a Feat
+- [Matheus] Stand By: #12622 - Melhorar financeiro no Agrotrace
+  - Ajustado todas novas mudanças ✅
+  - **BLOCK API**: aguardando API para finalizar a integração
+
+**CheckWork**
+- [Carlos] In Progress: #12561 - Usar outra LLM para resolver NFs:
+  - Buildando APP para teste no ambiente de DEV;
+
+☎️ [Carlos] Com Ronaldo sobre novas features e ferramenta de relatório.
+☎️ [Carlos] Com Ricardo sobre uso de imagens NVDI para compor os croquis/talhões.
+☎️ [Carlos] Com Matheus sobre novas tasks no Agrotrace.
+☎️ [Carlos] Com Gustavo para ajudar com a dificuldade reportada pela Juliana no CheckWork.
+☎️ [Carlos] Com Thayse para identificar dificuldade no form dinâmico com a pergunta encadeada em muitos itens de lista.
+☎️ [Carlos] Com Elias para alinhar prioridade na task do Form Dinâmico.
+☎️ [Elias] Com Bruno para ajuda com dúvida sobre app do Agrotrace.
+☎️ [Elias] Com Matheus para ajuda com possível erro de build para iOS no app do Agrotrace
+☎️ [Matheus] Com Carlos, sobre feats do Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre formularios compartilhados na web, Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre tabelas do formulario compartilhado, Agrotrace.
+
+**[Mobile] Standup 22/06/2026:**
+📆 Briefing Inicial
+📆 Mobile Meeting
+
+**Agrotrace**
+- [Elias] In Progress: #12624 - Suporte a blocos repetitiveis no formulário dinâmico.
+  - Analisando e levantando requisitos para iniciar a implementação da melhoria.
+- [Matheus] Done: #12622 - Melhorar financeiro no Agrotrace
+- [Matheus] Done: #12625 -  Validar se formulários compartilhados está funcionando no APP
+- [Elias] Done: #12629 - Perda de performance no formulário dinâmico.
+  - Adicionado estratégia de lazy loading para os itens de lista das listas simples e composta.
+  - Adicionado estratégia de paginação `scroll infinito` nos itens das listas simples e composta.
+
+**CheckWork**
+- [Carlos] In Progress: #12561 - Usar outra LLM para resolver NFs:
+  - Validação no APP.
+  - Ajuste de parâmetros e retorno da IA.
+  - Validação das notificações usando o OneSignal.
+
+☎️ [Carlos] Com Sartori sobre o projeto de Sergipe e suas particularidades.
+☎️ [Carlos] Com Thayse sobre as tasks do projeto Citrus e suas prioridades.
+☎️ [Elias] Com Bruno para responder dúvida sobre autenticação no app do Agrotrace.
+☎️ [Elias] Com Gustavo sobre feedback de testes fechados.
+☎️ [Matheus] Com Thielson sobre tabelas do financeiro, Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre teste rapido no Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre tabelas do formulario compartilhado, Agrotrace.
+
+**[Mobile] Standup 23/06/2026**
+📅 [Carlos] - Syncup CheckMilk - Validando Relatórios
+
+**Agrotrace**
+- [Elias] In Progress: #12624 - Suporte a blocos repetitiveis no formulário dinâmico.
+  - Adicionado entidades e migrações para as novas tabelas;
+  - Adicionado as novas rotas no módulo de sincronização de dados;
+  - Trabalhando no componente responsável por mostrar as perguntas do bloco.
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Instalando e configurando o Jasper
+- [Matheus] Done: #12626 - Melhoria na disposição do itens na tela de resposta - Form Dinâmico
+- [Carlos] Done: Gerar Imagem em branco para projeto do BB.
+
+**CheckWork**
+- [Carlos] In Progress: #12561 - Usar outra LLM para resolver NFs:
+  - Validação no APP.
+  - Benchmark da LLM self-hosted par resolver as NFs.
+
+☎️ [Carlos] Com Sartori sobre ajustes realizados no RAT.
+☎️ [Elias] Com Ronaldo sobre dúvida em novas rotas da API.
+☎️ [Elias] Com Bruno para responder dúvida sobre MFA no app.
+☎️ [Matheus] Com Thielson sobre tabelas do financeiro, Agrotrace.
+☎️ [Matheus] Com Thayse, sobre diagnostico que não esta enviando no mobile, Checkmilk.
+
+**[Mobile] Standup 24/06/2026**
+📅 [Carlos] Reunião CampoVivo - Produtivo
+
+**Agrotrace**
+- [Elias] In Progress: #12624 - Suporte a blocos repetitiveis no formulário dinâmico.
+  - Finalizado implementação de salvar, editar e excluir respostas de blocos de perguntas com todas as regras de negócio;
+  - Implementando e testando a sincronização dos dados do bloco de respostas.
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Instalado e configurado o Jasper ✅ 
+  - Alterando consultas do Relatorio de Acompanhamento IATF
+
+**CheckWork**
+- [Carlos] Done: #12660 - Envio dos documentos necessários para fechamento do RA:
+  - Validação e ajuste do processo de envio de documentos.
+- [Carlos] Done: #12561 - Usar outra LLM para resolver NFs
+
+☎️ [Elias] Com Ronaldo para tirar dúvida de regras de negócio da funcionalidade de bloco de perguntas no formulário dinâmico.
+☎️ [Matheus] Com Gustavo, me ajudando a configurar o Jasper.
+**[Mobile] Standup 25/06/2026:**
+
+**Agrotrace**:
+- [Carlos] In Progress: #12672 - Modelar a ferramenta considerando características identificadas após a reunião
+- [Elias] Done: #12624 - Suporte a blocos repetitiveis no formulário dinâmico.
+  - Finalizado implementação e testes na sincronização dos dados dos blocos repetíveis (baixar e enviar).
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Relatorio de Acompanhamento IATF ✅ 
+  - Alterando consultas do Extrato de Atendimento PEC
+
+☎️ [Carlos] Com Lucas sobre nova maneira de conectar no ambiente de DEV.
+☎️ [Matheus] Com Gustavo, me ajudando a configurar o Jasper e usar o jasperServicer.

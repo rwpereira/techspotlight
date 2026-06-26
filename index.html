@@ -272,11 +272,25 @@ span.btn-disabled {
 <div class="grid-container">
   <div class="grid">
 
+    <!-- Edition #05 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-edition">#05</span>
+        <span class="card-status today">Hoje</span>
+      </div>
+      <div class="card-date">26/06/2026</div>
+      <div class="card-period">Período: <code>23/05 – 26/06/2026</code></div>
+      <div class="card-actions">
+        <a href="edition-05/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
+        <a href="edition-05/cards.html" class="btn-cards">📋 Ver Cards</a>
+      </div>
+    </div>
+
     <!-- Edition #04 -->
     <div class="card">
       <div class="card-header">
         <span class="card-edition">#04</span>
-        <span class="card-status today">Hoje</span>
+        <span class="card-status done">Apresentado</span>
       </div>
       <div class="card-date">22/05/2026</div>
       <div class="card-period">Período: <code>27/04 – 22/05/2026</code></div>
@@ -287,7 +301,7 @@ span.btn-disabled {
     </div>
 
     <!-- Edition #03 -->
-    <!-- <div class="card">
+    <div class="card">
       <div class="card-header">
         <span class="card-edition">#03</span>
         <span class="card-status done">Apresentado</span>
@@ -298,10 +312,10 @@ span.btn-disabled {
         <a href="edition-03/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
         <a href="edition-03/cards.html" class="btn-cards">📋 Ver Cards</a>
       </div>
-    </div> -->
+    </div>
 
     <!-- Edition #02 -->
-    <!-- <div class="card">
+    <div class="card">
       <div class="card-header">
         <span class="card-edition">#02</span>
         <span class="card-status done">Apresentado</span>
@@ -312,10 +326,10 @@ span.btn-disabled {
         <a href="edition-02/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
         <a href="edition-02/cards.html" class="btn-cards">📋 Ver Cards</a>
       </div>
-    </div> -->
+    </div>
 
     <!-- Edition #01 -->
-    <!-- <div class="card">
+    <div class="card">
       <div class="card-header">
         <span class="card-edition">#01</span>
         <span class="card-status done">Apresentado</span>
@@ -326,7 +340,7 @@ span.btn-disabled {
         <a href="edition-01/spotlight.html" class="btn-spotlight">▶ Abrir Spotlight</a>
         <a href="edition-01/cards.html" class="btn-cards">📋 Ver Cards</a>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </div>
@@ -334,8 +348,7 @@ span.btn-disabled {
 <div class="footer">
   <div class="footer-keys">
     <div class="key-hint">
-      <!-- <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> -->
-      <kbd>4</kbd> Ir para edição</div>
+      <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd> Ir para edição</div>
     <div class="key-hint"><kbd>←</kbd><kbd>→</kbd> Navegar slides</div>
     <div class="key-hint"><kbd>Esc</kbd> Fechar modal</div>
   </div>
@@ -349,10 +362,11 @@ span.btn-disabled {
 
 <script>
 document.addEventListener('keydown', e => {
-  // if (e.key === '1') window.location.href = 'edition-01/spotlight.html';
-  // if (e.key === '2') window.location.href = 'edition-02/spotlight.html';
-  // if (e.key === '3') window.location.href = 'edition-03/spotlight.html';
+  if (e.key === '1') window.location.href = 'edition-01/spotlight.html';
+  if (e.key === '2') window.location.href = 'edition-02/spotlight.html';
+  if (e.key === '3') window.location.href = 'edition-03/spotlight.html';
   if (e.key === '4') window.location.href = 'edition-04/spotlight.html';
+  if (e.key === '5') window.location.href = 'edition-05/spotlight.html';
 });
 </script>
 
