@@ -1,0 +1,288 @@
+**[Mobile] Standup 29/06/2026 🇧🇷**
+📆 Briefing Inicial
+
+**Agrotrace**
+- [Elias] In Progress: #12674 - Pergunta com resposta fixa - Form Dinâmico - Mobile
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Alterando e criando Extrato de Diagnósticos PEC
+
+**CheckWork**
+- [Carlos] Done: #12684 - Melhorar fluxo de envio da NF - RA
+  - Adicionado regras de validação para solicitar NF e confirmar pagamento do RA.
+
+☎️ [Elias] Com Thayse sobre feedback de testes em funcionalidade do formulário dinâmico.
+☎️ [Matheus] Com Gustavo, me ajudando no Jasper.
+
+**[Mobile] Standup 30/06/2026**
+📅 [Carlos] Syncup CheckMilk - Matheus M.
+
+**Agrotrace**
+- [Carlos] In Progress: INPI - Informações sobre os projetos.
+- [Elias] In Progress: #12654 - Unidade de Medida - Form Dinamico - Mobile.
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Relatorio Acompanhamentos de Diagnósticos PEC ✅ 
+  - Alterando e criando relatorio de Qualidade 
+- [Elias] Done: #12674 - Pergunta com resposta fixa - Form Dinâmico - Mobile
+  - Adicionado suporte à resposta automática de perguntas no formulário dinâmico.
+- [Matheus] Done - Ajuste na feat de form dinamico compartilhado pós teste
+
+☎️ [Elias] Com Thayse sobre feedback de envio de nova versão.
+☎️ [Elias] Com Carlos para tirar alinhar alterações em tarefa.
+☎️ [Matheus] Com Gustavo, me ajudando no Jasper.
+
+**[Mobile] Standup 01/06/2026**
+
+**Agrotrace**
+- [Carlos] In Progress: #12710 - INPI - Informações sobre os projetos:
+  - Levantamento das licenças das libs utilizadas no Agrotrace.
+  - Levantando autores do projeto.
+  - Definindo módulos "CORE".
+  - Gerando HASH.
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress: #12708 -  R. Cronograma de Atividades
+    - Criando do Zero no Jasper pois estava somente no código.
+  - Done: #12706 -  Relátorio de Qualidade
+- [Elias] Done: #12709 - Corrigir dificuldade do aplicativo fechar sozinho em certos dispositivos.
+  - Realizado um downgrade na versão da biblioteca OneSignal para suporte ao motor do react-native em arquiteturas 32bits.
+- [Matheus] Done: - Ajuste na feat financeiro pós teste
+
+☎️ [Elias] Com Thayse sobre feedback e dúvidas no app.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+☎️ [Elias] Com Bruno para correção na rota de login na API.
+☎️ [Matheus] Com Gustavo, me ajudando no Jasper e testando app do Agrotrace.
+☎️ [Matheus] Com Thayse, sobre testes no Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre relatorios no codigo da API do Checkmilk.
+☎️ [Matheus] Com Thielson, sobre Qualidade do leite no Agrotrace.
+
+**[Mobile] Standup 02/07/2026**
+📆 [Carlos] Apresentação Unun
+📆 Planning Mobile
+
+**Agrotrace:**
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Done: #12708 -  R. Cronograma de Atividades
+  - In Progress: #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+- [Carlos] Done: #12710 - INPI - Informações sobre os projetos.
+- [Elias] Done: #12654 - Unidade de Medida - Form Dinamico - Mobile.
+  - Adicionado nova coluna na tabela FormPergunta;
+  - Criado nova tabela FormPerguntaUnidadeMedida para agir como intermediária entre UnidadeMedida e FormPergunta.
+  - Criado migrações para realizar as alterações no banco.
+  - Modificado função que busca as unidades de medidas para adicionar regra para buscar somente por unidades ligadas a pergunta. 
+- [Elias] Done: #12716 - Não sai o nome do Produtor na Assinatura.
+  - Normalizado nomenclatura de item de lista utilizado para impressão do nome do produtor.
+
+☎️ [Carlos] Com Thayse sobre Laudos do Biodiesel e detalhes sobre tarefas no Agrotrace.
+☎️ [Elias] Com Thayse sobre dificuldade no app e correção de funcionalidades.
+☎️ [Elias] Com Gustavo para ajuda com dificuldade no formulário dinâmico.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre dificuldade reportada no formulário dinâmico.
+☎️ [Matheus] Com Gustavo, testando app do Agrotrace.
+
+**[Mobile] Standup 03/06/2026**
+📆 [Carlos] INPI - Sidney
+📆 Web Spotlight
+
+**Agrotrace**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - Done: #12721 - Adicionar nova rota para listar animais para a visão do produtor - API.
+  - In Progress: #12616 - Adicionar tela de listagem de animais - APP.
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+- [Matheus] Done - Ajustando coluna de ativo no form-compartilhamento nos testes
+
+**CheckWork**
+- [Carlos] Done: #12736 - Adicionar esqueci minha senha no APP
+- [Carlos] Coletando infos do INPI do projeto.
+
+☎️ [Elias] Com Matheus sobre resolução de conflitos no formulário dinâmico.
+☎️ [Matheus] Com Gustavo, testando app do Agrotrace e me auxiliando no Jasper.
+☎️ [Matheus] Com Elias, resolvendo conflitos no form dinamico, Agrotrace.
+
+**[Mobile] Standup 06/07/2026:**
+📆 Briefing inicial
+📆 Mobile Meeting
+📆 Follow up - Checkmilk migração 
+
+**Agrotrace**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - Done: #12616 - Adicionar tela de listagem de animais - APP.
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+- [Elias] Done: #12739 - Verificar e analisar dados pendentes para envio de usuário.
+  - Criado query para corrigir os dados pendentes para envio de usuário.
+- [Matheus] Done: - Criar documentação sobre realizações do modulo PEC.
+
+**ChecKWork**
+- [Carlos] In Progress: #12749 - RA automatico não está sendo gerado:
+  - Validando serviço de conexão com o Agrotrace.
+  - Identificado dificuldade na configuração dos tipos de atendimento e os valores.
+  - Avaliando e resolvendo dificuldade.
+
+☎️ [Carlos] Com Gustavo sobre dificuldade no Agrotrace.
+☎️ [Carlos] Com Elias sobre detalhes da tela de PEC para o produtor.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+☎️ [Elias] Com Gustavo para ajuda com usuário com dados pendentes para envio.
+☎️ [Matheus] Com Gustavo, sobre coluna editavel no questionario Agrotrace.
+☎️ [Matheus] Com Thielson e Carlos, sobre o que foi feito no módulo PEC, App e Mobile, Agrotrace.
+
+**[Mobile] Standup 07/07/2026**
+📅 Syncup CheckMilk - Matheus Magalhães
+**Agrotrace:**
+- [Elias] Stand By: #12750 - Dificuldade em baixar dados do formulário dinâmico.
+  - Done: #12751 - Criar nova rota para baixar dados do form-item-lista - API.
+  - Aguardando implementação no banco para adicionar filtro na rota responsável por baixar blocos repetíveis respostas.
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - In Progress: #12611 - Adicionar tela de parto - APP.
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+- [Matheus] Done #12760 - Adicionado sync de dados do Qualidade do Leite
+
+**ChecKWork**
+- [Carlos] In Progress: #12749 - RA automatico não está sendo gerado:
+  - Adicionado handle para tratar as exceptions dos atendimentos não configurados.
+  - Adicionado notificação de exception informando retornando os atendimentos não configurados.
+  - Testando fluxo no APP.
+
+☎️ [Carlos] Com Isabelle sobre APP Ordenha Fácil. Testando APP.
+☎️ [Elias] Com Carlos para alinhar dúvidas sobre tarefas.
+☎️ [Elias] Com Thayse sobre dificuldade no baixar dados do formulário dinâmico.
+☎️ [Elias] Com Gustavo para ajudar a enviar dados pendentes de usuário.
+☎️ [Matheus] Com Gustavo, sobre ajuda no Jasper.
+☎️ [Matheus] Com Carlos e Elias, achando solução para problema de download de itens de lista no Agrotrace.
+
+**[Mobile] Standup 08/07/2026**
+
+**Agrotrace**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - In Progress: #12611 - Adicionar tela de parto - APP.
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+- [Elias] Done: #12750 - Dificuldade em baixar dados do formulário dinâmico.
+  - Adicionado parâmetro para filtrar somente pelos blocos respostas da certificadora.
+
+**CheckWork**
+- [Carlos] Done: #12778 - Adicionar observações na Despesa do CheckWork
+  - Permitir que o usuário cadastre uma observação na despesa.
+- [Carlos] Done: #12749 - RA automatico não está sendo gerado
+
+☎️ [Carlos] Com Liliane sobre dificuldade do técnico para acessar o CheckWork: Cadastro não ativado.
+☎️ [Carlos] Com Matheus Magalhães para ativar e vincular usuários no projeto FBB no CheckWork.
+☎️ [Elias] Com Ronaldo sobre testes de nova implementação na API.
+☎️ [Elias] Com Thielson para tirar dúvidas sobre rota na API.
+☎️ [Elias] Com Thayse sobre feedback de envio da nova versão do app.
+☎️ [Elias] Com Matheus para tirar dúvidas sobre o parto do módulo pec.
+☎️ [Matheus] Com Elias, sobre duvidas no Parto PEC, Agrotrace.
+
+**[Mobile] Standup 09/07/2026**
+
+**Agrotrace**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - Done: #12781 - Adicionar nova rota para criação de partos - API.  
+  - Done: #12611 - Adicionar tela de parto - APP.
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+- [Matheus] Done #12779 -  Retirado Diagnostico pós parto
+
+**CheckWork**
+- [Carlos] Done: #12790 - Incluir identificação do projeto no relatório das despesas
+
+☎️ [Carlos] Com Sartori e Matheus M. sobre assinatura digital no projeto de Sergipe.
+☎️ [Elias] Com Carlos e Matheus sobre dúvida no módulo de parto do PEC.
+☎️ [Elias] Com Thielson retirando dúvidas sobre rotas no módulo de pec-parto da API.
+☎️ [Matheus] Com Elias, sobre duvidas no Parto PEC, Agrotrace.
+☎️ [Matheus] Com Gustavo, sobre ajuda no Jasper e ativação do modulo PEC.
+
+**[Mobile] Standup 10/07/2026**
+📆 DevOps Spotlight
+
+**Agrotrace:**
+- [Elias] In Progress: #12610 - Adicionar módulo PEC na visão do produtor.
+  - In Progress: #12612 - Adicionar funcionalidade de pesagem.
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12720 -  R. PQFL
+    - Criando do Zero no Jasper pois estava somente no código.
+    - Finalizando consultas e revisões das paginas.
+**CheckWork**
+- [Carlos] Done: #12792 - Adicionar tela para análise de custos dos projetos
+  - Especificação e design da feature com o produto (13 requisitos, edge cases e metodologia de score consultor×projeto×mês com pesos configuráveis).
+  - Backend: novo módulo analytics com 12 endpoints (KPIs, regiões, categorias, ranking, cartas de performance "Super Trunfo"), RBAC por perfil, semi-anonimato e 35 testes novos (102 verdes no total).
+  - Front: nova tela Análise de Custos com 5 abas, filtro global e perfil do consultor, absorvendo e aposentando a ManagementPage (redirect); pendente apenas UAT e remoção dos endpoints legados.
+
+**[Mobile] Standup 13/07/2026**
+📅 Briefing Inicial
+📅 Follow Up! CheckMilk
+📅 Reunião Mobile
+
+**Agrotrace**
+- [Matheus] In Progress: #12799 -  Retirar recibo do RAT do modulo PEC atraves do Registro
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Done #12720 -  R. PQFL
+- [Carlos] In Progress: #12672 - Modelar a ferramenta considerando características identificadas
+  - Refinando pontos destacados no CampoVivo
+
+☎️ [Carlos] Com Iohan e Thielson esclarecendo alguns pontos sobre o APP
+☎️ [Carlos] Com Thielson sobre ajuste na API do Agrotrace.
+☎️ [Carlos] Com Thayse para acompanhar dificuldade encontrada pelos técnicos do Citrus.
+☎️ [Matheus] Com Gustavo, sobre ajuda no Jasper e Recibo no RAT
+
+**[Mobile] Standup 14/07/2026**
+📅 Planning Mobile
+
+**Agrotrace**
+- [Carlos] In Progress: #12768 - Filtro de perguntas no aplicativo - Criar
+  - Especificação completa via OpenSpec (proposal, design e specs) e implementação nas 3 telas: respostas do diagnóstico, lista de questionários e formulário dinâmico
+- [Matheus] In Progress #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress #12824 -  R. Incoformidades de Qualidade
+  - Busca com botão discreto que expande sob demanda, insensível a acentos, compondo com os filtros existentes; componente compartilhado ExpandableSearchInput + i18n nos 5 idiomas
+- [Carlos] Teste QA: #12812 - Atualizar Entidade Pessoa
+  - Adicionado campo gênero ao cadastro de produtor: entidade + migration, formulário de cadastro/edição, i18n nos 5 idiomas e spec OpenSpec (person-gender)
+- [Matheus] Done #12799 -  Retirar recibo do RAT do modulo PEC atraves do Registro
+
+☎️ [Carlos] Com Gustavo sobre dificuldade de sincronismo com Isabelle: Identificado constraint na entidade Pessoa, coluna Gênero not null
+☎️ [Carlos] Com Thayse sobre nova feature para ser trabalhada: Geração e coleta de documentos personalizados.
+☎️ [Carlos] Com Gustavo sobre dificuldade no login após lançamento da nova versão da API.
+☎️ [Matheus] Com Gustavo, sobre cadastro de animal no PEC.
+☎️ [Matheus] Com Carlos, sobre uso do OpenSpec.
+
+**[Mobile] Standup 15/07/2026**
+**Agrotrace**
+- [Matheus] In Progress: #12822 - Impressão de Termo
+  - Desenhando solução para poder trabalhar com 
+- [Matheus] In Progress: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - In Progress: #12824 -  R. Incoformidades de Qualidade
+- [Carlos] Teste QA: #12768 - Filtro de perguntas no aplicativo - Criar
+  - Validação em device concluída nas 3 telas, com ajuste de posição do botão de busca nas telas do questionário e das respostas
+  - Specs promovidas para a base OpenSpec do projeto e change arquivado
+  - Commit na branch feature/12768-filtro-de-perguntas e push; PR preparada para sprint/106 (aguardando abertura/revisão — Gustavo ou Thayse)
+
+☎️ [Carlos] Com Gustavo sobre relatório de Boas Práticas do CheckMilk no Agrotrace.
+☎️ [Carlos] Com Thayse sobre dificuldade de data no CheckMilk.
+☎️ [Carlos] Com Liliane sobre lançamentos do CheckWork realizados no mês incorreto: Alterada para o mês correto.
+☎️ [Matheus] Com Gustavo e Thayse, sobre testes PEC no Agrotrace.
+☎️ [Matheus] Com Carlos, sobre relatorios e cards no Agrotrace.
+
+
+**[Mobile] Standup 16/07/2026**
+📅 Follow up: Onboarding Agrotrace
+
+**Agrotrace**
+- [Carlos] In Progress: #12822 - Impressão de Termo
+  - Refinamento concluído: solução definida como cadastro dinâmico de documentos por programa (N documentos HTML por certificadora, variáveis resolvidas via SQL no banco local do app, flags de impressão/anexo/assinaturas)
+  - Descrição do card reescrita com escopo mobile, contrato de sync e critérios de aceite; decisão de simplificação: resolução escalar de variáveis, listas via GROUP_CONCAT no SQL
+  - Criados e vinculados os cards do time Web: #12845 - API (schema de tabelas, CRUD + sync, RF/RNF, seed do Termo NCP) e #12846 - Web Admin (telas de cadastro, RF/RNF); API predecessora do front
+  - Pendência: confirmar com a Débora (Biodiesel CACAU) a nota do modelo "não vai imprimir — gerar em relatórios para lote"
+- [Matheus] Done: #12645 -  Trabalhar nos relatórios vindos do CheckMilk
+  - Done: #12824 -  R. Incoformidades de Qualidade
+
+☎️ [Carlos] Com Matheus Magalhães para esclarecer dúvidas sobre atendimentos do Pectrace.
+☎️ [Carlos] Com Matheus para esclarecer detalhes dos novos valores de qualidade.
+☎️ [Carlos] Com Liliane para ajustar RDs com mês errados.
+☎️ [Carlos] Com Thielson para validar o ajuste na rota `/dispositivo`.
+☎️ [Matheus] Com Carlos, sobre relatorio de inconformidade, no Agrotrace.
+☎️ [Matheus] Com Ronaldo, sobre experiencia no QGIS e projetos de mapas.
+

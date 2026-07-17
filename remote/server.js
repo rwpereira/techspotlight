@@ -198,6 +198,7 @@ server.listen(PORT, () => {
   console.log(`\n  Tech Spotlight Server`);
   console.log(`  Hub:       http://localhost:${PORT}`);
   console.log(`  Spotlight: http://localhost:${PORT}/edition-03/spotlight.html`);
-  console.log(`  Host:      http://localhost:${PORT}/edition-03/spotlight.html?role=host&name=Ronaldo`);
-  console.log(`  Guest:     http://localhost:${PORT}/edition-03/spotlight.html?role=guest&name=Bruno\n`);
+  console.log(`  Guest:     http://localhost:${PORT}/edition-03/spotlight.html?role=guest&name=Carlos\n`);
+  console.log(`  Guest:     http://localhost:${PORT}/edition-03/spotlight.html?role=guest&name=Matheus\n`);
+  console.log(`  Guest:     http://localhost:${PORT}/edition-03/spotlight.html?role=guest&name=Elias\n`);
 });

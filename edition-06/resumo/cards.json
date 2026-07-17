@@ -1,0 +1,236 @@
+{
+  "ca": {
+    "name": "Carlos",
+    "avClass": "av-ca",
+    "avInit": "CA",
+    "nameColor": "var(--ca)",
+    "cards": [
+      {
+        "id": "#12778",
+        "type": "feat",
+        "title": "Adicionar observação na despesa",
+        "desc": "Permitir que o usuário cadastre uma observação no registro de despesa do RD-RA."
+      },
+      {
+        "id": "#12749",
+        "type": "fix",
+        "title": "RA automático não está sendo gerado",
+        "desc": "Correção da geração automática de RA com base nos atendimentos do Agrotrace, que não estava ocorrendo."
+      },
+      {
+        "id": "#12736",
+        "type": "feat",
+        "title": "Adicionar esqueci minha senha no APP",
+        "desc": "Adição do recurso de recuperação de senha (esqueci minha senha) no aplicativo."
+      },
+      {
+        "id": "#12710",
+        "type": "feat",
+        "title": "INPI",
+        "desc": "Levantamento das informações necessárias para o registro da solução no INPI."
+      },
+      {
+        "id": "#12684",
+        "type": "feat",
+        "title": "Melhorar fluxo de envio da NF - RA",
+        "desc": "Melhoria nas validações do fluxo de RA para exigir o envio da NF antes da aprovação/confirmação do pagamento."
+      },
+      {
+        "id": "#12588",
+        "type": "feat",
+        "title": "Criar PRD e Design ferramenta Nutricional",
+        "desc": "Elaboração do PRD e do design do módulo Nutricional, uma calculadora interativa."
+      },
+      {
+        "id": "#12344",
+        "type": "feat",
+        "title": "Abrir e refinar tasks",
+        "desc": "Refinamento e abertura de tasks: geração automática de atendimentos futuros (estilo D8), data de publicação de materiais com notificação e label configurável para o nome do técnico no RAT."
+      },
+      {
+        "id": "#12200",
+        "type": "feat",
+        "title": "Desenvolver o módulo PEC",
+        "desc": "Card de acompanhamento do desenvolvimento do módulo Pecuária (PEC) no Agrotrace."
+      }
+    ]
+  },
+  "es": {
+    "name": "Elias",
+    "avClass": "av-el",
+    "avInit": "EL",
+    "nameColor": "var(--el)",
+    "cards": [
+      {
+        "id": "#12781",
+        "type": "ref",
+        "title": "Adicionar rota para criação de partos em lote - API",
+        "desc": "Criação de rota na API para permitir o registro de partos em lote no módulo de pecuária."
+      },
+      {
+        "id": "#12751",
+        "type": "feat",
+        "title": "Criar nova rota para baixar os dados do formulário dinâmico - API",
+        "desc": "Nova rota na API para baixar os dados do formulário dinâmico da tabela form_lista_item_lista para uso no aplicativo."
+      },
+      {
+        "id": "#12750",
+        "type": "fix",
+        "title": "Erro para baixar itens de lista",
+        "desc": "Correção de falha no download dos itens de resposta de perguntas de lista no app (projeto Sanidade Citros), que persistia mesmo após reinstalação."
+      },
+      {
+        "id": "#12739",
+        "type": "fix",
+        "title": "Verificar envio dos dados de usuário",
+        "desc": "Investigação e correção do envio de respostas de formulário dinâmico que ficavam presas na fila de envio mesmo com boa conexão."
+      },
+      {
+        "id": "#12721",
+        "type": "ref",
+        "title": "Adicionar nova rota para listar animais no produtor - API",
+        "desc": "Nova rota na API que retorna os animais já ordenados e filtrados, evitando operações pesadas em JavaScript no mobile."
+      },
+      {
+        "id": "#12716",
+        "type": "fix",
+        "title": "Não sai o nome do Produtor na Assinatura",
+        "desc": "Correção da assinatura que não preenchia automaticamente o nome do produtor quando a resposta 'produtor irá assinar' era SIM (projeto Citros)."
+      },
+      {
+        "id": "#12709",
+        "type": "fix",
+        "title": "Corrigir dificuldade do aplicativo fechar sozinho em certos dispositivos",
+        "desc": "Correção de crash na inicialização do app em dispositivos Android Xiaomi/Redmi, surgido após a versão v0.39.1."
+      },
+      {
+        "id": "#12674",
+        "type": "feat",
+        "title": "Pergunta com resposta fixa - Form Dinâmico - Mobile",
+        "desc": "Suporte no mobile a perguntas com resposta pré-preenchida e editável no formulário dinâmico, com a resposta saindo na impressão do laudo (Biodiesel-Soja)."
+      },
+      {
+        "id": "#12654",
+        "type": "feat",
+        "title": "Unidade de Medida - Form Dinâmico - Mobile",
+        "desc": "Filtragem das unidades de medida exibidas nas perguntas de laudo com quantidade, evitando seleção incorreta pelo técnico (Biodiesel Soja)."
+      },
+      {
+        "id": "#12629",
+        "type": "fix",
+        "title": "Perda de performance após configuração do Form",
+        "desc": "Correção de perda de performance e da associação insumo/subpergunta no formulário dinâmico com perguntas desencadeadas por itens de lista composta."
+      },
+      {
+        "id": "#12616",
+        "type": "ref",
+        "title": "Adicionar tela de listagem de animais",
+        "desc": "Criação da tela de listagem de animais no módulo de pecuária do aplicativo."
+      },
+      {
+        "id": "#12611",
+        "type": "ref",
+        "title": "Adicionar tela de parto",
+        "desc": "Criação da tela de registro de parto no módulo de pecuária do aplicativo."
+      },
+      {
+        "id": "#12583",
+        "type": "feat",
+        "title": "Melhoria no cadastro/edição de dispositivos - API",
+        "desc": "Melhoria na rota /dispositivo para atualizar os dados quando o IMEI já está cadastrado, em vez de retornar erro de conflito."
+      },
+      {
+        "id": "#12538",
+        "type": "feat",
+        "title": "Materiais",
+        "desc": "Data de publicação agendável para materiais, com controle de visibilidade para produtores e notificação push diária agrupada via OneSignal no horário da certificadora."
+      },
+      {
+        "id": "#12537",
+        "type": "feat",
+        "title": "Enviar uma nova versão para as lojas",
+        "desc": "Publicação de nova versão do aplicativo nas lojas Android e iOS com as atualizações da sprint."
+      },
+      {
+        "id": "#12500",
+        "type": "feat",
+        "title": "Definição de Croqui para preenchimento",
+        "desc": "Registro de configuração para definir quais tipos de croqui ficam habilitados para preenchimento, com todos habilitados por padrão."
+      },
+      {
+        "id": "#12385",
+        "type": "feat",
+        "title": "Registro para controlar carrossel de pergunta automático",
+        "desc": "Registro de configuração para controlar o avanço automático para a próxima pergunta no DG, mantido ativo nos projetos e desativado para o APROSOJA."
+      },
+      {
+        "id": "#12227",
+        "type": "feat",
+        "title": "Permitir referência a outras perguntas no campo Valor das Regras de Validação",
+        "desc": "Validação no app permitindo comparar o valor de uma pergunta com a resposta de outra (ex.: Área Plantada maior ou igual à Área Contratada)."
+      }
+    ]
+  },
+  "ma": {
+    "name": "Matheus",
+    "avClass": "av-ma",
+    "avInit": "MA",
+    "nameColor": "var(--ma)",
+    "cards": [
+      {
+        "id": "#12720",
+        "type": "ref",
+        "title": "R. PQFL",
+        "desc": "Elaboração do relatório PQFL no Agrotrace."
+      },
+      {
+        "id": "#12708",
+        "type": "ref",
+        "title": "R. Cronograma de Atividades",
+        "desc": "Elaboração do relatório de Cronograma de Atividades no Agrotrace."
+      },
+      {
+        "id": "#12706",
+        "type": "ref",
+        "title": "R. Qualidade",
+        "desc": "Elaboração do relatório de Qualidade no Agrotrace."
+      },
+      {
+        "id": "#12705",
+        "type": "ref",
+        "title": "R. Acompanhamento de Diagnósticos",
+        "desc": "Elaboração do relatório de Acompanhamento de Diagnósticos no Agrotrace."
+      },
+      {
+        "id": "#12626",
+        "type": "feat",
+        "title": "Melhoria na disposição dos itens na tela de resposta - Form Dinâmico",
+        "desc": "Ajuste do layout da tela de resposta do form dinâmico, reposicionando o botão salvar e reduzindo o campo de resposta para perguntas de expressão (Biodiesel-Soja)."
+      },
+      {
+        "id": "#12625",
+        "type": "feat",
+        "title": "Validar se formulários compartilhados está funcionando no APP",
+        "desc": "Validação de que o download de formulários dinâmicos compartilhados entre programas traz todos os registros necessários no aplicativo."
+      },
+      {
+        "id": "#12622",
+        "type": "feat",
+        "title": "Melhorar financeiro no Agrotrace",
+        "desc": "Desacoplamento do módulo financeiro do PEC e melhoria com a adição de unidade de medida."
+      },
+      {
+        "id": "#12579",
+        "type": "feat",
+        "title": "Criar atendimentos automaticamente",
+        "desc": "Geração automática de atendimentos futuros (semelhante ao D8), definindo o tipo disparador, a quantidade de dias para o próximo atendimento, o texto por modelo e o status de conclusão."
+      },
+      {
+        "id": "#12497",
+        "type": "feat",
+        "title": "Perguntas referenciadas - Filtrar pendentes - Form Dinâmico",
+        "desc": "Filtro para localizar perguntas pendentes/referenciadas no formulário dinâmico, evitando rolar toda a tela para encontrá-las (projeto Sanidade Citros)."
+      }
+    ]
+  }
+}
