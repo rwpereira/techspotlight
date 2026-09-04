@@ -267,7 +267,14 @@ Apresentar como direção, não promessa:
 3. fechar auditoria de autenticação e pendências do Talhão — @bruno / #12735,
    #13223;
 4. transformar contexto em produto: análise IA, documentação e escopos reutilizáveis
-   — @thielson + @bruno.
+   — @thielson + @bruno;
+5. melhorar a skill `readme-first`, detalhando os READMEs da pasta
+   `funcionalidades-core` e adicionando arquivos `README.md` aos apps frontend do
+   Agrotrace — @bruno;
+6. melhorar a funcionalidade de escopos reutilizáveis, permitindo alternar se a
+   operação do escopo será de inclusão ou exclusão de certificadoras — @bruno;
+7. refatorar a UI do formulário de cadastro da propriedade, trocando a aba
+   **Atividades** por **Solo** e reorganizando as tabs internas — @bruno.
 
 Contexto do item 1: retorno prévio do Hilário, repassado pelo Sartori no Discord em
 03/09. Ele aprovou o painel de abates e vai colocar 3 coordenadores da ATER para
