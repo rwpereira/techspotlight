@@ -22,9 +22,9 @@ próximo passo.
 | 16:00–19:00 | Auditoria de autenticação | Bruno |
 | 19:00–20:00 | Lightning: escopos reutilizáveis | Bruno |
 | 20:00–22:00 | Lightning: readme-first e funcionalidades core | Time Web |
-| 22:00–24:00 | Integridade de relatórios | Thielson |
-| 24:00–26:00 | PEC, protocolo e identificadores | Thielson |
-| 26:00–28:00 | Contexto para análise IA | Thielson |
+| 22:00–24:00 | Características dinâmicas do PEC | Thielson |
+| 24:00–26:00 | Internacionalização Agrotrace | Thielson |
+| 26:00–28:00 | Overview: relatórios, integrações e contexto para IA | Thielson |
 | 28:00–30:00 | Engineering Wins + próximos passos + perguntas | Ronaldo/time |
 
 ## Abertura
@@ -194,39 +194,40 @@ funcionalidade atravessa o sistema; depois escolhe o menor conjunto de arquivos 
 trabalhar. Isso torna a colaboração mais previsível para a IA e para quem mantém o
 código.”
 
-## Spotlight — Integridade dos relatórios (Thielson, 2 min)
+## Spotlight — Características dinâmicas do PEC (Thielson, 2 min)
 
-**Problema:** blocos repetíveis sem resposta e imagens internas desapareciam dos
-relatórios; filtros booleanos também escondiam contas no CMS.
+**Problema:** características aplicáveis a animais e lotes variam por atividade, tipo
+de criação, categoria e certificadora. Sem esse contexto, o cadastro oferece opções
+que não representam o cenário produtivo.
 
-**Decisão/implementação:** preservar blocos vazios no relatório de respostas, coletar
-imagens aninhadas no relatório de imagens e normalizar parâmetros booleanos na
-listagem administrativa.
+**Decisão/implementação:** as regras passaram a considerar cada recorte antes da
+seleção, preservando Animal e Lote como entidades distintas. Sem atividade vinculada,
+a característica permanece global.
 
-**Resultado:** #13260 e #13280 estão `Done`; #13281 está em `Test QA`. As saídas
-respeitam a estrutura real do atendimento.
+**Resultado:** #13254 está em `Test QA`; a configuração passa a conduzir uma seleção
+coerente com o contexto de cada cadastro.
 
-## Spotlight — PEC, protocolo e identificadores (Thielson, 2 min)
+## Spotlight — Internacionalização Agrotrace (Thielson, 2 min)
 
-Características dinâmicas de animais e lotes passaram a considerar atividade, tipo de
-criação, categoria e certificadora (#13254, `Test QA`). O nome do protocolo entrou nas
-telas de atendimento (#13234), e identificadores externos GEDAVE foram adicionados à
-exportação XLSX do Citros (#13230). #13216 está `Done` no Azure, mas o standup registra
-que seus campos foram desfeitos depois da revisão de negócio; preservar essa diferença.
+**Problema:** textos estavam distribuídos por componentes, páginas, formulários e
+seletores, deixando a experiência entre idiomas inconsistente e difícil de evoluir.
 
-## Spotlight — Contexto para análise IA (Thielson, 2 min)
+**Decisão/implementação:** foram atualizados os textos de componentes, páginas,
+formulários e seletores de 31 entidades; conflitos e traduções adicionais também foram
+tratados nos dynamic filters.
 
-**Problema:** uma análise útil precisa saber de quais fontes veio o dossiê e permitir
-reexecução explicável.
+**Resultado:** a cobertura principal de internacionalização foi concluída. Apresentar
+eventuais lacunas como ajustes pontuais, não como uma cobertura inexistente.
 
-**Decisão/implementação:** documentação funcional no CMS, agente local que identifica
-features e propõe atualizações via PR controlado, contratos/prompts para Questionário,
-Formulário Dinâmico e PEC, fotografia do dossiê, persistência de execução, fila
-assíncrona idempotente, retentativas, status, duração, modelo, tokens e histórico por
-seção.
+## Overview — Outros destaques (Thielson, 2 min)
 
-**Resultado honesto:** a base de rastreabilidade está em progresso; o standup não
-registra métrica de qualidade do modelo.
+Usar a grade, no estilo da edition-04, para citar sem aprofundar: relatórios que
+preservam blocos repetíveis e imagens (#13260, #13280, `Done`), correção do filtro de
+contas (#13281, `Test QA`), identificadores GEDAVE na exportação Citros (#13230,
+`Done`) e protocolo nas telas de Atendimento (#13234, `Done`).
+
+Fechar com o contexto para análise IA: documentação funcional, dossiê explicável e
+execução observável seguem em andamento; não apresentar como entrega concluída.
 
 ## Engineering Wins (Ronaldo, ~1 min)
 
